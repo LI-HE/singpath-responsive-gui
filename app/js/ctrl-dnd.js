@@ -123,6 +123,12 @@ function GameController($scope,$resource){
             $scope.move_to_next_unsolved_problem();
           }
         }
+
+        //$scope.$watch('ner', function() {
+        //    alert("Hi");
+            //scope.greeting = scope.salutation + ' ' + scope.name + '!';
+        //}); // initialize the watch
+ 
         $scope.check_solution_for_game = function() {
           //$scope.solution
           //$scope.current_problem
@@ -177,11 +183,8 @@ function GameController($scope,$resource){
             if(nonErrorResult.solved){
                 //var r = confirm("Congratulations! We are going to the next question.");
                 $('#pop_info_Pane').modal('show');
-                if(r == true){
-                    $scope.skip_problem_count += 1;
-                    $scope.move_to_next_unsolved_problem();
-                }
-                //$scope.check_solution_for_game();
+                
+                $scope.check_solution_for_game();
                 alert("All solved. Checking solution for game."+nonErrorResult.solved);
             }
           }
@@ -192,6 +195,13 @@ function GameController($scope,$resource){
 
 function dndCtrl($scope) {
 
+    //$scope.watchEvent = function($event){
+          //$scope.clicked = $event.target.name;
+    //      $scope.check_permutation();
+          //alert("Event "+ $event.target.name);
+          //$scope.log_event($scope.clicked);
+    //};
+    
     $scope.sourceEmpty = function() {
         return $scope.source.length == 0;
     }
@@ -199,7 +209,8 @@ function dndCtrl($scope) {
     $scope.modelEmpty = function() {
         return $scope.model.length == 0;
     }
-
+    //Listen for change
+    //{{check_permutation()}}
     /*var havePlayed = false;
     $scope.validate = function() {
         if($scope.model[0].id == 1 && $scope.model[1].id == 2 && $scope.model[2].id == 3 && havePlayed == false){

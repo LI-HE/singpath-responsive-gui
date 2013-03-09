@@ -94,7 +94,6 @@
       </div>
 
       <div ng-controller="GameController">
-
           <section class="container">
             <pre>Current Problem: (index {{current_problem_index}})<br>ID: {{game.problems.problems[current_problem_index].id}}<br>Name: {{game.problems.problems[current_problem_index].name}}<br>Description: {{game.problems.problems[current_problem_index].description}}
             <div class="pull-right"><a href="#" id="example" class="btn btn-info" rel="popover" data-content="{{game.problems.problems[current_problem_index].examples}}" data-original-title="Example for {{game.problems.problems[current_problem_index].name}}">see example</a></div>
@@ -102,7 +101,7 @@
           </section>
            
           <input type="Submit" value="Load Mobile Game" ng-click="fetch(10)">
-
+        
           <br>
           Skeleton: <br>
           <textarea ng-model="solution">{{game.problems.problems[current_problem_index].skeleton}}</textarea><br>
@@ -118,14 +117,15 @@
             Enter line combination to check:
             <input type="text" ng-model="permutation">
             <input type="submit" value="Check With Permutation" ng-click="check_permutation()"><br>
-            Non-error Result={{ner}}
+            Non-error Result={{ner}}  
           </div>
 
           <input type="Submit" value="Skip Problem" ng-click="skip_problem()"><br>
 
-          <div class="container ng-scope" id="list" ng-controller="dndCtrl">
-            {{check_permutation()}}
-            <div class="row">
+          <div class="container ng-scope" id="list" ng-controller="dndCtrl" >
+            
+            <!-- Watch for mouseup events here. -->
+            <div class="row" ng-mouseup="check_permutation()">
               <div class="span4 offset4">
                   <ol style="list-style: none;" id="single" dnd-list="game.problems.problems[current_problem_index].lines">
                       <li style="text-align: center;" class="alert alert-info nomargin ng-scope ng-binding" ng-repeat="line in game.problems.problems[current_problem_index].lines">{{line.content}}</li>

@@ -401,12 +401,288 @@ function GenericController($scope,$resource){
     };
 
 }
+//Repeat for mobile problem analysis
+
+function VerifyRequestController($scope,$resource){
+        
+        $scope.analyze = function(){
+          var byurl = {}
+          for (var i = 0; i < $scope.items.length; i++) {
+            if($scope.items[i].url in byurl){
+              byurl[$scope.items[i].url].vrs.push($scope.items[i]);
+              byurl[$scope.items[i].url][$scope.items[i].result] += 1;
+            }
+            else {
+              byurl[$scope.items[i].url] = {'vrs':[],'TIMEOUT':0,'ERROR':0,'PASS':0,'FAIL':0,'PRIVATE_FAIL':0};
+              byurl[$scope.items[i].url].vrs.push($scope.items[i]);
+              byurl[$scope.items[i].url][$scope.items[i].result] += 1;
+            }
+            
+          }         
+          //for entry in items, add to some counter and return
+          $scope.result = byurl;
+        };
+}
+
+//Change this to IPAccessPoints
+function IPAccessController($scope,$resource){
+        //$scope.model = null;
+        //$scope.item = null;
+        $scope.items = [];
+        $scope.points = {};
+        $scope.offset = 0;
+        $scope.model = 'ipuser';
+        $scope.Model = $resource('/jsonapi/rest/:model/:id');
+        
+        $scope.list = function(){
+          var data = {'model':$scope.model}
+          $scope.Model.query(data,
+                function(response) { 
+                  $scope.items = response;
+                  $scope.offset = $scope.items.length;
+                });  
+        };
+
+        $scope.append_list = function(){
+
+          var data = {'model':$scope.model, 'offset':$scope.offset}
+          $scope.Model.query(data,
+                function(response) { 
+                  var temp = response;
+                  $scope.items = $scope.items.concat(temp);
+                  $scope.offset += temp.length;
+                  $scope.look_up_ips();
+                  //alert("items "+$scope.items.length+" offset "+$scope.offset+" length "+$scope.items.length)
+                });  
+        };
+
+        $scope.look_up_ips = function(){
+            //alert("looking up ips");
+            for (var i = 0; i < $scope.items.length; i++) {
+
+              if($scope.items[i].ip in $scope.points){
+
+              }
+              else{
+                //alert("point not in list "+$scope.items[i].ip);
+                try{
+                  var point = $resource('/jsonapi/rest/ipaddress/'+$scope.items[i].ip).get();
+                  $scope.points[$scope.items[i].ip] = point;
+
+                }
+                catch(err){
+                //Handle errors here
+                }
+                              }
+              //$scope.permutation_lines += $scope.game.problems.problems[$scope.current_problem_index].lines[parseInt($scope.permutation[i])-1]+"\n";
+            }
+            
+            //for key in points, put them in the items array to plot. 
+            //for (var i = 0; i < $scope.items.length; i++) {
+            $scope.point_list = [];
+            for (var key in $scope.points) {
+              if ($scope.points.hasOwnProperty(key)) {
+                $scope.point_list.push($scope.points[key]);
+              }
+            }
+         
+            //alert("there were "+Object.keys($scope.points).length+" keys and point_list length is "+$scope.point_list.length);
+
+        };       
+                
+        $scope.load = function(id){
+          var data = {'model':$scope.model, 
+                      'id': id
+                     }
+          $scope.waiting = "Loading";
+          $scope.Model.get(data, 
+              function(response){   
+                  $scope.item = response; 
+              });        
+        };
+}
+
+function GameResultController($scope,$resource){
+        $scope.items = [];
+        //$scope.analysis = {};
+        $scope.offset = 0;
+        $scope.model = 'gameresult';
+        $scope.Model = $resource('/jsonapi/rest/:model/:id');
+        
+        $scope.list = function(){
+          var data = {'model':$scope.model}
+          $scope.Model.query(data,
+                function(response) { 
+                  $scope.items = response;
+                  $scope.offset = $scope.items.length;
+                });  
+        };
+
+        $scope.append_list = function(){
+
+          var data = {'model':$scope.model, 'offset':$scope.offset}
+          $scope.Model.query(data,
+                function(response) { 
+                  var temp = response;
+                  $scope.items = $scope.items.concat(temp);
+                  $scope.offset += temp.length;
+                  $scope.analyze();
+                  //alert("items "+$scope.items.length+" offset "+$scope.offset+" length "+$scope.items.length)
+                });  
+        };
+
+        $scope.analyze = function(){
+            $scope.analysis = {};
+            for (var i = 0; i < $scope.items.length; i++) {
+              var day = $scope.items[i].game_start.split('T')[0];
+              //time = $scope.items[i].game_start.split('T')[1];
+              //if ($scope.points.hasOwnProperty(key))
+              if(day in $scope.analysis){
+                //alert("Found key");
+                $scope.analysis[day].attempts += $scope.items[i].attempts;
+                $scope.analysis[day].solve_time += $scope.items[i].solve_time;
+                $scope.analysis[day].thePlayers[$scope.items[i].player] = 1;
+              }
+              else{
+                //alert("Did not find key");
+                $scope.analysis[day] = {"attempts": $scope.items[i].attempts, 
+                                        "solve_time":$scope.items[i].solve_time,
+                                        "thePlayers": {}};
+              }
+              //Count the number of players
+              var keys = [];
+              for(var key in $scope.analysis[day].thePlayers){
+                keys.push(key);
+              }
+              $scope.analysis[day].players = keys;
+            }
+         
+        };       
+}
+
+function CohortAnalysisController($scope,$resource){
+        //$scope.items = [];
+        //$scope.analysis = {};
+        //$scope.offset = 0;
+        $scope.players_by_join_day = {}; //lists of players
+        $scope.player_events = {}; //list of events
+        $scope.event_count = {};
+        $scope.players_event_count = {};
+        
+        $scope.Player = $resource('/jsonapi/rest/player/:id');
+        $scope.IPUser = $resource('/jsonapi/ipuser/:id');
+                
+
+        $scope.get_players = function(){
+          $scope.Player.query({},
+                function(response) { 
+                  $scope.players = response;
+                  $scope.player_offset = $scope.players.length;
+                  $scope.get_player_events();
+                });  
+        };
+
+        $scope.keys = function(obj){
+          var keys = [];
+          for(var key in obj){
+            keys.push(key);
+          }
+          return keys;
+        };
+        
+        $scope.get_player_events = function(){
+          for (var i = 0; i < $scope.players.length; i++) {
+
+              var join_day = $scope.players[i].created.split('T')[0];
+              if(join_day in $scope.players_by_join_day){
+                //alert("Found key");
+                $scope.players_by_join_day[join_day].push($scope.players[i].id);
+              }
+              else{
+                $scope.players_by_join_day[join_day] = [];
+                $scope.players_by_join_day[join_day].push($scope.players[i].id);
+               }
+              
+              //Fetch the last 100 events for every player
+              $scope.player_events[$scope.players[i].id] = $scope.IPUser.query({'player': $scope.players[i].id});
+              
+              /*
+              $scope.currentPlayerID = $scope.players[i].id;
+              
+              //try{
+                  
+                $scope.IPUser.query({'player': $scope.currentPlayerID},
+                  function(response) { 
+                    alert("Saving for player "+$scope.currentPlayerID);
+                    $scope.player_events[$scope.currentPlayerID] = response;
+                  });
+              //}
+              //catch(err){
+              //  alert("No response for player "+$scope.currentPlayerID);      //Handle errors here
+              //} 
+              */ 
+          
+          }
+        };
+
+
+        $scope.append_list = function(){
+
+          var data = {'model':$scope.model, 'offset':$scope.offset}
+          $scope.Model.query(data,
+                function(response) { 
+                  var temp = response;
+                  $scope.items = $scope.items.concat(temp);
+                  $scope.offset += temp.length;
+                  $scope.analyze();
+                  //alert("items "+$scope.items.length+" offset "+$scope.offset+" length "+$scope.items.length)
+                });  
+        };
+
+        $scope.analyze = function(){
+            $scope.analysis = {};
+            for (var i = 0; i < $scope.items.length; i++) {
+              var day = $scope.items[i].game_start.split('T')[0];
+              //time = $scope.items[i].game_start.split('T')[1];
+              //if ($scope.points.hasOwnProperty(key))
+              if(day in $scope.analysis){
+                //alert("Found key");
+                $scope.analysis[day].attempts += $scope.items[i].attempts;
+                $scope.analysis[day].solve_time += $scope.items[i].solve_time;
+                $scope.analysis[day].thePlayers[$scope.items[i].player] = 1;
+              }
+              else{
+                //alert("Did not find key");
+                $scope.analysis[day] = {"attempts": $scope.items[i].attempts, 
+                                        "solve_time":$scope.items[i].solve_time,
+                                        "thePlayers": {}};
+              }
+              //Count the number of players
+              var keys = [];
+              for(var key in $scope.analysis[day].thePlayers){
+                keys.push(key);
+              }
+              $scope.analysis[day].players = keys;
+            }
+         
+        };       
+}
 
 function GenericRestController($scope,$resource){
         //$scope.model = null;
         //$scope.item = null;
-        //$scope.items = null;
+        //$scope.headers = null;
+        $scope.items = [];
+        $scope.offset = 0;
         $scope.Model = $resource('/jsonapi/rest/:model/:id');
+
+        $scope.update_headers = function(){
+          var keys = [];
+          for(var key in $scope.items[0]){
+            keys.push(key);
+          }
+          $scope.headers = keys;
+        };
 
         $scope.update = function(id){
           $scope.UpdateResource = $resource('/jsonapi/rest/:model/:id', 
@@ -437,8 +713,23 @@ function GenericRestController($scope,$resource){
           $scope.Model.query(data,
                 function(response) { 
                   $scope.items = response;
+                  $scope.offset = $scope.items.length;
+                  $scope.update_headers();
                 });  
         };
+
+        $scope.append_list = function(){
+
+          var data = {'model':$scope.model, 'offset':$scope.offset}
+          $scope.Model.query(data,
+                function(response) { 
+                  var temp = response;
+                  $scope.items = $scope.items.concat(temp);
+                  $scope.offset += temp.length;
+                  $scope.update_headers();
+                  //alert("items "+$scope.items.length+" offset "+$scope.offset+" length "+$scope.items.length)
+                });  
+        };        
                 
         $scope.load = function(id){
           var data = {'model':$scope.model, 
