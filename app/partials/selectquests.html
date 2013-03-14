@@ -1,5 +1,144 @@
 <br>
 <br>
+
+<div id="largeSelectPlay" ng-controller="QuestController" ng-init="model='Quest';list();difficulty='Easy';">
+         <div class="container" style="border:3px solid #000000"><h5 align="center">#1. Pick a Story!</h5></div>
+		 <div>&nbsp;</div>
+		 
+  
+<div ng-controller="StoryController" ng-init="list();$parent.storyID=1;">
+<div id="myCarousel" class="carousel slide" >
+    <div class="carousel-inner" style="position:relative;left:0px" class="ng-scope">
+
+        <div class="item active">
+                <!-- Three columns of text below the carousel -->
+					<div class="container">
+						<div class="row" >
+							<div class="span4"  ng-repeat="story in stories | limitTo:3">
+								<label class="radio">
+						
+								<input type="radio" name="optionsRadios" ng-model="$parent.$parent.storyName" id="{{story.id}}" value="{{story.name}}">
+								<input class="img-polaroid" type="image" ng-src="{{story.imageURL}}" alt="" height="400">
+								<br>
+								<h5>{{story.name}}</h5>
+								</label>
+							</div>
+						</div>
+					</div>	
+		</div>
+        <div class="item">
+                <!-- Three columns of text below the carousel -->
+					<div class="container">
+						<div class="row" >
+							<div class="span4" ng-repeat="story in stories | startFrom:3 | limitTo:3">
+								<label class="radio">
+						
+								<input type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.name}}">
+								<input class="img-polaroid" type="image" ng-src="{{story.imageURL}}" alt="" height="400">
+								<br>
+								<h5>{{story.name}}</h5>
+								</label>
+							</div>
+						</div>
+					</div>	
+		</div>
+        <div class="item">
+                <!-- Three columns of text below the carousel -->
+					<div class="container">
+						<div class="row" >
+							<div class="span4" ng-repeat="story in stories | startFrom:6 | limitTo:3">
+								<label class="radio">
+						
+								<input type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.name}}">
+								<input class="img-polaroid" type="image" ng-src="{{story.imageURL}}" alt="" height="400">
+								<br>
+								<h5>{{story.name}}</h5>
+								</label>
+							</div>
+						</div>
+					</div>	
+		</div>
+       
+    </div> 
+	<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+<tt>Story Selected :    {{storyName}}</tt>
+</div>
+<!-- /.carousel -->
+
+<div class="container marketing" style="position:relative;left:13px">
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+            <!-- /.span4 -->
+			<div class="span4" style="border:3px solid #000000">
+				<div style="border:3px solid #000000" align="center"><h5>#2. Select a Path</h5></div>
+				<div style="border:3px solid #000000; height:220px; overflow:auto" ng-controller="PathController" ng-init="list();$parent.pathID=10030;">
+				<tt>result: {{pathDes}}</tt>
+						<div class="btn-group" data-toggle="buttons-radio" >
+							<p><p>
+							
+							<span ng-repeat="item in paths.paths">
+							<label class="radio">
+							<input style="visibility:hidden" type="radio" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.description}}" >
+							<button type="button" class="btn btn-primary" style="height: 33px; width: 200px"  btn-radio="{{item.description}}">{{item.description}}
+							</button></br></br>
+							</label>
+							</span>
+						</div>
+				</div>
+			</div>			
+			
+            <div class="span4" style="border:3px solid #000000">
+				<div style="border:3px solid #000000" align="center"><h5>#3. Select a Level</h5></div>
+				<div style="border:3px solid #000000; height:220px;" >
+						<div class="btn-group" data-toggle="buttons-radio" >
+							<p><p>
+							
+							<span ng-repeat="item in [{'name':'Beginner', 'id':'Beginner'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]">
+							<label class="radio">
+							<input style="visibility:hidden" type="radio" ng-model="$parent.diff" name="difficultyLevel" value="{{item.name}}" >
+							<button type="button" class="btn btn-primary" style="height: 33px; width: 200px"  btn-radio="{{item.name}}">{{item.name}}
+							</button></br></br>
+							</label>
+							</span>
+						</div>
+				</div>
+            </div>
+        <!-- /.span4 -->
+			<div class="span2 container" style="position:relative;left:60px" align = "center">
+											<tt>result: {{diff}}</tt>
+				<table align="center">
+				<tr><td align="center">
+				<br><br>
+				<!-- <form action="#storyboard"> -->
+					<button class="btn btn-warning btn-large" ng-click="item.name='New Quest';create_quest(storyName,pathDes,diff)" style="width: 145px"><h1>Go!</h1></button>
+				<!-- </form> -->
+				</td></tr>
+				<tr><td>
+				<br>
+					<div align="center"><button class="btn btn-warning"><h5>Revert to Classic<h5></button></div>
+				</td></tr>
+				</table>
+				    Saved Quests: {{quests}}<br><br>
+					ID Name StoryID, PathID, Difficulty
+					<ul>
+					  
+					  <li ng-repeat="quest in quests">
+						{{quest.id}}, {{quest.name}}, {{quest.storyID}}, {{quest.pathID}}, {{quest.difficulty}}
+					  </li>
+					</ul>
+			</div>
+        <!-- /.span4 -->
+        <!-- /.row -->
+    </div>
+</div>
+</div>
+
+
+
+
+
 <div id = "smallSelectPlay" class="container" align="center">
     <div>
         <h5>#1. Pick a Story!</h5>
@@ -161,224 +300,4 @@
             </div>
         </div>
     </div>
-</div>
-
-<div id="largeSelectPlay" >
-         <div class="container" style="border:1px solid #000000"><h5 align="center">#1. Pick a Story!</h5></div>
-		 <div>&nbsp;</div>
-
-<div id="myCarousel" class="carousel slide">
-    <div class="carousel-inner" style="position:relative;left:0px">
-        <div class="item active">
-            <div class="container" >
-                <!-- Three columns of text below the carousel -->
-                <div class="row">
-                    <div class="span4">
-
-                        <label class="radio">
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">                        <input class="img-polaroid" type="image" src="../assets/img/examples/p1.jpg"
-                        alt="" height="400">
-                        <br>
-                             <h5>A New Hope</h5>
-
-                        </label>
-                    </div>
-                    <!-- /.span4 -->
-                    <div class="span4">
-
-                        <label class="radio">
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                                    <input class="img-polaroid" type="image" src="../assets/img/examples/p2.jpg"
-                        alt="" height="400">
-                        <br>
-                             <h5>Empire Strikes Back</h5>
-
-                        </label>
-                    </div>
-                    <!-- /.span4 -->
-                    <div class="span4">
-
-                        <label class="radio">
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                                                    <input class="img-polaroid" type="image" src="../assets/img/examples/p3.jpg"
-                        alt="" height="400">
-                        <br>
-                             <h5>Return of the Jedi</h5>
-
-                        </label>
-                    </div>
-                    <!-- /.span4 -->
-                </div>
-                <!-- /.row -->
-            </div>
-        </div>
-        <div class="item">
-            <div class="container">
-                <!-- Three columns of text below the carousel -->
-                <div class="row">
-                    <div class="span4">
-
-                       
-                        <label class="radio">
-                            <input align = "center"type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
-                                                    <input class="img-polaroid" type="image" src="../assets/img/examples/p4.jpg"
-                        alt="" height="200">
-                         <br>
-                             <h5>Attack of the Clones</h5>
-                        </label>
-                    </div>
-                    <!-- /.span4 -->
-                    <div class="span4">
-                        <label class="radio">
-                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5">
-                                                    <input class="img-polaroid" type="image" src="../assets/img/examples/p5.jpg"
-                        alt="" height="200">
-                             <h5>The Phantom Menace</h5>
-
-                        </label>
-                    </div>
-                    <!-- /.span4 -->
-                    <div class="span4">
-
-                        <label class="radio">
-                            <input type="radio" name="optionsRadios" id="optionsRadios6" value="option6">
-                                                    <input class="img-polaroid" type="image" src="../assets/img/examples/p6.jpg"
-                        alt="" height="200">
-                        <br>
-                             <h5>The Clone Wars</h5>
-
-                        </label>
-                    </div>
-                    <!-- /.span4 -->
-                </div>
-                <!-- /.row -->
-            </div>
-        </div>
-        <div class="item">
-            <div class="container">
-                <!-- Three columns of text below the carousel -->
-                <div class="row">
-                    <div class="span4">
-
-                        <label class="radio">
-                            <input type="radio" name="optionsRadios" id="optionsRadios7" value="option7">
-                                                    <input class="img-polaroid" type="image" src="../assets/img/examples/p7.jpg"
-                        alt="" height="200">
-                        <br>
-                             <h5>The return of Avengers</h5>
-
-                        </label>
-                    </div>
-                    <!-- /.span4 -->
-                    <div class="span4">
-
-                        <label class="radio">
-                            <input type="radio" name="optionsRadios" id="optionsRadios8" value="option8">
-                                                    <input class="img-polaroid" type="image" src="../assets/img/examples/p8.jpg"
-                        alt="" height="200">
-                        <br>
-                             <h5>Galactic Empire</h5>
-
-                        </label>
-                    </div>
-                    <!-- /.span4 -->
-                    <div class="span4">
-
-                        <label class="radio">
-                            <input type="radio" name="optionsRadios" id="optionsRadios9" value="option9">
-                                                    <input class="img-polaroid" type="image" src="../assets/img/examples/p9.jpg"
-                        alt="" height="200">
-                        <br>
-                             <h5>The Phantom Menace</h5>
-
-                        </label>
-                    </div>
-                    <!-- /.span4 -->
-                </div>
-                <!-- /.row -->
-            </div>
-        </div>
-    </div> 
-	<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-</div>
-
-<!-- /.carousel -->
-<div class="container marketing" style="position:relative;left:13px">
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-            <!-- /.span4 -->
-            <div class="span4" style="border:1px solid #000000">
-
-                 <div style="border:1px solid #000000"><h5>#2. Select a Path</h5></div>
-                <div style="border:1px solid #000000" class="tabbable tabs-right">
-					<br>
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#LlA" data-toggle="tab">Java</a>
-                        </li>
-                        <li><a href="#LlB" data-toggle="tab">Python</a>
-                        </li>
-                        <li><a href="#LlC" data-toggle="tab">ruby</a>
-                        </li>
-                        <li><a href="#LlD" data-toggle="tab">Objective-C</a>
-                        </li>
-						<br>
-                    </ul>
-                    <div class="tab-content" >
-					<br>
-                        <div class="tab-pane active" id="LlA">
-                            <input align="center" type="image" src="../assets/img/examples/java_logo.png" alt=""
-                            height="110"></input>
-                        </div>
-                        <div class="tab-pane" id="LlB">
-                            <input align="center" type="image" src="../assets/img/examples/python_logo.png" alt=""
-                            height="110"></input>
-                        </div>
-                        <div class="tab-pane" id="LlC">
-                            <input align="center" type="image" src="../assets/img/examples/ruby_logo.png" alt=""
-                            height="110"></input>
-                        </div>
-						<div class="tab-pane" id="LlD">
-                            <input align="center" type="image" src="../assets/img/examples/objectivec_logo.png" alt=""
-                            height="110"></input>
-                        </div>
-						<br>
-                    </div>
-                </div>
-            </div>
-            <div class="span4" align="center" style="border:1px solid #000000">
-				<div style="border:1px solid #000000" align="center"><h5>#3. Select a Level</h5></div>
-				<div style="border:1px solid #000000">
-				<div>&nbsp;</div>
-				<button type="button" class="btn btn-info" style="height: 30px; width: 150px">Drag & Drop</button>
-				<div>&nbsp;</div>
-				<button type="button" class="btn btn-info" style="height: 30px; width: 150px">Easy</button>
-				<div>&nbsp;</div>
-				<button type="button" class="btn btn-info" style="height: 30px; width: 150px">Medium</button>
-				<div>&nbsp;</div>
-				<button type="button" class="btn btn-info" style="height: 30px; width: 150px">hard</button>
-				<div>&nbsp;</div>
-				</div>
-            </div>
-        <!-- /.span4 -->
-			<div class="span2 container" style="position:relative;left:60px" align = "center">
-				<table align="center">
-				<tr><td align="center">
-				<br><br>
-				<!-- <form action="#storyboard"> -->
-				<a href="#storyboard">
-					<button class="btn btn-warning btn-large" style="width: 145px"><h1>Go!</h1></button>
-				</a>
-				<!-- </form> -->
-				</td></tr>
-				<tr><td>
-				<br>
-					<div align="center"><button class="btn btn-warning"><h5>Revert to Classic<h5></button></div>
-				</td></tr>
-				</table>
-			</div>
-        <!-- /.span4 -->
-        <!-- /.row -->
-    </div>
-</div>
 </div>

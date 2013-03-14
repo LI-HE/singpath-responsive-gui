@@ -2,6 +2,14 @@
 
 //var myApp = angular.module('myApp', ['ngResource', 'analytics']);
 var myApp = angular.module('myApp', ['myAppConfig','ngResource', 'analytics','ngMockE2E']);
+myApp.filter('startFrom', function() {
+    return function(input, idx) {
+        var i=idx, len=input.length, result = [];
+        for (; i<len; i++)
+            result.push(input[i]);
+        return result;
+    };
+});
 
 myApp.run(function($httpBackend) {
       
@@ -155,7 +163,7 @@ myApp.run(function($httpBackend) {
     
       });
 
-      var stories = [{"name":"The Spy Who Coded","imageURL":"../assets/img/examples/p3.jpg", "videos":["LL-9dh31lO8","wforb_EBcNc","rlcYdRBC4CY","s_4FHdYa8vg","23Fv44Qra8Y","uSL9dck1irQ","atd-_akntnI","sfoYXO8Kr1U","C3fpgXP5JgU","boAPAqDSVgQ","17YvG9zGPkc","k__8ueUkWVw","ly65Zf2Ak_s"],"id":1},{"name":"Tricorder Meltdown","imageURL":"../assets/img/examples/p3.jpg","videos":["LL-9dh31lO8","wforb_EBcNc","rlcYdRBC4CY","s_4FHdYa8vg","23Fv44Qra8Y","uSL9dck1irQ","atd-_akntnI","sfoYXO8Kr1U","C3fpgXP5JgU","boAPAqDSVgQ","17YvG9zGPkc","k__8ueUkWVw","ly65Zf2Ak_s"],"id":2},{"name":"To Melbourne With Love","imageURL":"../assets/img/examples/p3.jpg","videos":["LL-9dh31lO8","wforb_EBcNc","rlcYdRBC4CY","s_4FHdYa8vg","23Fv44Qra8Y","uSL9dck1irQ","atd-_akntnI","sfoYXO8Kr1U","C3fpgXP5JgU","boAPAqDSVgQ","17YvG9zGPkc","k__8ueUkWVw","ly65Zf2Ak_s"],"id":3},{"name":"Python Introduction","imageURL":"../assets/img/examples/p3.jpg","videos":[],"id":4},{"name":"Javascript Introduction","imageURL":"../assets/img/examples/p3.jpg","videos":[],"id":5},{"name":"Java Introduction","imageURL":"../assets/img/examples/p3.jpg","videos":[],"id":6},{"name":"Ruby Introduction","imageURL":"../assets/img/examples/p3.jpg","videos":[],"id":7},{"name":"R Introduction","imageURL":"../assets/img/examples/p3.jpg","videos":[],"id":8}];
+      var stories = [{"name":"The Spy Who Coded","imageURL":"../assets/img/examples/p1.jpg", "videos":["LL-9dh31lO8","wforb_EBcNc","rlcYdRBC4CY","s_4FHdYa8vg","23Fv44Qra8Y","uSL9dck1irQ","atd-_akntnI","sfoYXO8Kr1U","C3fpgXP5JgU","boAPAqDSVgQ","17YvG9zGPkc","k__8ueUkWVw","ly65Zf2Ak_s"],"id":1},{"name":"Tricorder Meltdown","imageURL":"../assets/img/examples/p2.jpg","videos":["LL-9dh31lO8","wforb_EBcNc","rlcYdRBC4CY","s_4FHdYa8vg","23Fv44Qra8Y","uSL9dck1irQ","atd-_akntnI","sfoYXO8Kr1U","C3fpgXP5JgU","boAPAqDSVgQ","17YvG9zGPkc","k__8ueUkWVw","ly65Zf2Ak_s"],"id":2},{"name":"To Melbourne With Love","imageURL":"../assets/img/examples/p3.jpg","videos":["LL-9dh31lO8","wforb_EBcNc","rlcYdRBC4CY","s_4FHdYa8vg","23Fv44Qra8Y","uSL9dck1irQ","atd-_akntnI","sfoYXO8Kr1U","C3fpgXP5JgU","boAPAqDSVgQ","17YvG9zGPkc","k__8ueUkWVw","ly65Zf2Ak_s"],"id":3},{"name":"Python Introduction","imageURL":"../assets/img/examples/p4.jpg","videos":[],"id":4},{"name":"Javascript Introduction","imageURL":"../assets/img/examples/p5.jpg","videos":[],"id":5},{"name":"Java Introduction","imageURL":"../assets/img/examples/p6.jpg","videos":[],"id":6},{"name":"Ruby Introduction","imageURL":"../assets/img/examples/p7.jpg","videos":[],"id":7},{"name":"R Introduction","imageURL":"../assets/img/examples/p8.jpg","videos":[],"id":8}];
       $httpBackend.whenGET('/jsonapi/story').respond(stories);
 
       //Generic Response to catch anything sent to the SingPath rest API
