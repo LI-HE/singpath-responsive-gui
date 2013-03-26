@@ -1,8 +1,101 @@
 <br>
 <br>
 
+
+
+<style>
+
+.radio{
+    text-align: center;	
+}
+
+#gradient1{  
+#gradient > .vertical(@black, @white);  
+}
+
+#radButton{
+display:inline;
+}
+
+#pathImg label {
+  display: inline-block;
+  cursor: pointer;
+}
+
+#paths {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.input_hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+#pathImg{
+
+width:100px;
+height:100px;
+
+}
+
+.input_hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+.selected {
+    background-color: #ccc;
+}
+
+#paths input {
+    display: inline-block;
+    cursor: pointer;
+}
+
+input:hover{
+
+ background-color: 	#C0C0C0;
+}
+
+#paths input img {
+
+    padding: 3px;
+    
+}
+
+<!--small-->
+
+#pathImgSmall{
+
+width:50px;
+height:50px;
+
+}
+
+
+#smallDifficulty{
+height: 30px;
+width: 100px;
+border-radius: 3px;
+}
+
+#largeDifficulty{
+height: 40px;
+width: 170px;
+border-radius: 3px;
+}
+
+
+
+</style>
+
 <div id="largeSelectPlay" ng-controller="QuestController" ng-init="model='Quest';list();difficulty='Easy';">
-         <div class="container" style="border:3px solid #000000"><h5 align="center">#1. Pick a Story!</h5></div>
+
+
+         <div class="container" >
+			<h4 class="well well-small" align="center">#1. Pick a Story!</h4>
+		 </div>
 		 <div>&nbsp;</div>
 		 
   
@@ -14,15 +107,17 @@
                 <!-- Three columns of text below the carousel -->
 					<div class="container">
 						<div class="row" >
-							<div class="span4"  ng-repeat="story in stories | limitTo:3">
-								<label class="radio">
-						
-								<input type="radio" name="optionsRadios" ng-model="$parent.$parent.storyName" id="{{story.id}}" value="{{story.name}}">
-								<input class="img-polaroid" type="image" ng-src="{{story.imageURL}}" alt="" height="400">
-								<br>
-								<h5>{{story.name}}</h5>
-								</label>
-							</div>
+							
+								<div class="span4"  ng-repeat="story in stories | limitTo:3">
+									<label class="radio">
+									<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.$parent.storyName" id="{{story.id}}" value="{{story.id}}">
+									<input class="well"type="image" ng-src="{{story.imageURL}}" alt="" height="200"/>
+									
+									<br>
+									<h4>{{story.name}}</h4>
+									</label>
+								</div>
+							
 						</div>
 					</div>	
 		</div>
@@ -33,10 +128,10 @@
 							<div class="span4" ng-repeat="story in stories | startFrom:3 | limitTo:3">
 								<label class="radio">
 						
-								<input type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.name}}">
-								<input class="img-polaroid" type="image" ng-src="{{story.imageURL}}" alt="" height="400">
+								<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.id}}">
+								<input class="well" type="image" ng-src="{{story.imageURL}}" alt="" height="200">
 								<br>
-								<h5>{{story.name}}</h5>
+								<h4>{{story.name}}</h4S>
 								</label>
 							</div>
 						</div>
@@ -49,10 +144,10 @@
 							<div class="span4" ng-repeat="story in stories | startFrom:6 | limitTo:3">
 								<label class="radio">
 						
-								<input type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.name}}">
-								<input class="img-polaroid" type="image" ng-src="{{story.imageURL}}" alt="" height="400">
+								<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.id}}">
+								<input class="well" type="image" ng-src="{{story.imageURL}}" alt="" height="200">
 								<br>
-								<h5>{{story.name}}</h5>
+								<h4>{{story.name}}</h4>
 								</label>
 							</div>
 						</div>
@@ -69,55 +164,58 @@
 
 <div class="container marketing" style="position:relative;left:13px">
     <!-- Three columns of text below the carousel -->
-    <div class="row">
-            <!-- /.span4 -->
-			<div class="span4" style="border:3px solid #000000">
-				<div style="border:3px solid #000000" align="center"><h5>#2. Select a Path</h5></div>
-				<div style="border:3px solid #000000; height:220px; overflow:auto" ng-controller="PathController" ng-init="list();$parent.pathID=10030;">
-				<tt>result: {{pathDes}}</tt>
-						<div class="btn-group" data-toggle="buttons-radio" >
-							<p><p>
+    <div class="row-fluid">
+		<div class="span12">
+            
+			<div class="span4 lead well well-small" align="center" >
+				<div><h4>#2. Select a Path</h4></div>	
+				<hr>
+				<div style="height:220px;overflow:auto" ng-controller="PathController" ng-init="list();$parent.pathID=10030;">
+					
+					<div  ng-repeat="item in paths.paths"  id="paths">
+						<label>
+							<input type="radio" style="visibility:hidden" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.description}}" id="path">
+							<input  on-click="changeborder()" class="well" type="image" ng-src="../assets/img/Path Logo/{{item.description}}.png" id="pathImg"/ >
 							
-							<span ng-repeat="item in paths.paths">
-							<label class="radio">
-							<input style="visibility:hidden" type="radio" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.description}}" >
-							<button type="button" class="btn btn-primary" style="height: 33px; width: 200px"  btn-radio="{{item.description}}">{{item.description}}
-							</button></br></br>
-							</label>
-							</span>
-						</div>
-				</div>
-			</div>			
+						</label>		
+						
+					</div>
+				</div>				
+			</div>
+					
 			
-            <div class="span4" style="border:3px solid #000000">
-				<div style="border:3px solid #000000" align="center"><h5>#3. Select a Level</h5></div>
-				<div style="border:3px solid #000000; height:220px;" >
-						<div class="btn-group" data-toggle="buttons-radio" >
-							<p><p>
-							
-							<span ng-repeat="item in [{'name':'Beginner', 'id':'Beginner'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]">
+            <div class="span4 lead well well-small" align="center">
+				<div id="gradient1"><h4>#3. Select a Level</h4></div> 
+				<hr>
+				<div style="height:220px;" class="btn-group" data-toggle="buttons-radio" align="center">
+					
+												
+						<span ng-repeat="item in [{'name':'Beginner', 'id':'Beginner'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]">
 							<label class="radio">
-							<input style="visibility:hidden" type="radio" ng-model="$parent.diff" name="difficultyLevel" value="{{item.name}}" >
-							<button type="button" class="btn btn-primary" style="height: 33px; width: 200px"  btn-radio="{{item.name}}">{{item.name}}
+							<input style="visibility:hidden" type="radio" ng-model="$parent.diff" name="difficultyLevel" value="{{item.name}}"/ >
+							<button type="button" class="btn btn-primary active" style="height: 33px; width: 200px"  btn-radio="{{item.name}}">{{item.name}}
 							</button></br></br>
 							</label>
-							</span>
-						</div>
+						</span>
+					
+						
+					
 				</div>
             </div>
         <!-- /.span4 -->
 			<div class="span2 container" style="position:relative;left:60px" align = "center">
 											<tt>result: {{diff}}</tt>
+											<tt>result: {{pathDes}}</tt>
 				<table align="center">
 				<tr><td align="center">
-				<br><br>
+				</br></br>
 				<!-- <form action="#storyboard"> -->
-					<button class="btn btn-warning btn-large" ng-click="item.name='New Quest';create_quest(storyName,pathDes,diff)" style="width: 145px"><h1>Go!</h1></button>
+					<button class="btn btn-primary" ng-click="item.name='New Quest';create_quest(storyName,pathDes,diff)" style="width: 145px"><h1>Go!</h1></button>
 				<!-- </form> -->
 				</td></tr>
 				<tr><td>
-				<br>
-					<div align="center"><button class="btn btn-warning"><h5>Revert to Classic<h5></button></div>
+				</br>
+					<div align="center"><button class="btn btn-primary"><h5>Revert to Classic</h5></button></div>
 				</td></tr>
 				</table>
 				    Saved Quests: {{quests}}<br><br>
@@ -135,169 +233,149 @@
 </div>
 </div>
 
+</div>
+
+<div id="smallSelectPlay" ng-controller="QuestController" ng-init="model='Quest';list();difficulty='Easy';">
 
 
+         <div class="container" >
+			<h4 class="well well-small" align="center">#1. Pick a Story!</h4>
+		 </div>
+		 <div>&nbsp;</div>
+		 
+  
+<div ng-controller="StoryController" ng-init="list();$parent.storyID=1;">
+<div id="smallCarousel" class="carousel slide" >
+    <div class="carousel-inner" style="position:relative;left:0px" class="ng-scope">
 
+        <div class="item active">
+                <!-- Three columns of text below the carousel -->
+					<div class="container">
+						<div class="row" >
+							
+								<div class="span4"  ng-repeat="story in stories | limitTo:3">
+									<label class="radio">
+									<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.$parent.storyName" id="{{story.id}}" value="{{story.id}}">
+									<input class="well"type="image" ng-src="{{story.imageURL}}" alt="" height="100"/>
+									
+									<br>
+									<h4>{{story.name}}</h4>
+									</label>
+								</div>
+							
+						</div>
+					</div>	
+		</div>
+        <div class="item">
+                <!-- Three columns of text below the carousel -->
+					<div class="container">
+						<div class="row" >
+							<div class="span4" ng-repeat="story in stories | startFrom:3 | limitTo:3">
+								<label class="radio">
+						
+								<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.id}}">
+								<input class="well" type="image" ng-src="{{story.imageURL}}" alt="" height="100">
+								<br>
+								<h4>{{story.name}}</h4S>
+								</label>
+							</div>
+						</div>
+					</div>	
+		</div>
+        <div class="item">
+                <!-- Three columns of text below the carousel -->
+					<div class="container">
+						<div class="row" >
+							<div class="span4" ng-repeat="story in stories | startFrom:6 | limitTo:3">
+								<label class="radio">
+						
+								<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.id}}">
+								<input class="well" type="image" ng-src="{{story.imageURL}}" alt="" height="100">
+								<br>
+								<h4>{{story.name}}</h4>
+								</label>
+							</div>
+						</div>
+					</div>	
+		</div>
+       
+    </div> 
+	<a class="left carousel-control" href="#smallCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="right carousel-control" href="#smallCarousel" data-slide="next">&rsaquo;</a>
+</div>
+<tt>Story Selected :    {{storyName}}</tt>
+</div>
+<!-- /.carousel -->
 
-<div id = "smallSelectPlay" class="container" align="center">
-    <div>
-        <h5>#1. Pick a Story!</h5>
-    </div>
-    <div class="row">
-        <div class="span1"></div>
-        <div class="span2"></div>
-        <div class="span6">
-            <div class="tabbable tabs-below" align="center">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="l">
-                         <h5>A New Hope</h5>
-
-                        <input align="center" class="thumbnails" type="image" src="../assets/img/examples/p1.jpg"
-                        alt="" height="178"></input>
-                    </div>
-                    <div class="tab-pane" id="2">
-                         <h5>Empire Strikes Back</h5>
-
-                        <input align="center" class="thumbnails" type="image" src="../assets/img/examples/p2.jpg"
-                        alt="" height="178"></input>
-                    </div>
-                    <div class="tab-pane" id="3">
-                         <h5>Return of the Jedi</h5>
-
-                        <input align="center" class="thumbnails" type="image" src="../assets/img/examples/p3.jpg"
-                        alt="" height="178"></input>
-                    </div>
-                    <div class="tab-pane" id="4">
-                         <h5>Attack of the Clones</h5>
-
-                        <input align="center" class="thumbnails" type="image" src="../assets/img/examples/p4.jpg"
-                        alt="" height="178"></input>
-                    </div>
-                    <div class="tab-pane" id="5">
-                         <h5>The Phantom Menace</h5>
-
-                        <input align="center" class="thumbnails" type="image" src="../assets/img/examples/p5.jpg"
-                        alt="" height="178"></input>
-                    </div>
-                    <div class="tab-pane" id="6">
-                         <h5>The Clone Wars</h5>
-
-                        <input align="center" type="image" src="../assets/img/examples/p6.jpg"
-                        alt="" height="178"></input>
-                    </div>
-                    <div class="tab-pane" id="7">
-                         <h5>The return of Avengers</h5>
-
-                        <input align="center" class="thumbnails" type="image" src="../assets/img/examples/p7.jpg"
-                        alt="" height="178"></input>
-                    </div>
-                    <div class="tab-pane" id="8">
-                         <h5>Galactic Empire</h5>
-
-                        <input align="center"  class="thumbnails" type="image" src="../assets/img/examples/p7.jpg"
-                        alt="" height="178"></input>
-                    </div>
-                    <div class="tab-pane" id="9">
-                         <h5>The Phantom Menace</h5>
-
-                        <input align="center" class="thumbnails" type="image" src="../assets/img/examples/p9.jpg"
-                        alt="" height="178"></input>
-                    </div>
-                </div>
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#l" data-toggle="tab">1</a>
-
-                    </li>
-                    <li><a href="#2" data-toggle="tab">2</a>
-
-                    </li>
-                    <li><a href="#3" data-toggle="tab">3</a>
-
-                    </li>
-                    <li><a href="#4" data-toggle="tab">4</a>
-
-                    </li>
-                    <li><a href="#5" data-toggle="tab">5</a>
-
-                    </li>
-                    <li><a href="#6" data-toggle="tab">6</a>
-
-                    </li>
-                    <li><a href="#7" data-toggle="tab">7</a>
-
-                    </li>
-                    <li><a href="#8" data-toggle="tab">8</a>
-
-                    </li>
-                    <li><a href="#9" data-toggle="tab">9</a>
-
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="span2"></div>
-        <div class="span1"></div>
-    </div>
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span6" align="center">
-                <div>
-                    <h5>#2. Select a Path</h5>
-                </div>
-                <div class="tabbable tabs-right" align="center">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#LA" data-toggle="tab">Java</a>
-                        </li>
-                        <li><a href="#LB" data-toggle="tab">Python</a>
-                        </li>
-                        <li><a href="#LC" data-toggle="tab">ruby</a>
-                        </li>
-                        <li><a href="#LD" data-toggle="tab">Objective-C</a>
-                        </li>
-						<br>
-                    </ul>
-                    <div class="tab-content" >
-                        <div class="tab-pane active" id="LA">
-                            <input align="center" type="image" src="../assets/img/examples/java_logo.png" alt=""
-                            height="90"></input>
-                        </div>
-                        <div class="tab-pane" id="LB">
-                            <input align="center" type="image" src="../assets/img/examples/python_logo.png" alt=""
-                            height="90"></input>
-                        </div>
-                        <div class="tab-pane" id="LC">
-                            <input align="center" type="image" src="../assets/img/examples/ruby_logo.png" alt=""
-                            height="90"></input>
-                        </div>
-						<div class="tab-pane" id="LD">
-                            <input align="center" type="image" src="../assets/img/examples/objectivec_logo.png" alt=""
-                            height="90"></input>
-                        </div>
-						<br>
-                    </div>
-                </div>
-            </div>
-            <div class="span6" align="center">
-                 <h5>#3. Select a Level</h5>
-                <div>
-                    <div class="btn-group" data-toggle="buttons-radio">
-                        <button type="button" class="btn btn-small btn-info">Drag & Drop</button>
-                        <button type="button" class="btn btn-small btn-success">Easy</button>
-                        <button type="button" class="btn btn-small btn-warning">Medium</button>
-                        <button type="button" class="btn btn-small btn-danger">Hard</button>
-                    </div>
- 				<div>&nbsp;</div>
-				<br>
-                    <!-- /.span4 -->
-                    <div align="center">
-				<form action="#storyboard">
-					<button class="btn">Go!</button>
-				</form>
+<div class="container marketing" style="position:relative;left:13px">
+    <!-- Three columns of text below the carousel -->
+    <div class="row-fluid">
+		<div class="span12">
+            
+			<div class="span6 lead well well-small" align="center" >
+				<div><h4>#2. Select a Path</h4></div>	
+				<hr>
+				<div style="height:220px;overflow:auto" ng-controller="PathController" ng-init="list();$parent.pathID=10030;">
 					
-					<button class="btn">Revert to Classic</button>
-                    </div>
-                </div>
+					<div  ng-repeat="item in paths.paths"  id="paths" style="display: inline-block;">
+						<label>
+							<input type="radio" style="visibility:hidden" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.description}}" id="path">
+							<input  on-click="changeborder()" class="well" type="image" ng-src="../assets/img/Path Logo/{{item.description}}.png" id="pathImgSmall" height="50px" width="50px"/ >
+							
+						</label>		
+						
+					</div>
+				</div>				
+			</div>
+					
+			
+            <div class="span4 lead well well-small" align="center">
+				<div id="gradient1"><h4>#3. Select a Level</h4></div> 
+				<hr>
+				<div style="height:220px;" class="btn-group" data-toggle="buttons-radio" align="center">
+					
+												
+						<span ng-repeat="item in [{'name':'Beginner', 'id':'Beginner'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]">
+							<label class="radio">
+							<input style="visibility:hidden" type="radio" ng-model="$parent.diff" name="difficultyLevel" value="{{item.name}}"/ >
+							<button type="button" class="btn btn-primary active" style="height: 33px; width: 100px"  btn-radio="{{item.name}}">{{item.name}}
+							</button></br></br>
+							</label>
+						</span>
+					
+						
+					
+				</div>
             </div>
-        </div>
+        <!-- /.span4 -->
+			<div class="span2"  align = "center">
+											<tt>result: {{diff}}</tt>
+											<tt>result: {{pathDes}}</tt>
+				<table align="center">
+				<tr><td align="center">
+				</br></br>
+				<!-- <form action="#storyboard"> -->
+					<button class="btn btn-primary" ng-click="item.name='New Quest';create_quest(storyName,pathDes,diff)" style="width: 100px"><h1>Go!</h1></button>
+				<!-- </form> -->
+				</td></tr>
+				<tr><td>
+				</br>
+					<div align="center"><button class="btn btn-primary"><h5>Revert to Classic</h5></button></div>
+				</td></tr>
+				</table>
+				    Saved Quests: {{quests}}<br><br>
+					ID Name StoryID, PathID, Difficulty
+					<ul>
+					  
+					  <li ng-repeat="quest in quests">
+						{{quest.id}}, {{quest.name}}, {{quest.storyID}}, {{quest.pathID}}, {{quest.difficulty}}
+					  </li>
+					</ul>
+			</div>
+        <!-- /.span4 -->
+        <!-- /.row -->
     </div>
+</div>
+</div>
+
 </div>

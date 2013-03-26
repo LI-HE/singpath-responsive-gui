@@ -1,0 +1,641 @@
+<style>
+    .table td, .table th {
+        border: none;
+    }
+    
+    .badgeheight {
+        height:200px
+    }
+    .fRight{
+        float:right;
+    }
+
+    .tabspacing{
+        width:33.3333%;
+    }
+
+    tbody{
+        overflow:auto;  
+    }
+
+    th.c1, td.c1{width:20%;}
+    th.c2, td.c2{width:50%;}
+    th.c3, td.c3{width:30%;}
+
+    th.d1, td.d1{width:40%;}
+    th.d2, td.d2{width:10%;}
+    th.d3, td.d3{width:10%;}
+    th.d4, td.d4{width:20%;}
+    th.d5, td.d5{width:20%;}
+
+
+</style>
+<br>
+<div class="container" id="largeProfile" style="position:relative;">
+    <!-- Three columns of text below the carousel -->
+    <div class="row-fluid">
+        <div class="span12">
+
+
+            <div class="span2">
+                <!-- Profile Information -->
+                    <br>
+                    <br>
+                    <div ng-controller="QuestController">
+                        <div ng-controller="PathController">
+                                                          
+                            <div ng-controller="PlayerController">
+                                
+                                    
+                                <div class="well">
+                                    <table id="playerProfile"class="table" style="text-align:left">
+                                        <tr>
+                                            <th align="left">
+                                                 <p>Profile Info</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input class="img-rounded" type="image" src="../assets/img/examples/p1.jpg" alt="" height="60px">
+                                                <br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Name: {{player.nickname}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Location: {{player.location}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>About Me: {{player.description}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a class="btn-small btn-inverse pull-right" href="#contact">Edit Profile</a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table><!-- End of Profile information -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Create button  -->
+                    <p><a class="btn btn-info btn-large" href="#contact" height="60">Create!</a>
+                    </p>
+            </div>
+           
+            <!-- End of Profile Information and Create button -->
+            <div class="span10">
+                <br>
+                <br>
+                  
+                <div class="well" id="badgesTable" >
+                    <!-- Badges Table -->
+                      <div align="center"style="border-bottom:2px solid #000000"><bold>Badges</bold></div>
+                      <div class="badgeheight" style="overflow:auto;" width="100%" ng-controller="BadgeController">
+                        <table id="badgesTable" width="100%" class="table table-condensed"> 
+                            <tbody align="left">  
+                              <tr >  
+                                
+                                <td ng-repeat="badge in playerBadges.badges">
+                                    <img ng-src="http://www.singpath.com{{badge.imageURL}}">
+                                </td>   
+                              </tr>  
+                              <tr>  
+                                <td>Java</td>   
+                              </tr>  
+                             
+                            </tbody>  
+                        </table>
+                      </div>
+                      
+
+                   
+                </div>
+                <br>
+           
+
+                <!-- Tab for Quest,Path and Challenges-->
+                <div class="tabbable well">
+                  <ul class="nav nav-tabs">
+                    <li class="tabspacing">
+                      <a href="#t1" data-toggle="tab">Quest</a>
+                    </li>
+                    <li class="tabspacing active">
+                      <a href="#t2" data-toggle="tab">Path</a>
+                    </li>
+                    <li class="tabspacing">
+                      <a href="#t3" data-toggle="tab">Challenges</a>
+                    </li>    
+                  </ul>
+                  <div class="tab-content well">
+                    <div class="tab-pane" id="t1">
+                      <div width="400px"style=" width:98.2%; height:30px;overflow-x:hidden">
+                            <table class="table table-condensed">
+                                    <tr>
+                                        <th class="c1">Name</th>
+                                        <th class="c2">myProgress</th>
+                                        <th class="c3">Take the leap</th>
+                                    </tr>                                   
+                            </table> 
+                        </div>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
+                                    <table class="table table-striped">
+                                            <tr>
+                                                <td class="c1">Nature</td>
+                                                <td class="c2">
+                                                    <div class="progress progress-success progress-striped active">
+                                                        <div class="bar" style="width: 85%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                </td>                                 
+                                            </tr>
+                                            <tr>
+                                                <td>Sport</td>
+                                                <td>
+                                                    <div class="progress progress-success progress-striped active">
+                                                      <div class="bar" style="width: 75%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                              <td>Nature</td>
+                                              <td>
+                                                  <div class="progress progress-warning progress-striped active">
+                                                      <div class="bar" style="width: 50%;"></div>
+                                                  </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Adventure</td>
+                                                <td>
+                                                    <div class="progress progress-info progress-striped active">
+                                                        <div class="bar" style="width: 45%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Spy Who Code</td>
+                                                <td>
+                                                    <div class="progress progress-danger progress-striped active">
+                                                        <div class="bar" style="width: 20%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sport</td>
+                                                <td>
+                                                    <div class="progress progress-danger progress-striped active">
+                                                        <div class="bar" style="width: 5%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+
+                                                </td>
+                                            </tr>
+                                        
+                                            
+                                            
+                                    </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="t2">
+                      <div width="400px"style="width:98.2%; height:30px;overflow-x:hidden">
+                            <table class="table table-condensed">
+                                    <tr>
+                                        <th class="c1">Path Name</th>
+                                        <th class="c2">myProgress</th>
+                                        <th class="c3">Take the leap</th>
+                                    </tr>                                   
+                            </table> 
+                        </div>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
+                                
+                                    <div ng-controller="QuestController">
+                                        <div ng-controller="PathController" ng-init="update_path_details()" ng-model="filter">
+                                                <table class="table table-hover">
+                                                        <tr ng-repeat="path in current_paths.paths">
+                                                           
+                                                            <td>
+                                                              {{path.name}}
+                                                            </td>
+                                                            <td class="c2">
+                                                                {{path.solvedProblems}}
+                                                                <div class="progress progress-success">
+                                                                    <div class="bar" style="width: 75%;"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                            </td>                                 
+                                                        </tr>
+                                                             
+                                                </table>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="t3">
+                      <div width="400px"style="width:98.2%; height:30px;overflow-x:hidden;align:left;">
+                            <table class="table table-condensed">
+                                    <tr>
+                                        <th class="d1">Name</th>
+                                        <th class="d2">Location</th>
+                                        <th class="d3">Needed</th>
+                                        <th class="d4">Start Date</th>
+                                        <th class="d5">End Date</th>
+
+                                    </tr>                                   
+                            </table> 
+                        </div>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
+                                    <table class="table table-bordered">
+                                            <tr>
+                                                <td class="d1">Your challenge to unlock this before lab test!</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Expert!</td>
+                                                <td class="d4">22/02/2013</td> 
+                                                <td class="d5">24/03/2013</td>                                  
+                                            </tr>
+                                            <tr>
+                                                <td class="d1">You will create a function to determine if a number is prime.    </td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Novice!</td>
+                                                <td class="d4">28/02/2013</td> 
+                                                <td class="d5">28/03/2013</td>                                  
+                                            </tr>
+                                            <tr>
+                                                <td class="d1">You want It?</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Intermediate!</td>
+                                                <td class="d4">02/03/2013</td> 
+                                                <td class="d5">25/04/2013</td>                                  
+                                            </tr>
+                                            <tr>
+                                                <td class="d1">Monty Hall Problem Simulation</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Expert!</td>
+                                                <td class="d4">14/04/2013</td> 
+                                                <td class="d5">27/04/2013</td>                                  
+                                            </tr>
+                                            <tr>
+                                                <td class="d1">Test1</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Novice!</td>
+                                                <td class="d4">09/03/2013</td> 
+                                                <td class="d5">15/04/2013</td>                                  
+                                            </tr>
+                                    </table>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- End of Quest,Path and Challenges tables-->
+            </div>
+            <!-- End of span9 Badges table-->
+            
+          
+        </div><!--End of .span12-->
+    </div><!-- /.row -->
+</div><!-- End of container which contains 'largeProfile' -->
+<br>
+<br>
+<div class="container" id="smallProfile" style="position:relative;">
+       <!-- Three columns of text below the carousel -->
+    <div class="row-fluid">
+        <div class="span12">
+
+
+            <div class="span2">
+                <!-- Profile Information -->
+                    <br>
+                    <br>
+                    <div ng-controller="QuestController">
+                        <div ng-controller="PathController">
+                                                          
+                            <div ng-controller="PlayerController">
+                                
+                                    
+                                <div class="well">
+                                    <table id="playerProfile"class="table" style="text-align:left">
+                                        <tr>
+                                            <th align="left">
+                                                 <p>Profile Info</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input class="img-rounded" type="image" src="../assets/img/examples/p1.jpg" alt="" height="60px">
+                                                <br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Name: {{player.nickname}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Location: {{player.location}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>About Me: {{player.description}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a class="btn btn-inverse pull-right" href="#contact">Edit Profile</a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table><!-- End of Profile information -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Create button  -->
+                    <p><a class="btn btn-info btn-large" href="#contact" height="60">Create!</a>
+                    </p>
+            </div>
+           
+            <!-- End of Profile Information and Create button -->
+            <div class="span10">
+                <br>
+                <br>
+                  
+                <div class="well" id="badgesTable" >
+                    <!-- Badges Table -->
+                      <div align="center"style="border-bottom:2px solid #000000"><bold>Badges</bold></div>
+                      <div class="badgeheight" style="overflow:auto;" width="100%" ng-controller="BadgeController">
+                        <table id="badgesTable" width="100%" class="table table-condensed"> 
+                            <tbody align="left">  
+                              <tr >  
+                                
+                                <td ng-repeat="badge in playerBadges.badges">
+                                    <img ng-src="http://www.singpath.com{{badge.imageURL}}">
+                                </td>   
+                              </tr>  
+                              <tr>  
+                                <td>Java</td>   
+                              </tr>  
+                             
+                            </tbody>  
+                        </table>
+                      </div>
+                      
+
+                   
+                </div>
+                <br>
+           
+
+                <!-- Tab for Quest,Path and Challenges-->
+                <div class="tabbable well">
+                  <ul class="nav nav-tabs">
+                    <li class="tabspacing">
+                      <a href="#t1" data-toggle="tab">Quest</a>
+                    </li>
+                    <li class="tabspacing active">
+                      <a href="#t2" data-toggle="tab">Path</a>
+                    </li>
+                    <li class="tabspacing">
+                      <a href="#t3" data-toggle="tab">Challenges</a>
+                    </li>    
+                  </ul>
+                  <div class="tab-content well">
+                    <div class="tab-pane" id="t1">
+                      <div width="400px"style=" width:98.2%; height:30px;overflow-x:hidden">
+                            <table class="table table-condensed">
+                                    <tr>
+                                        <th class="c1">Name</th>
+                                        <th class="c2">myProgress</th>
+                                        <th class="c3">Take the leap</th>
+                                    </tr>                                   
+                            </table> 
+                        </div>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
+                                    <table class="table table-striped">
+                                            <tr>
+                                                <td class="c1">Nature</td>
+                                                <td class="c2">
+                                                    <div class="progress progress-success progress-striped active">
+                                                        <div class="bar" style="width: 85%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                </td>                                 
+                                            </tr>
+                                            <tr>
+                                                <td>Sport</td>
+                                                <td>
+                                                    <div class="progress progress-success progress-striped active">
+                                                      <div class="bar" style="width: 75%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                              <td>Nature</td>
+                                              <td>
+                                                  <div class="progress progress-warning progress-striped active">
+                                                      <div class="bar" style="width: 50%;"></div>
+                                                  </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Adventure</td>
+                                                <td>
+                                                    <div class="progress progress-info progress-striped active">
+                                                        <div class="bar" style="width: 45%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Spy Who Code</td>
+                                                <td>
+                                                    <div class="progress progress-danger progress-striped active">
+                                                        <div class="bar" style="width: 20%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sport</td>
+                                                <td>
+                                                    <div class="progress progress-danger progress-striped active">
+                                                        <div class="bar" style="width: 5%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+
+                                                </td>
+                                            </tr>
+                                        
+                                            
+                                            
+                                    </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="t2">
+                      <div width="400px"style="width:98.2%; height:30px;overflow-x:hidden">
+                            <table class="table table-condensed">
+                                    <tr>
+                                        <th class="c1">Path Name</th>
+                                        <th class="c2">myProgress</th>
+                                        <th class="c3">Take the leap</th>
+                                    </tr>                                   
+                            </table> 
+                        </div>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
+                                
+                                    <div ng-controller="QuestController">
+                                        <div ng-controller="PathController" ng-init="update_path_details()" ng-model="filter">
+                                                <table class="table table-hover">
+                                                        <tr ng-repeat="path in current_paths.paths">
+                                                           
+                                                            <td>
+                                                              {{path.name}}
+                                                            </td>
+                                                            <td class="c2">
+                                                                {{path.solvedProblems}}
+                                                                <div class="progress progress-success">
+                                                                    <div class="bar" style="width: 75%;"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                            </td>                                 
+                                                        </tr>
+                                                             
+                                                </table>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="t3">
+                      <div width="400px"style="width:98.2%; height:30px;overflow-x:hidden;align:left;">
+                            <table class="table table-condensed">
+                                    <tr>
+                                        <th class="d1">Name</th>
+                                        <th class="d2">Location</th>
+                                        <th class="d3">Needed</th>
+                                        <th class="d4">Start Date</th>
+                                        <th class="d5">End Date</th>
+
+                                    </tr>                                   
+                            </table> 
+                        </div>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
+                                    <table class="table table-bordered">
+                                            <tr>
+                                                <td class="d1">Your challenge to unlock this before lab test!</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Expert!</td>
+                                                <td class="d4">22/02/2013</td> 
+                                                <td class="d5">24/03/2013</td>                                  
+                                            </tr>
+                                            <tr>
+                                                <td class="d1">You will create a function to determine if a number is prime.    </td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Novice!</td>
+                                                <td class="d4">28/02/2013</td> 
+                                                <td class="d5">28/03/2013</td>                                  
+                                            </tr>
+                                            <tr>
+                                                <td class="d1">You want It?</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Intermediate!</td>
+                                                <td class="d4">02/03/2013</td> 
+                                                <td class="d5">25/04/2013</td>                                  
+                                            </tr>
+                                            <tr>
+                                                <td class="d1">Monty Hall Problem Simulation</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Expert!</td>
+                                                <td class="d4">14/04/2013</td> 
+                                                <td class="d5">27/04/2013</td>                                  
+                                            </tr>
+                                            <tr>
+                                                <td class="d1">Test1</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Novice!</td>
+                                                <td class="d4">09/03/2013</td> 
+                                                <td class="d5">15/04/2013</td>                                  
+                                            </tr>
+                                    </table>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- End of Quest,Path and Challenges tables-->
+            </div>
+            <!-- End of span9 Badges table-->
+            
+          
+        </div><!--End of .span12-->
+    </div><!-- /.row -->
+</div><!-- End of container which contains 'largeProfile' -->
+<br>
+<br>
+</div><!-- End of container which contains 'largeProfile' -->
+<br>
+<br>
+
+
+
+
+
+            
+
+
+  

@@ -283,6 +283,15 @@
   
   </div>
 
+  <div ng-controller="BadgeController">
+    Badges for current player<br>
+    <ul>
+      <li ng-repeat="badge in playerBadges.badges">
+        {{badge.description}}, <img ng-src="http://www.singpath.com{{badge.imageURL}}">, http://www.singpath.com{{badge.imageURL}}
+      </li>
+    </ul>
+    
+  </div>
 
 <script src="lib/angular/angular.min.js"></script>
 <script src="lib/angular/angular-resource.min.js"></script>
@@ -291,7 +300,8 @@
 <script src="js/app-config.js"></script>          
 <script src="js/app.js"></script>    
 <script src="../test/app-test.js"></script>    
-<script src="../test/lib/angular/angular-mocks.js"></script>    
+<script src="../test/lib/angular/angular-mocks.js"></script>  
+<script src="js/cookies.js"></script>   
 
 
 

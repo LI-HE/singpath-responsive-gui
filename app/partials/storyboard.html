@@ -117,139 +117,45 @@
       <br/><br/><br>
        <!-- /END THE FEATURETTES -->
 <div class="container">
-<div class="span 12" style="text-align: left">
+	<div class="row-fluid" ng-controller="QuestController">
+	<div class="span3">
+	<h5>
+	ID: {{location.search(questID).questID}}<br>
+	Story ID: {{quests[location.search(questID).questID-1].storyID}}<br>
+	Path: {{quests[location.search(questID).questID-1].pathID}}<br>
+	Difficulty: {{quests[location.search(questID).questID-1].difficulty}}
+	</h5>
 
-		<div id="leftIcon" class="span2" align="left" style= "vertical-align:middle" ><img class="img-rounded" src="../assets/img/newStory.jpg"></img>
-		<br/><br/>
-			<form action="play.html">
-			<button class="btn btn-large btn-block btn-primary" type="submit">Start</button>
-			</form>
-			<form action="#home">
-			<button class="btn btn-large btn-block" type="submit">Back To Home</button>
-			</form>
-		</div>
-        <div class="span1">&nbsp;</div>
-        <div class="span1" id ="smallSpace" style="text-align: center">&nbsp;</div>
-		<div class="span2" id ="largeSpace" style="text-align: center">&nbsp;</div>
-
-<div class="row-fluid" style="text-align: left;">
-  <div class="container" > 
-  <div class="span8" >
-    
-    <div class="row-fluid" style="color:red;">
-
-      <!--1st row-->
-      <div class="span4">
-
-				<div class="span6" >
-					<ul class="thumbnails">
-						<li class="span12">
-							<iframe id="standardFrame" class="thumbnail" src="http://www.youtube.com/embed/oQai3AnmFg0" frameborder="0" allowfullscreen></iframe>						
-						</li>
-					</ul>				
-				</div>
-
-        <div class="row-fluid">
-          <div class="span12">
-
-				<div class="span12">
-					<ul class="thumbnails">
-						<li class="span12">
-							<a href="practice.html"><img id="standardFrame" src="../assets/img/question.jpg"></a>						
-						</li>
-					</ul>				
-				</div>
-
-
-				<div class="row-fluid">
-					<div class="span12">
-						<ul class="thumbnails">
-							<li class="span12">
-								<iframe id="standardFrame" class="thumbnail" src="http://www.youtube.com/embed/DI4iQ3H8lXc" frameborder="0" allowfullscreen></iframe>						
-							</li>
-						</ul>	
-					</div>				
-				</div>
+			<div id="leftIcon" class="span2" align="left" style= "vertical-align:middle" ><img class="img-rounded" src="../assets/img/newStory.jpg"></img>
+			<br/><br/>
+				<form action="play.html">
+				<button class="btn btn-large btn-block btn-primary" type="submit">Start</button>
+				</form>
+				<form action="#home">
+				<button class="btn btn-large btn-block" type="submit">Back To Home</button>
+				</form>
 			</div>
-        </div>
-      </div>
-      <!--2nd row-->	  
-	  <div class="span4">
-
-				<div class="span12" >
-					<ul class="thumbnails">
-						<li class="span12">
-							<a href="practice.html"><img id="standardFrame" src="../assets/img/question.jpg"></a>							
-						</li>
-					</ul>				
-				</div>
-
-        <div class="row-fluid">
-          <div class="span12">
-
-				<div class="span12">
-					<ul class="thumbnails">
-						<li class="span12">
-							<iframe id="standardFrame" class="thumbnail" src="http://www.youtube.com/embed/Ncmg2jjB7DQ" frameborder="0" allowfullscreen></iframe>							
-						</li>
-					</ul>				
-				</div>
-
-
-				<div class="row-fluid">
-					<div class="span12">
-						<ul class="thumbnails">
-							<li class="span12">
-								<a href="practice.html"><img id="standardFrame" src="../assets/img/question.jpg"></a>						
-							</li>
-						</ul>	
-					</div>				
-				</div>
-			</div>
-        </div>
-      </div>
-	  <!--3rd row-->	  
-	  <div class="span4">
-
-				<div class="span12" >
-					<ul class="thumbnails">
-						<li class="span12">
-							<iframe id="standardFrame" class="thumbnail" src="http://www.youtube.com/embed/wzeHD5-jz48" frameborder="0" allowfullscreen></iframe>						
-						</li>
-					</ul>				
-				</div>
-
-        <div class="row-fluid">
-          <div class="span12">
-
-				<div class="span12">
-					<ul class="thumbnails">
-						<li class="span12">
-							<a href="practice.html"><img id="standardFrame" src="../assets/img/question.jpg"></a>						
-						</li>
-					</ul>				
-				</div>
-
-
-				<div class="row-fluid">
-					<div class="span12">
-						<ul class="thumbnails">
-							<li class="span12">
-								<iframe id="standardFrame" class="thumbnail" src="http://www.youtube.com/embed/1L59toAQA0M" frameborder="0" allowfullscreen></iframe>						
-							</li>
-						</ul>	
-					</div>				
-				</div>
-			</div>
-        </div>
-      </div>
 
 	</div>
+	<div class="span9 well" align="center" ng-controller="StoryController" ng-init="list();$parent.storyID=1;" style="height:470px; overflow:auto">
+					<h4>Story: {{stories[name-1].name}}</h4>
+						<ul class="thumbnails row-fluid" >
+								<span ng-repeat="story in stories[name-1].videos | limitTo: stories[name-1].videos.length-1" class="pull-left well">
+								<span class="badge badge-info">{{$index+1}}</span><p><p>
+								<iframe id="standardFrame" class="thumbnail" ng-src="http://www.youtube.com/embed/{{story}}" frameborder="0" allowfullscreen></iframe>	
+								<img  id="standardFrame" src="../assets/img/question.jpg"></img>
+								</span>
+						</ul>	
+								
+									<span class="badge badge-info">Final</span><p><p>
+									<span  ng-repeat="story in stories[name-1].videos | startFrom: stories[name-1].videos.length-1 | limitTo:1">
+									<iframe id="standardFrame" class="thumbnail" ng-src="http://www.youtube.com/embed/{{story}}" frameborder="0" allowfullscreen></iframe>	
+																	<p><p>
+									</span>
 
-    </div>
-  </div>
-</div>
-
+								
+	</div>
+      
 </div>
 </div>
 

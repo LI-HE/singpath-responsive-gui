@@ -268,11 +268,22 @@ function GameController($scope,$resource){
 
 }
 
+function JsonRecordController($scope,$resource){
+        $scope.fetch = function(){
+          ///jsonapi/get_dau_and_mau?daysAgo=1&days=28
+          //$scope.JRModel = $resource('/jsonapi/rest/jsonrecord?limit=2');
+          $scope.JRModel = $resource('/jsonapi/get_dau_and_mau');
+          
+          $scope.JRModel.get({"daysAgo":1, "days":14}, function(response){
+            $scope.items = response;
+          });
+        };
+}
+
 //The quest controller returns a players quests or specific quest
-function QuestController($scope,$resource){
+function QuestController($scope,$resource,$location,$routeParams,$cookieStore){
     $scope.quests = [];
     //$scope.quest = {"name":"Quest 1","image": "http://someimage.com/someimage.jpg"};  
-    
     //Create quest
     $scope.create_quest = function(storyID,pathID,difficulty){
           //alert("storyID "+storyID+" pathID "+ pathID+" difficult "+difficulty);
@@ -284,13 +295,20 @@ function QuestController($scope,$resource){
                           "storyID": storyID,
                           "pathID":pathID,
                           "difficulty":difficulty};
-
+      $scope.$watch('location.search()', function() {
+        $scope.target = ($location.search()).target;
+      }, true);
+      
           var item = new $scope.SaveResource(newQuest);
           item.$save(function(response) { 
                   $scope.quest = response;
+          //alert("Should redirect to next page with quest ID="+response.id);
+          $scope.$parent.flash=response.id;
+          $cookieStore.put("name", response.storyID);
+          $location.search('questID',response.id).path('storyboard')
                   $scope.list();
                 }); 
-        };
+    };
 
     $scope.QuestModel = $resource('/jsonapi/rest/quest/:id');
     
@@ -308,15 +326,16 @@ function QuestController($scope,$resource){
     };
     
     $scope.list();
-
+  
 }
 
 //Test story controller. Normally use GenericController
-function StoryController($scope,$resource){
+function StoryController($scope,$resource,$cookieStore){
+  $scope.name = $cookieStore.get("name");
     //$scope.StoryModel = $resource('/jsonapi/stories');
     $scope.StoryModel = $resource('/jsonapi/story');
     
-		//A method to fetch a generic model and id. 
+    //A method to fetch a generic model and id. 
     $scope.list = function(){
           $scope.StoryModel.query({}, function(response){
               $scope.stories = response;
@@ -408,6 +427,12 @@ function VerifyRequestController($scope,$resource){
         $scope.analyze = function(){
           var byurl = {}
           for (var i = 0; i < $scope.items.length; i++) {
+            try{
+              $scope.items[i].response = JSON.parse($scope.items[i].responseJSONText);
+            }
+            catch(err) {
+              $scope.items[i].response = "Could not parse response.";//$scope.items[i].responseJSONText;
+            }
             if($scope.items[i].url in byurl){
               byurl[$scope.items[i].url].vrs.push($scope.items[i]);
               byurl[$scope.items[i].url][$scope.items[i].result] += 1;
