@@ -55,7 +55,7 @@ th, td { padding: 2px }
     Event list = {{event_list}}<br>
     
 </div>
-
+ <!--
   <div ng-controller="JsonRecordController" ng-init="fetch();">
     DAU/MAU is a good proxy to measure if enagement is increasing 
     <style>
@@ -83,6 +83,7 @@ th, td { padding: 2px }
     </table>     
 
   </div>
+-->
 
 <div ng-controller="GenericRestController" ng-init="model='verifyrequest'">
    
@@ -117,6 +118,41 @@ th, td { padding: 2px }
     </div>
   </div>
 
+ <div ng-controller="TimeAndAttemptsController">
+    
+    Days of data: {{item.days.length}}<br>
+    <table class="span-12">
+      <tr><th ng-repeat="header in ['Date', 'Players', 'Attempts', 'Hours Played', 'Attempts/Player', 'Minutes/Player', 'DAU', 'MAU', 'DAU/MAU', 'New Players', 'Games','Quest Starts', 'Quest Games']">
+          {{header}}</th>
+      </tr>
+      <tr ng-repeat="day in item.days">
+          <td>{{day.date}}</td>
+          <td align="center">{{day.numPlayers}}</td>
+          <td>{{day.attempts}}</td>
+          <td>{{day.seconds/3600 | number:2}}</td>
+          <td>{{day['attempts per player'] | number:2}}</td>
+          <td>{{day['seconds per player']/60 | number:2}}</td>
+          <td>{{day.DAU}}</td>
+          <td>{{day.MAU}}</td>
+          <td>{{day.DAUMAU*100 | number:2}}%</td>
+      </tr>
+      <tr class="fat">
+          <td>Average</td>
+          <td align="center">{{item.numPlayersaverage | number:2}}</td>
+          <td>{{item.attemptsaverage | number:2}}</td>
+          <td>{{item.secondsaverage/3600 | number:2}}</td>
+          <td>{{item.attemptsperplayeraverage | number:2}}</td>
+          <td>{{item.secondsperplayeraverage/60 | number:2}}</td>
+          <td>{{item.dauaverage}}</td>
+          <td>{{item.mauaverage}}</td>
+          <td>{{item.daumauaverage*100 | number:2}}%</td>
+      </tr>
+    </table> 
+
+
+        
+  </div>
+<!--
   <div ng-controller="GameResultController" ng-init="model='gameresult';">
     
     Game Results: Count {{items.length}}<br>
@@ -129,16 +165,9 @@ th, td { padding: 2px }
         On {{k}} a total of {{v.players.length}} players spent {{v.attempts}} attempts and {{v.solve_time/3600 | number:2}} hours solving problems.
       </li>
     </ol>
-    
-    <!--
-    <ol>
-      <li ng-repeat="entry in items">
-        result {{entry.result}}, attempts {{entry.attempts}}, solve_time {{entry.solve_time}}, problem {{entry.problem}}, player {{entry.player}}, game {{entry.game}}, {{entry.game_start}}, LOC {{entry.loc}}, day {{entry.game_start.split('T')[0]}}, time {{entry.game_start.split('T')[1]}}
-      </li>
-    </ol>
-  -->
-    
+        
   </div>
+-->
 
   <div ng-controller="GenericRestController" ng-init="model='playerpercentiles';">
     

@@ -95,19 +95,49 @@
                   
                 <div class="well" id="badgesTable" >
                     <!-- Badges Table -->
-                      <div align="center"style="border-bottom:2px solid #000000"><bold>Badges</bold></div>
+                      <div align="center"><bold>Badges</bold></div>
+                      <hr>
                       <div class="badgeheight" style="overflow:auto;" width="100%" ng-controller="BadgeController">
                         <table id="badgesTable" width="100%" class="table table-condensed"> 
                             <tbody align="left">  
                               <tr >  
-                                
-                                <td ng-repeat="badge in playerBadges.badges">
+                               
+                                <ng-model="python" ng-init="python='10030'"> 
+                                <td>Python</td>
+                                <td ng-repeat="(key,value) in playerBadges.badges|filter:python">
+                                 <img ng-src="http://www.singpath.com{{value.imageURL}}">
+                                </td> 
+                              </tr>  
+                              <tr> 
+                                 
+                                <ng-model="bPython" ng-init="bPython='6920762'">
+                                <td>Beginner Python</td> 
+                                <td ng-repeat="badge in playerBadges.badges|filter:bPython">
                                     <img ng-src="http://www.singpath.com{{badge.imageURL}}">
-                                </td>   
-                              </tr>  
-                              <tr>  
-                                <td>Java</td>   
-                              </tr>  
+                                </td> 
+                              </tr> 
+                              <tr >
+                                <ng-model="ruby" ng-init="ruby='2462233'"> 
+                                <td>Ruby</td>
+                                <td ng-repeat="(key,value) in playerBadges.badges|filter:ruby">
+                                 <img ng-src="http://www.singpath.com{{value.imageURL}}">
+                                </td> 
+                              </tr>
+                              <tr >  
+                                <ng-model="javaScript" ng-init="javaScript='2473247'"> 
+                                <td> JavaScript</td>
+                                <td ng-repeat="(key,value) in playerBadges.badges|filter:javaScript">
+                                 <img ng-src="http://www.singpath.com{{value.imageURL}}">
+                                </td> 
+                              </tr>
+                              <tr > 
+                                <ng-model="java" ng-init="java='2243213'"> 
+                                <td> Java</td>
+                                <td ng-repeat="(key,value) in playerBadges.badges|filter:java">
+                                 <img ng-src="http://www.singpath.com{{value.imageURL}}">
+                                </td> 
+                              </tr>
+                            
                              
                             </tbody>  
                         </table>

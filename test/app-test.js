@@ -1,21 +1,7 @@
 'use strict';
 
 //var myApp = angular.module('myApp', ['ngResource', 'analytics']);
-var myApp = angular.module('myApp', ['myAppConfig','ngCookies','ngResource', 'analytics','ngMockE2E']);
-
-
-myApp.run(function($rootScope, $location) {
-    $rootScope.location = $location;
-});
-
-myApp.filter('startFrom', function() {
-    return function(input, idx) {
-        var i=idx, len=input.length, result = [];
-        for (; i<len; i++)
-            result.push(input[i]);
-        return result;
-    };
-});
+var myApp = angular.module('myApp', ['myAppConfig','ngMockE2E']);
 
 myApp.run(function($httpBackend) {
       

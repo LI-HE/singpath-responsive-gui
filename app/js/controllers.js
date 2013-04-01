@@ -345,6 +345,11 @@ function StoryController($scope,$resource,$cookieStore){
     //$scope.fetch_stories();
 }
 
+//Test story controller. Normally use GenericController
+function TimeAndAttemptsController($scope,$resource){
+    $scope.item = $resource('/jsonapi/attempts_and_time_by_day').get();
+}
+
 function TournamentController($scope,$resource,$http){
     $scope.TournamentModel = $resource('/jsonapi/list_open_tournaments');
     $scope.TournamentHeatGameModel = $resource('/jsonapi/create_game/heatID/:heatID');
