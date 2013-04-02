@@ -27,7 +27,39 @@ function Ctrl($scope) {
 }
 
 function PlayerController($scope,$resource){
-        $scope.player = $resource('/jsonapi/player').get();        
+                $scope.abc = 'false';
+                $scope.def = 'true';
+        $scope.player = $resource('/jsonapi/player').get(); 
+            if($scope.player==null){
+                $scope.secretAgent='Secret Agent';
+                $scope.abc = 'true';
+                $scope.def = 'false';
+            }
+        $scope.login=function(){
+            alert("function called!"); 
+            $scope.secretAgent='';
+            $scope.abc = 'false';
+            $scope.def = 'true';
+        }     
+        $scope.logout=function(){
+            
+            $resource('/sign_out').get({}, function(response){
+                $scope.logoutresponse = response;
+                $scope.player = $resource('/jsonapi/player').get();
+                //{"error": "No player logged in"}
+                if ($scope.player.error){
+                  $scope.abc = 'true';
+                  $scope.def = 'false';
+                }
+                //or
+                //$scope.player.error
+                //$scope.player.nickname
+            });
+
+            //$scope.player=null;
+            //$scope.secretAgent='Secret Agent';
+          
+        }     
 }
 
 function InterfaceController($scope,$resource){
@@ -132,9 +164,9 @@ function GameController($scope,$resource){
         };
 
         $scope.create_quest_game = function(questID){
-          $scope.CreateGameModel = $resource('/jsonapi/create_game/questID/:questID');
+          $scope.CreateGameModel = $resource('/jsonapi/create_quest_game/:questID');
           //alert("Creating quest game for quest "+questID);
-          $scope.CreateGameModel.get({"questID":questID}, function(response){
+          $scope.CreateGameModel.get({}, function(response){
             $scope.game = response;
             $scope.update_remaining_problems();
           });
@@ -284,7 +316,7 @@ function JsonRecordController($scope,$resource){
 function QuestController($scope,$resource,$location,$routeParams,$cookieStore){
     $scope.quests = new Array();
     $scope.changeRoute = 'play_game_demo.html';
-    //$scope.quest = {"name":"Quest 1","image": "http://someimage.com/someimage.jpg"};  
+
     //Create quest
     $scope.create_quest = function(storyID,pathID,difficulty){
       //alert("storyID "+storyID+" pathID "+ pathID+" difficult "+difficulty);
@@ -310,7 +342,8 @@ function QuestController($scope,$resource,$location,$routeParams,$cookieStore){
       });
     };
 
-    $scope.QuestModel = $resource('/jsonapi/rest/quest/:id');
+    $scope.QuestModel = $resource('/jsonapi/quest/:id');
+    
     //A method to fetch a generic model and id. 
     
     $scope.fetch = function(id){
@@ -320,8 +353,11 @@ function QuestController($scope,$resource,$location,$routeParams,$cookieStore){
     $scope.list = function(){
       $scope.quests = $scope.QuestModel.query();
       $scope.$watch('quests', function() {
-        if($scope.quests[0].difficulty == "Beginner"){
-          $scope.changeRoute = "playPage.html";
+        //There need to be quests before you can check the difficulty of the first one.
+        if($scope.quests.length>0){
+          if($scope.quests[0].difficulty == "Beginner"){
+            $scope.changeRoute = "playPage.html";
+          }
         }
       }, true);
       //}
@@ -330,6 +366,29 @@ function QuestController($scope,$resource,$location,$routeParams,$cookieStore){
       //});
     };
     
+    $scope.create_quest_game = function(questID){
+      alert("creating a new game for quest "+questID);
+      $scope.NewQuestGame = $resource('/jsonapi/create_quest_game/:questID');
+      $scope.NewQuestGame.get({'questID':questID}, function(response){
+              $scope.game = response;
+              $scope.list();
+          });
+
+    }
+
+    $scope.create_new_quest = function(storyID,pathID,difficulty){
+      $scope.newQuest = {}
+      $scope.newQuest.storyID = storyID;
+      $scope.newQuest.pathID = pathID;
+      $scope.newQuest.difficulty = difficulty;
+
+      $scope.NewQuest = $resource('/jsonapi/quest');
+      var new_quest = new $scope.NewQuest($scope.newQuest);
+      new_quest.$save(function(response){
+              $scope.quest = response;
+              //$scope.fetch();
+          });
+    };
     $scope.list();
 
 }

@@ -6,26 +6,51 @@
 </head>
 
 <body>
-  <h3>Here is where we will load each controller to do a simple test.</h3>
-
-  <div ng-controller="QuestController">
-   Quest Controller
-   <ul>
-    <li name="questcount">Started Quests: {{quests.length}}</li>
-    <li name="currentquest">Current Quest: {{quest.name}}</li>
-   </ul>
-   <input type="Submit" value="Load First Quest" ng-click="fetch(1)">
-   <input type="Submit" value="Load Second Quest" ng-click="fetch(2)">
-   <input type="Submit" value="Add Quest" ng-click="add()">
-   <input type="Submit" value="Delete Quest" ng-click="delete(1)">
-  </div>
- <br> 
+  <h3>Here is where we will load each controller to do simple static and integration tests.</h3>
 
   <div ng-controller="PlayerController">
    Player Controller
    <ul>
-    <li>Player nickname: {{player.nickname}}</li>
+    <li>Current player nickname: {{player.nickname}}</li>
    </ul>
+  </div>
+
+<div ng-controller="QuestController" ng-init="model='Quest';list();difficulty='Easy';">
+   
+    <div ng-show="game">
+      Current Quest Game ProblemIDs: {{game.problemIDs}}<br>
+    </div>
+    Saved Quests:<br>
+    <ul>  
+      <li ng-repeat="quest in quests">
+        ID {{quest.id}}, Name {{quest.name}}, StoryID {{quest.storyID}}, PathID {{quest.pathID}}, Difficulty {{quest.difficulty}}, <input type="submit" value="Play Quest Game" ng-click="create_quest_game(quest.id)">
+      </li>
+    </ul>
+    
+
+    Current Quest: {{item}}<br>
+    <!-- Could pull stories from story controller later on -->
+    <div ng-controller="StoryController" ng-init="list();$parent.storyID=14611860;">
+     <br>
+      Stories <select ng-model="$parent.storyID" ng-options="story.id as story.name for story in stories"></select>
+      StoryID: {{$parent.storyID}} <br>  
+      <!-- <img src="{{stories[0].imageURL}}"> --> 
+    </div>
+        
+ 
+    <!-- Use the PathController to fill the Path dropdown box-->
+    <div ng-controller="PathController" ng-init="list();$parent.pathID=10030;">
+      Path <select ng-model="$parent.pathID" ng-options="item.id as item.description for item in paths.paths"></select>
+      PathID: {{$parent.pathID}}<br>
+    </div>
+
+    Difficulty <select ng-model="difficulty" ng-options="item.id as item.name for item in [{'name':'Beginner', 'id':'Beginner'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]"></select>
+    Difficulty : {{difficulty}}<br>
+
+    <input type="submit" value="Create New Quest" ng-click="item.name='New Quest';create_quest(storyID,pathID,difficulty)"><br>
+
+    <input type="submit" value="New API Create New Quest" ng-click="item.name='New Quest';create_new_quest(storyID,pathID,difficulty)"><br>
+  
   </div>
 
 
@@ -216,7 +241,7 @@
 
   </div>
 
-
+<!--
 <div ng-controller="GenericRestController" ng-init="model='Story';list();item.name='The Spy Who Coded';">
    
   Managing stories using the Generic Controller<br>
@@ -248,40 +273,8 @@
     </ol>
   
   </div>
-
-  <div ng-controller="QuestController" ng-init="model='Quest';list();difficulty='Easy';">
-   
-    Saved Quests: {{quests}}<br><br>
-    ID Name StoryID, PathID, Difficulty
-    <ul>
-      
-      <li ng-repeat="quest in quests">
-        {{quest.id}}, {{quest.name}}, {{quest.storyID}}, {{quest.pathID}}, {{quest.difficulty}}
-      </li>
-    </ul>
-    
-    Current Quest: {{item}}<br>
-    <!-- Could pull stories from story controller later on -->
-    <div ng-controller="StoryController" ng-init="list();$parent.storyID=1;">
-     <br>
-      Stories <select ng-model="$parent.storyID" ng-options="story.id as story.name for story in stories"></select>
-      StoryID: {{$parent.storyID}} <br>  
-      <!-- <img src="{{stories[0].imageURL}}"> --> 
-    </div>
-        
- 
-    <!-- Use the PathController to fill the Path dropdown box-->
-    <div ng-controller="PathController" ng-init="list();$parent.pathID=10030;">
-      Path <select ng-model="$parent.pathID" ng-options="item.id as item.description for item in paths.paths"></select>
-      PathID: {{$parent.pathID}}<br>
-    </div>
-
-    Difficulty <select ng-model="difficulty" ng-options="item.id as item.name for item in [{'name':'Beginner', 'id':'Beginner'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]"></select>
-    Difficulty : {{difficulty}}<br>
-
-    <input type="submit" value="Create New Quest" ng-click="item.name='New Quest';create_quest(storyID,pathID,difficulty)"><br>
+-->
   
-  </div>
 
   <div ng-controller="BadgeController">
     Badges for current player<br>

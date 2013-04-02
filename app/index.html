@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">  
+<html ng-app="myApp" lang="en">  
   <head>    
     <meta charset="utf-8">    
     <title>SingPath - The Most Fun Way to Practice Software
@@ -395,17 +395,58 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">                    
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">                                   
     <link rel="shortcut icon" href="../assets/ico/favicon.png">  
+	
+<script type="text/javascript">
+//Jainrain login code
+(function() {
+    if (typeof window.janrain !== 'object') window.janrain = {};
+    if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
+    
+    //This has to be on app engine or localhost running SingPath
+    auth_url = "http://www.singpath.com/rpx.php";
+    //This is where you want the user redirected back to. 
+    redirect_url = "http://smu-sis.github.com/singpath-responsive-gui/app/index.html#/profile";
+
+    janrain.settings.tokenUrl = auth_url+'?target='+redirect_url;
+
+    //Original code example.
+    //janrain.settings.tokenUrl = 'http://www.singpath.com/rpx.php?target=http://www.singpath.com/fyp/app/play_game_demo.html';
+        
+    function isReady() { janrain.ready = true; };
+    if (document.addEventListener) {
+      document.addEventListener("DOMContentLoaded", isReady, false);
+    } else {
+      window.attachEvent('onload', isReady);
+    }
+
+    var e = document.createElement('script');
+    e.type = 'text/javascript';
+    e.id = 'janrainAuthWidget';
+
+    if (document.location.protocol === 'https:') {
+      e.src = 'https://rpxnow.com/js/lib/singpath/engage.js';
+    } else {
+      e.src = 'http://widget-cdn.rpxnow.com/js/lib/singpath/engage.js';
+    }
+
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(e, s);
+})();
+</script>
+	
   </head>  
 
-  <body ng-controller="PlayerController" ng-click="log_event($event)">    
+  <body>    
     <!-- NAVBAR
         ================================================== --> 
-          <div class="container">
+          <div class="container" ng-controller="PlayerController">
             <ul class="nav nav-pills pull-right" align="right">
-						<li><a>Welcome, Secret Agent!</a></li>
-              <li><a href="#">Login</a></li>     
+						<li><a>Welcome, {{player.nickname}}{{secretAgent}}!</a></li>
+              <li><a ng-show="abc" class="janrainEngage" href="#"><button class="btn" ng-click='login()'>Login</button></a></li>    
+              <li><a ng-show="def" ng-click='logout()' href="#"><button class="btn" ng-click='logout()'>Log Out</button></a></li>     
             </ul>
           </div>  
+          <br>
     <div class="navbar-wrapper">      
       <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->      
       <div class="container">       
@@ -420,7 +461,7 @@
               </span>              
               <span class="icon-bar">
               </span>            </a>            
-            <a class="brand" href="">SingPath</a>            
+            <a class="brand" href="#home">SingPath</a>            
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->            
             <div class="nav-collapse collapse">              
               <ul class="nav pull-right">   
@@ -487,7 +528,7 @@
     <!-- /.navbar-wrapper -->    
     <!-- Carousel
         ================================================== --> 
-  <div ng-app="myApp" ng-view></div>
+  <div  ng-view></div>
 
     <!-- /.carousel -->    
     <!-- Marketing messaging and featurettes
