@@ -135,6 +135,10 @@ th, td { padding: 2px }
           <td>{{day.DAU}}</td>
           <td>{{day.MAU}}</td>
           <td>{{day.DAUMAU*100 | number:2}}%</td>
+          <td>{{day.newPlayers}}</td>
+          <td>{{day.games}}</td>
+          <td>{{day.quests}}</td>
+          <td>{{day.questGames}}</td>
       </tr>
       <tr class="fat">
           <td>Average</td>
@@ -143,31 +147,18 @@ th, td { padding: 2px }
           <td>{{item.secondsaverage/3600 | number:2}}</td>
           <td>{{item.attemptsperplayeraverage | number:2}}</td>
           <td>{{item.secondsperplayeraverage/60 | number:2}}</td>
-          <td>{{item.dauaverage}}</td>
-          <td>{{item.mauaverage}}</td>
+          <td>{{item.dauaverage | number:2}}</td>
+          <td>{{item.mauaverage | number:2}}</td>
           <td>{{item.daumauaverage*100 | number:2}}%</td>
+
+          <td>{{item.newplayersaverage | number:2}}</td>
+          <td>{{item.gamesaverage | number:2}}</td>
+          <td>{{item.questsaverage | number:2}}</td>
       </tr>
     </table> 
-
-
         
   </div>
-<!--
-  <div ng-controller="GameResultController" ng-init="model='gameresult';">
-    
-    Game Results: Count {{items.length}}<br>
-    <input type="submit" value="Analyze 100 More Game Results" ng-click="append_list()">
 
-    Analysis:
-    
-    <ol>
-      <li ng-repeat="(k,v) in analysis">
-        On {{k}} a total of {{v.players.length}} players spent {{v.attempts}} attempts and {{v.solve_time/3600 | number:2}} hours solving problems.
-      </li>
-    </ol>
-        
-  </div>
--->
 
   <div ng-controller="GenericRestController" ng-init="model='playerpercentiles';">
     
@@ -229,16 +220,23 @@ th, td { padding: 2px }
 
 <script src="../lib/angular/angular.min.js"></script>
 <script src="../lib/angular/angular-resource.min.js"></script>
-<script src="../js/controllers.js"></script>  
+<script src="../js/controllers.js"></script>
+<script src="../js/admin-controllers.js"></script>   
 <script src="../js/analytics.js"></script>
 <script src="../js/app-config.js"></script>          
 <script src="../js/app.js"></script>  
 <script src="../js/cookies.js"></script>    
 <!-- <script src="../../test/app-test.js"></script>  -->
 <!-- This data will only be on Chris' local machine -->
-<script src="../../../local-app-test.js"></script>    
-<!-- End -->
-<script src="../../test/lib/angular/angular-mocks.js"></script>    
+<!-- Conditionally load test files -->  
+<script type="text/javascript">
+    console.log("Current location "+document.location.host);
+    if(document.location.host == "localhost:8000" || document.location.host == "localhost" || document.location.host == "smu-sis.github.io"){
+      console.log("loading test data from app-test.js");
+      document.write('<script src="../../../local-app-test.js"> </'+'script> ');
+      document.write('<script src="../../test/lib/angular/angular-mocks.js"> </'+'script>  ');
+    }
+</script>
 
 </body>
 </html>

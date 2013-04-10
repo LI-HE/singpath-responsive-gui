@@ -401,11 +401,12 @@
 (function() {
     if (typeof window.janrain !== 'object') window.janrain = {};
     if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
-    
+    //alert(document.location.host);
     //This has to be on app engine or localhost running SingPath
-    auth_url = "http://www.singpath.com/rpx.php";
+    auth_url = "http://"+document.location.host+"/rpx.php";
     //This is where you want the user redirected back to. 
-    redirect_url = "http://smu-sis.github.com/singpath-responsive-gui/app/index.html#/profile";
+    redirect_url = "http://"+document.location.host+"/fyp/app/index.html";
+    //redirect_url = "index.html#/profile";
 
     janrain.settings.tokenUrl = auth_url+'?target='+redirect_url;
 
@@ -441,9 +442,9 @@
         ================================================== --> 
           <div class="container" ng-controller="PlayerController">
             <ul class="nav nav-pills pull-right" align="right">
-						<li><a>Welcome, {{player.nickname}}{{secretAgent}}!</a></li>
-              <li><a ng-show="abc" class="janrainEngage" href="#"><button class="btn" ng-click='login()'>Login</button></a></li>    
-              <li><a ng-show="def" ng-click='logout()' href="#"><button class="btn" ng-click='logout()'>Log Out</button></a></li>     
+						  <li ng-show="player.nickname"><a>Welcome, {{player.nickname}}{{secretAgent}}!</a></li>
+              <li><a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn" ng-click='login()'>Login</button></a></li>    
+              <li><a ng-show="player.nickname" ng-click='logout()' href="#"><button class="btn" ng-click='logout()'>Log Out</button></a></li>     
             </ul>
           </div>  
           <br>
@@ -540,7 +541,7 @@
     <!-- Placed at the end of the document so the pages load faster -->    
 
 	
-<script src="lib/angular/angular.min.js"></script>    
+<script src="lib/angular/angular.js"></script>    
 <script src="lib/angular/angular-resource.min.js"></script>    
 <script src="js/controllers.js"></script> 
 <script src="js/analytics.js"></script> 

@@ -121,9 +121,7 @@
 	<div class="span3">
 	<h5>
 	ID: {{location.search(questID).questID}}<br>
-	Story ID: {{quests[location.search(questID).questID-1].storyID}}<br>
-	Path: {{quests[location.search(questID).questID-1].pathID}}<br>
-	Difficulty: {{quests[location.search(questID).questID-1].difficulty}}
+	{{name}}
 	</h5>
 			<div id="leftIcon" class="span2" align="left" style= "vertical-align:middle" ><img class="img-rounded" src="../assets/img/newStory.jpg"></img>
 			<br/><br/>
@@ -136,18 +134,17 @@
 				</form>
 			</div>
 	</div>
-	<div class="span9 well" align="center" ng-controller="StoryController" ng-init="list();$parent.storyID=1;" style="height:470px; overflow:auto">
-					<h4>Story: {{stories[name-1].name}}</h4>
+	<div class="span9 well" align="center" style="height:470px; overflow:auto">
+					<h4> Quest Name: {{name.name}}<br></h4>
 						<ul class="thumbnails row-fluid" >
-								<span ng-repeat="story in stories[name-1].videos | limitTo: stories[name-1].videos.length-1" class="pull-left well">
+								<span ng-repeat="story in name.videos | limitTo: name.videos.length-1" class="pull-left well">
 								<span class="badge badge-info">{{$index+1}}</span><p><p>
 								<iframe id="standardFrame" class="thumbnail" ng-src="http://www.youtube.com/embed/{{story}}" frameborder="0" allowfullscreen></iframe>	
-								<img  id="standardFrame" src="../assets/img/question.jpg"></img>
 								</span>
 						</ul>	
 								
 									<span class="badge badge-info">Final</span><p><p>
-									<span  ng-repeat="story in stories[name-1].videos | startFrom: stories[name-1].videos.length-1 | limitTo:1">
+									<span  ng-repeat="story in name.videos | startFrom: name.videos.length-1 | limitTo:1">
 									<iframe id="standardFrame" class="thumbnail" ng-src="http://www.youtube.com/embed/{{story}}" frameborder="0" allowfullscreen></iframe>	
 																	<p><p>
 									</span>

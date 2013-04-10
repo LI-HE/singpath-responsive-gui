@@ -1,352 +1,588 @@
 <style>
-.table td, .table th {
-    border: none;
-}
+    .table td, .table th {
+        border: none;
+    }
+    
+    .badgeheight {
+        height:200px
+    }
+    .fRight{
+        float:right;
+    }
+
+    .tabspacing{
+        width:33.3333%;
+    }
+
+    tbody{
+        overflow:auto;  
+    }
+
+    th.c1, td.c1{width:20%;}
+    th.c2, td.c2{width:50%;}
+    th.c3, td.c3{width:30%;}
+
+    th.d1, td.d1{width:40%;}
+    th.d2, td.d2{width:10%;}
+    th.d3, td.d3{width:10%;}
+    th.d4, td.d4{width:20%;}
+    th.d5, td.d5{width:20%;}
+
+
 </style>
-<br> 
-    <div class="container" id="largeProfile" style="position:relative;left:-30px">
-
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="span3">
-          <!-- Profile Information -->
-          <div class="span3" >
-            <br>
-            <br>
-            <table class="table" style="border:2px dotted #4099FF">
-                <tr style="border:2px dotted #4099FF">
-                  <th align="center" > <h4>Profile Info</h4></th>
-                </tr>
-                <tr>
-                  <td> <input type="image" src="../assets/img/examples/p1.jpg" alt="" height="120"><br> </td>
-                </tr>
-                <tr>
-                  <td>   </td>
-                </tr>
-                <tr>
-                  <td> Name: Haja</td>
-                </tr>
-                <tr>
-                  <td> Location: Singapore</td>
-                </tr>
-                <tr>
-                  <td> About Me: To know more...</td>
-                </tr>
-                <tr>
-                  <td><a class="btn btn-inverse pull-right" href="#contact">Edit Profile</a></p></td>
-                </tr>
-            </table>
-          </div>
-          <!-- To display CREATE button -->
-          <div class="span2" align="center">
-            <br>
-            <p><a class="btn btn-info btn-large" href="#contact" height="60">Create!</a></p>
-          </div> 
-        </div> <!-- Span16 first Column -->
-          <br>
-          <br>
-        <div class="span9">
-
-          <!-- Badges Table -->
-          <div class="span9">
-			 <table id = "activityTable" width="100%" class = "table table-condensed"  style="border:2px dotted #4099FF">
-			 <tr><td style="border:2px dotted #4099FF" >
-              <div align ="center"><h4> Badges </h4></div>
-			 </td></tr>
-			 
-			 <tr><td>
-              <div class="span1">
-                <input class= "img-rounded" id ="badage" type="image" src="../assets/img/examples/p6.jpg" alt="" height="55">
-                <P>Python</p>
-              </div>
-              <div class="span1">
-                <input class= "img-rounded" id ="badage" type="image" src="../assets/img/examples/p7.jpg" alt="" height="55">
-                <P>Java</p>
-              </div>
-              <div class="span1">
-                <input class= "img-rounded" id ="badage" type="image" src="../assets/img/examples/p8.jpg" alt="" height="55">
-                <P>Beginner Python</p>
-              </div>
-              <div class="span1">
-                <input class= "img-rounded" id ="badage" type="image" src="http://placehold.it/330x230" alt="" height="55">
-                <P>Jscript</p>
-              </div>
-              <div class="span1">
-                <input class= "img-rounded" id ="badage" type="image" src="http://placehold.it/330x230" alt="" height="55">
-                <P>C++</p>
-              </div>
-              <div class="span1">
-                <input class= "img-rounded" id ="badage" type="image" src="http://placehold.it/330x230" alt="" height="55">
-                <P>Python</p>
-              </div>
-              <div class="span1 pull-right" style="position:relative;right:15px">
-                <p><a class="btn btn-info" href="#contact" height="40">View  More!</a></p>
-			  </div>
-			  </td></tr>
-			  </table>
-          </div><!-- /.span8 -->
-          <!-- Activities Table -->
-          <div class="span9">
-			<br>
-
-              <table id = "activityTable" width="100%" class = "table table-condensed"  style="border:2px dotted #4099FF">
-				  <tr>
-				   <th style="border:2px dotted #4099FF" colspan="5"><h4> Activities </h4></th>
-				  </tr>
-                  <tr>
-                    <td style="border:2px dotted #4099FF"> Story </td>
-                    <td style="border:2px dotted #4099FF"> Path </td>
-                    <td style="border:2px dotted #4099FF"> Level </td>
-                    <td style="border:2px dotted #4099FF"> Progress </td>
-                    <td style="border:2px dotted #4099FF"> # </td>
-                  </tr>
-                  <tr>
-                    <td> Sport </td>
-                    <td> Python </td>
-                    <td> Mediun </td>
-                    <td> 
-                        <div class="progress progress-success progress-striped active">
-                            <div class="bar" style="width: 75%;"></div>
-                        </div>
-                      </td>
-                    <td align="center"><a align="center" class="btn btn-info" href="#contact">Click to Resume!</a></td>
-                  </tr>
-                  <tr>
-                    <td> Nature </td>
-                    <td> Java </td>
-                    <td> Easy </td>
-                    <td> 
-                        <div class="progress progress-warning progress-striped active">
-                            <div class="bar" style="width: 90%;"></div>
-                        </div>
-                    </td>
-                    <td align="center"><a class="btn btn-info" href="#contact">Click to Resume!</a></td>
-                  </tr>
-                  <tr>
-                    <td> Adventure </td>
-                    <td> JavaScript </td>
-                    <td> Easy </td>
-                    <td> 
-                        <div class="progress progress-striped active">
-                            <div class="bar" style="width: 60%;"></div>
-                        </div>
-                    </td>
-                    <td align="center"><a class="btn btn-info" href="#contact">Click to Resume!</a></td>
-                  </tr>
-                  <tr>
-                    <td> Nature </td>
-                    <td> Pyton </td>
-                    <td> Easy </td>
-                    <td> 
-                        <div class="progress progress-danger progress-striped active">
-                            <div class="bar" style="width: 95%;"></div>
-                        </div>
-                    </td>
-                    <td align="center"><a class="btn btn-info" href="#contact">Click to Resume!</a></td>
-                  </tr>
-				  <tr>
-				  <td style="border:2px dotted #4099FF" align="center" colspan="5" class="pagination">
-					  <ul>
-						<li><a href="">Prev</a></li>
-						<li><a href="">1</a></li>
-						<li><a href="">2</a></li>
-						<li><a href="">3</a></li>
-						<li><a href="">Next</a></li>
-					  </ul>
-				  </td>
-				  </tr>
-              </table>
-          </div><!-- /.span8 -->
-
-        </div> <!-- Span16 Second Column -->    
-      </div><!-- /.row -->
-    </div> <!-- End of Main content -->
-</div>
-
 <br>
-
-<div class="container">
-<div id="smallProfile">
-            <table>
-              <thead>
-                <tr>
-                  <th align="center" > <h4>Profile Info</h4></th>
-                </tr>
-              </thead>
-              <tbody align="left">
-                <tr>
-                  <td> <input class= "img-polaroid" type="image" src="../assets/img/examples/p1.jpg" alt="" height="120"><br> </td>
-				  <td>&nbsp;</td>
-                  <td><p>Name: Haja</br>
-					Location: Singapore</br>
-					About Me: To know more</br>
-					<a class="btn btn-inverse" href="#contact">Edit Profile</a></p></td>
-                </tr>
-              </tbody>
-            </table>
-			<br>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-		<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-		Badges
-			</a>
-
-		</div>
-        <div id="collapseTwo" class="accordion-body collapse in">
-            <div class="accordion-inner">
-				<table><tr><td>
-                <input class= "img-rounded" id ="badage" type="image" href="#myModal" data-toggle="modal" src="../assets/img/examples/p6.jpg" alt="" height="40">
-				</td>
-				<td>
-                <input class= "img-rounded" id ="badage" type="image" href="#myModal2" data-toggle="modal" src="../assets/img/examples/p7.jpg" alt="" height="40">
-				</td>
-				<td>
-                <input class= "img-rounded" id ="badage" type="image" href="#myModal3" data-toggle="modal" src="../assets/img/examples/p8.jpg" alt="" height="40">
-				</td>
-				<td>
-                <input class= "img-rounded" id ="badage" type="image" href="#myModal4" data-toggle="modal" src="http://placehold.it/330x230" alt="" height="40">
-				</td>
-				<td>
-                <input class= "img-rounded" id ="badage" type="image" href="#myModal5" data-toggle="modal" src="http://placehold.it/330x230" alt="" height="40">
-				</td>
-				<td>
-                <input class= "img-rounded" id ="badage" type="image" href="#myModal6" data-toggle="modal" src="http://placehold.it/330x230" alt="" height="40">
-				</td>
-				</table>
-			</div>
-        </div>
-	</div>
+<div class="container" id="largeProfile" style="position:relative;">
+    <!-- Three columns of text below the carousel -->
+    <div class="row-fluid">
+        <div class="span12">
 
 
-
-
-    <div class="accordion-group">
-        <div class="accordion-heading">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2"
-            href="#collapseOne">
-Activities
-</a>
-
-        </div>
-        <div id="collapseOne" class="accordion-body collapse in">
-            <div class="accordion-inner">
-             <table id="activityTable" class = "table table-condensed">
-                <thead>
-                  <tr>
-                    <th> Story </th>
-                    <th> Path </th>
-                    <th> Level </th>
-                    <th> Progress </th>
-                    <th> # </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td> Sport </td>
-                    <td> Python </td>
-                    <td> Mediun </td>
-                    <td> 
-                        <div class="progress progress-success progress-striped active">
-                            <div class="bar" style="width: 75%;"></div>
+            <div class="span2">
+                <!-- Profile Information -->
+                    <br>
+                    <br>
+                    <div ng-controller="QuestController">
+                        <div ng-controller="PathController">
+                                                          
+                            <div ng-controller="PlayerController">
+                                
+                                    
+                                <div class="well">
+                                    <table id="playerProfile"class="table" style="text-align:left">
+                                        <tr>
+                                            <th align="left">
+                                                 <p>Profile Info</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input class="img-rounded" type="image" src="../assets/img/examples/p1.jpg" alt="" height="60px">
+                                                <br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Name: {{player.nickname}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Location: {{player.location}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>About Me: {{player.description}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a class="btn-small btn-inverse pull-right" href="#contact">Edit Profile</a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table><!-- End of Profile information -->
+                                </div>
+                            </div>
                         </div>
-                      </td>
-                    <td align="center"><a align="center" class="btn btn-info" href="#contact">Go!</a></td>
-                  </tr>
-                  <tr>
-                    <td>Nature</td>
-                    <td>Java</td>
-                    <td>Easy</td>
-                    <td> 
-                        <div class="progress progress-warning progress-striped active">
-                            <div class="bar" style="width: 90%;"></div>
-                        </div>
-                    </td>
-                    <td align="center"><a class="btn btn-info" href="#contact">Go!</a></td>
-                  </tr>
-                  <tr>
-                    <td>Adventure</td>
-                    <td>JavaScript</td>
-                    <td>Easy</td>
-                    <td> 
-                        <div class="progress progress-striped active">
-                            <div class="bar" style="width: 60%;"></div>
-                        </div>
-                    </td>
-                    <td align="center"><a class="btn btn-info" href="#contact">Go!</a></td>
-                  </tr>
-                  <tr>
-                    <td>Nature</td>
-                    <td>Pyton</td>
-                    <td>Easy</td>
-                    <td> 
-                        <div class="progress progress-danger progress-striped active">
-                            <div class="bar" style="width: 95%;"></div>
-                        </div>
-                    </td>
-                    <td align="center"><a class="btn btn-info" href="#contact">Go!</a></td>
-                  </tr>
-                </tbody>
-              </table>
+                    </div>
+                    <br>
+                    <!-- Create button  -->
+                    <p><a class="btn btn-info btn-large" href="#contact" height="60">Create!</a>
+                    </p>
             </div>
-        </div>
-    </div>
+           
+            <!-- End of Profile Information and Create button -->
+            <div class="span10">
+                <br>
+                <br>
+                  
+                <div class="well" id="badgesTable" >
+                    <!-- Badges Table -->
+                      <div align="center"><bold>Badges</bold></div>
+                      <hr>
+                      <div class="badgeheight" style="overflow:auto;" width="100%" ng-controller="BadgeController">
+                        <table id="badgesTable" width="100%" class="table table-condensed"> 
+                            <tbody align="left">  
+                              <tr >  
+                               
+                                <ng-model="python" ng-init="python='10030'"> 
+                                <td>Python</td>
+                                <td ng-repeat="(key,value) in playerBadges.badges|filter:python">
+                                 <img ng-src="http://www.singpath.com{{value.imageURL}}">
+                                </td> 
+                              </tr>  
+                              <tr> 
+                                 
+                                <ng-model="bPython" ng-init="bPython='6920762'">
+                                <td>Beginner Python</td> 
+                                <td ng-repeat="badge in playerBadges.badges|filter:bPython">
+                                    <img ng-src="http://www.singpath.com{{badge.imageURL}}">
+                                </td> 
+                              </tr> 
+                              <tr >
+                                <ng-model="ruby" ng-init="ruby='2462233'"> 
+                                <td>Ruby</td>
+                                <td ng-repeat="(key,value) in playerBadges.badges|filter:ruby">
+                                 <img ng-src="http://www.singpath.com{{value.imageURL}}">
+                                </td> 
+                              </tr>
+                              <tr >  
+                                <ng-model="javaScript" ng-init="javaScript='2473247'"> 
+                                <td> JavaScript</td>
+                                <td ng-repeat="(key,value) in playerBadges.badges|filter:javaScript">
+                                 <img ng-src="http://www.singpath.com{{value.imageURL}}">
+                                </td> 
+                              </tr>
+                              <tr > 
+                                <ng-model="java" ng-init="java='2243213'"> 
+                                <td> Java</td>
+                                <td ng-repeat="(key,value) in playerBadges.badges|filter:java">
+                                 <img ng-src="http://www.singpath.com{{value.imageURL}}">
+                                </td> 
+                              </tr>
+                            
+                             
+                            </tbody>  
+                        </table>
+                      </div>
+                      
+
+                   
+                </div>
+                <br>
+           
+
+                <!-- Tab for Quest,Path and Challenges-->
+                <div class="tabbable well">
+                  <ul class="nav nav-tabs">
+                    <li class="tabspacing">
+                      <a href="#t1" data-toggle="tab">Quest</a>
+                    </li>
+                    <li class="tabspacing active">
+                      <a href="#t2" data-toggle="tab">Path</a>
+                    </li>
+                    <li class="tabspacing">
+                      <a href="#t3" data-toggle="tab">Challenges</a>
+                    </li>    
+                  </ul>
+                  <div class="tab-content well">
+                    <div class="tab-pane" id="t1">
+                      <div width="400px"style=" width:98.2%; height:30px;overflow-x:hidden">
+                            <table class="table table-condensed">
+                                    <tr>
+                                        <th class="c1">Name</th>
+                                        <th class="c2">myProgress</th>
+                                        <th class="c3">Take the leap</th>
+                                    </tr>                                   
+                            </table> 
+                        </div>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden" >
+                                    <div ng-controller="QuestController">
+                                        <div ng-controller="PathController" ng-init="update_path_details();get_player_progress()" ng-model="filter">
+                                                <table class="table table-hover">
+                                                        <tr ng-repeat="quest in quests" ng-init="count(0);">
+                                                           
+                                                            <td>
+                                                              {{quest.name}}
+                                                        
+                                                            </td>
+                                                            <td class="c2">
+                                                                Number of videos:{{quest.videos.length}}
+                                                                Number of videos unlocked:{{quest.videos.length}}
+
+                                                                {{count = (quest.numSolved/quest.numProblems)*100 |number:0}}%
+                                                                
+                                                                <div class="progress progress-success">
+                                                                    <div class="bar" style="width:{{count}}%"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                            </td>                                 
+                                                        </tr>
+                                                             
+                                                </table>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="t2">
+                      <div width="400px"style="width:98.2%; height:30px">
+                            <table class="table table-condensed">
+                                    <tr>
+                                        <th class="c1">Path Name</th>
+                                        <th class="c2">myProgress</th>
+                                        <th class="c3">Take the leap</th>
+                                    </tr>                                   
+                            </table> 
+                        </div>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
+                                
+                                    <div ng-controller="QuestController">
+                                        <div ng-controller="PathController" ng-init="update_path_details();get_player_progress()" ng-model="filter">
+                                                <table class="table table-hover">
+                                                        <tr ng-repeat="path in player_progress.paths" ng-init="count(0);">
+                                                           
+                                                            <td>
+                                                              {{path.name}}
+                                                        
+                                                            </td>
+                                                            <td class="c2">
+                                                                {{count = (path.solvedProblems/path.problemsInPath)*100 |number:0}}%
+                                                                {{count.input.$valid}}
+                                                                <div class="progress progress-success">
+                                                                    <div class="bar" style="width:{{count}}%"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                            </td>                                 
+                                                        </tr>
+                                                             
+                                                </table>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="t3">
+                      <div width="400px"style="width:98.2%; height:30px;align:left;">
+                            <table class="table table-condensed">
+                                    <tr>
+                                        <th class="d1">Name</th>
+                                        <th class="d2">Location</th>
+                                        <th class="d3">Needed</th>
+                                        <th class="d4">Start Date</th>
+                                        <th class="d5">End Date</th>
+
+                                    </tr>                                   
+                            </table> 
+                        </div>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
+                                    <table class="table table-bordered" ng-controller="ChallengeController">
+
+                                            <tr ng-repeat="challenges in listChallenges.challenges" ng-init="">
+
+                                                <td class="d1"> {{challenges.name}}</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40">
+                                                </td>
+
+                                                <td class="d3">{{challenges.allowedCountries}}</td>
+                                                <td class="d4">{{challenges.startDate}}</td> 
+                                                <td class="d5">{{challenges.endDate}}</td>                                  
+                                            </tr>
+                                            
+                                    </table>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- End of Quest,Path and Challenges tables-->
+            </div>
+            <!-- End of span9 Badges table-->
+            
+          
+        </div><!--End of .span12-->
+    </div><!-- /.row -->
+</div><!-- End of container which contains 'largeProfile' -->
+<br>
+<br>
+<div class="container" id="smallProfile" style="position:relative;">
+       <!-- Three columns of text below the carousel -->
+    <div class="row-fluid">
+        <div class="span12">
 
 
-		<!-- Modal -->
-		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		 
-		  <div class="modal-body" align="center">
-			  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			  <input class= "img-rounded" id ="badage" type="image" src="../assets/img/examples/p6.jpg" alt="" height="200">
-			<p><font color="black">Python Path Winner</font></p>
-		  </div>
-		</div>
+            <div class="span2">
+                <!-- Profile Information -->
+                    <br>
+                    <br>
+                    <div ng-controller="QuestController">
+                        <div ng-controller="PathController">
+                                                          
+                            <div ng-controller="PlayerController">
+                                
+                                    
+                                <div class="well">
+                                    <table id="playerProfile"class="table" style="text-align:left">
+                                        <tr>
+                                            <th align="left">
+                                                 <p>Profile Info</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input class="img-rounded" type="image" src="../assets/img/examples/p1.jpg" alt="" height="60px">
+                                                <br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Name: {{player.nickname}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Location: {{player.location}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>About Me: {{player.description}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a class="btn btn-inverse pull-right" href="#contact">Edit Profile</a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table><!-- End of Profile information -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Create button  -->
+                    <p><a class="btn btn-info btn-large" href="#contact" height="60">Create!</a>
+                    </p>
+            </div>
+           
+            <!-- End of Profile Information and Create button -->
+            <div class="span10">
+                <br>
+                <br>
+                  
+                <div class="well" id="badgesTable" >
+                    <!-- Badges Table -->
+                      <div align="center"style="border-bottom:2px solid #000000"><bold>Badges</bold></div>
+                      <div class="badgeheight" style="overflow:auto;" width="100%" ng-controller="BadgeController">
+                        <table id="badgesTable" width="100%" class="table table-condensed"> 
+                            <tbody align="left">  
+                              <tr >  
+                                
+                                <td ng-repeat="badge in playerBadges.badges">
+                                    <img ng-src="http://www.singpath.com{{badge.imageURL}}">
+                                </td>   
+                              </tr>  
+                              <tr>  
+                                <td>Java</td>   
+                              </tr>  
+                             
+                            </tbody>  
+                        </table>
+                      </div>
+                      
 
-		<div id="myModal2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		 
-		  <div class="modal-body" align="center">
-			  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			  <input class= "img-rounded" id ="badage" type="image" src="../assets/img/examples/p7.jpg" alt="" height="200">
-			<p><font color="black">Java Path Winner</font></p>
-		  </div>
-		</div>
+                   
+                </div>
+                <br>
+           
 
-		<div id="myModal3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		 
-		  <div class="modal-body" align="center">
-			  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			  <input class= "img-rounded" id ="badage" type="image" src="../assets/img/examples/p8.jpg" alt="" height="200">
-			<p><font color="black">Python Begineer Path Winner</font></p>
-		  </div>
-		</div>
+                <!-- Tab for Quest,Path and Challenges-->
+                <div class="tabbable well">
+                  <ul class="nav nav-tabs">
+                    <li class="tabspacing">
+                      <a href="#t1" data-toggle="tab">Quest</a>
+                    </li>
+                    <li class="tabspacing active">
+                      <a href="#t2" data-toggle="tab">Path</a>
+                    </li>
+                    <li class="tabspacing">
+                      <a href="#t3" data-toggle="tab">Challenges</a>
+                    </li>    
+                  </ul>
+                  <div class="tab-content well">
+                    <div class="tab-pane" id="t1">
+                      <div width="400px"style=" width:98.2%; height:30px;overflow-x:hidden">
+                            <table class="table table-condensed">
+                                    <tr>
+                                        <th class="c1">Name</th>
+                                        <th class="c2">myProgress</th>
+                                        <th class="c3">Take the leap</th>
+                                    </tr>                                   
+                            </table> 
+                        </div>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
+                                    <table class="table table-striped">
+                                            <tr>
+                                                <td class="c1">Nature</td>
+                                                <td class="c2">
+                                                    <div class="progress progress-success progress-striped active">
+                                                        <div class="bar" style="width: 85%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                </td>                                 
+                                            </tr>
+                                            <tr>
+                                                <td>Sport</td>
+                                                <td>
+                                                    <div class="progress progress-success progress-striped active">
+                                                      <div class="bar" style="width: 75%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                              <td>Nature</td>
+                                              <td>
+                                                  <div class="progress progress-warning progress-striped active">
+                                                      <div class="bar" style="width: 50%;"></div>
+                                                  </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Adventure</td>
+                                                <td>
+                                                    <div class="progress progress-info progress-striped active">
+                                                        <div class="bar" style="width: 45%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Spy Who Code</td>
+                                                <td>
+                                                    <div class="progress progress-danger progress-striped active">
+                                                        <div class="bar" style="width: 20%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
 
-		<div id="myModal4" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		 
-		  <div class="modal-body" align="center">
-			  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			  <input class= "img-rounded" id ="badage" type="image" src="http://placehold.it/330x230" alt="" height="200">
-			<p><font color="black">JavaScript Path waiting for you to conquer!</font></p>
-		  </div>
-		</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sport</td>
+                                                <td>
+                                                    <div class="progress progress-danger progress-striped active">
+                                                        <div class="bar" style="width: 5%;"></div>
+                                                    </div>
+                                                </td>
+                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
 
-		<div id="myModal5" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		 
-		  <div class="modal-body" align="center">
-			  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			  <input class= "img-rounded" id ="badage" type="image" src="http://placehold.it/330x230" alt="" height="80">
-			<p><font color="black">C++ Path waiting for you to conquer!<</font></p>
-		  </div>
-		</div>
+                                                </td>
+                                            </tr>
+                                        
+                                            
+                                            
+                                    </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="t2">
+                      <div width="400px"style="width:98.2%; height:30px;overflow-x:hidden">
+                            <table class="table table-condensed">
+                                    <tr>
+                                        <th class="c1">Path Name</th>
+                                        <th class="c2">myProgress</th>
+                                        <th class="c3">Take the leap</th>
+                                    </tr>                                   
+                            </table> 
 
-		<div id="myModal6" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		 
-		  <div class="modal-body" align="center">
-			  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			  <input class= "img-rounded" id ="badage" type="image" src="http://placehold.it/330x230" alt="" height="80">
-			<p><font color="black">Ruby Path waiting for you to conquer!<</font></p>
-		  </div>
-		</div>
-    </div>
-</div>
-   
+                        </div>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
+                                 <hr>
+                                    <div ng-controller="QuestController">
+                                        <div ng-controller="PathController" ng-init="update_path_details()" ng-model="filter">
+                                                <table class="table table-hover">
+                                                        <tr ng-repeat="path in current_paths.paths">
+                                                           
+                                                            <td>
+                                                              {{path.name}}
+                                                            </td>
+                                                            <td class="c2">
+                                                                {{path.solvedProblems}}
+                                                                <div class="progress progress-success">
+                                                                    <div class="bar" style="width: 75%;"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                            </td>                                 
+                                                        </tr>
+                                                             
+                                                </table>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="t3">
+                      <div width="400px"style="width:98.2%; height:30px;overflow-x:hidden;align:left;">
+                            <table class="table table-condensed">
+                                    <tr>
+                                        <th class="d1">Name</th>
+                                        <th class="d2">Location</th>
+                                        <th class="d3">Needed</th>
+                                        <th class="d4">Start Date</th>
+                                        <th class="d5">End Date</th>
+
+                                    </tr>                                   
+                            </table> 
+                        </div>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
+                                    <table class="table table-bordered">
+                                            <tr>
+                                                <td class="d1">Your challenge to unlock this before lab test!</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Expert!</td>
+                                                <td class="d4">22/02/2013</td> 
+                                                <td class="d5">24/03/2013</td>                                  
+                                            </tr>
+                                            <tr>
+                                                <td class="d1">You will create a function to determine if a number is prime.    </td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Novice!</td>
+                                                <td class="d4">28/02/2013</td> 
+                                                <td class="d5">28/03/2013</td>                                  
+                                            </tr>
+                                            <tr>
+                                                <td class="d1">You want It?</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Intermediate!</td>
+                                                <td class="d4">02/03/2013</td> 
+                                                <td class="d5">25/04/2013</td>                                  
+                                            </tr>
+                                            <tr>
+                                                <td class="d1">Monty Hall Problem Simulation</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Expert!</td>
+                                                <td class="d4">14/04/2013</td> 
+                                                <td class="d5">27/04/2013</td>                                  
+                                            </tr>
+                                            <tr>
+                                                <td class="d1">Test1</td>
+                                                <td>
+                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
+                                    src="img/sg.jpg" alt="" height="40"></td>
+
+                                                <td class="d3">Novice!</td>
+                                                <td class="d4">09/03/2013</td> 
+                                                <td class="d5">15/04/2013</td>                                  
+                                            </tr>
+                                    </table>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- End of Quest,Path and Challenges tables-->
+            </div>
+            <!-- End of span9 Badges table-->
+            
+          
+        </div><!--End of .span12-->
+    </div><!-- /.row -->
+</div><!-- End of container which contains 'largeProfile' -->
+<br>
+<br>
+</div><!-- End of container which contains 'largeProfile' -->
+<br>
+<br>
