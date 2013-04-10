@@ -2,6 +2,10 @@
     .table td, .table th {
         border: none;
     }
+    .table tbody tr:hover td,
+    .table tbody tr:hover th {
+      background-color: #2E2E2E;
+    }
     
     .badgeheight {
         height:200px
@@ -73,7 +77,7 @@
                                             <td>About Me: {{player.description}}</td>
                                         </tr>
                                         <tr>
-                                            <td><a class="btn-small btn-inverse pull-right" href="#contact">Edit Profile</a>
+                                            <td><a class="btn-small btn-danger pull-right" href="#contact">Edit Profile</a>
                                                 </p>
                                             </td>
                                         </tr>
@@ -84,7 +88,7 @@
                     </div>
                     <br>
                     <!-- Create button  -->
-                    <p><a class="btn btn-info btn-large" href="#contact" height="60">Create!</a>
+                    <p><a class="btn btn-primary btn-large" href="#contact" height="60">Create!</a>
                     </p>
             </div>
            
@@ -184,13 +188,10 @@
                                                         
                                                             </td>
                                                             <td class="c2">
-                                                                Number of videos:{{quest.videos.length}}
-                                                                Number of videos unlocked:{{quest.videos.length}}
-
-                                                                {{count = (quest.numSolved/quest.numProblems)*100 |number:0}}%
-                                                                
+                                                              
+                                                                {{quest.numSolved}}/{{quest.numProblems}}  
                                                                 <div class="progress progress-success">
-                                                                    <div class="bar" style="width:{{count}}%"></div>
+                                                                    <div class="bar" style="width:{{count = (quest.numSolved/quest.numProblems)*100 |number:0}}%"></div>
                                                                 </div>
                                                             </td>
                                                             <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
@@ -224,10 +225,10 @@
                                                         
                                                             </td>
                                                             <td class="c2">
-                                                                {{count = (path.solvedProblems/path.problemsInPath)*100 |number:0}}%
-                                                                {{count.input.$valid}}
+                                                                
+                                                                {{path.solvedProblems}}/{{path.problemsInPath}}
                                                                 <div class="progress progress-success">
-                                                                    <div class="bar" style="width:{{count}}%"></div>
+                                                                    <div class="bar" style="width:{{count = (path.solvedProblems/path.problemsInPath)*100 |number:0}}%"></div>
                                                                 </div>
                                                             </td>
                                                             <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
@@ -253,7 +254,7 @@
                             </table> 
                         </div>
                         <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
-                                    <table class="table table-bordered" ng-controller="ChallengeController">
+                                    <table class="table table-hover" ng-controller="ChallengeController">
 
                                             <tr ng-repeat="challenges in listChallenges.challenges" ng-init="">
 
@@ -263,7 +264,7 @@
                                     src="img/sg.jpg" alt="" height="40">
                                                 </td>
 
-                                                <td class="d3">{{challenges.allowedCountries}}</td>
+                                                <td class="d3"> Intermediate</td>
                                                 <td class="d4">{{challenges.startDate}}</td> 
                                                 <td class="d5">{{challenges.endDate}}</td>                                  
                                             </tr>
@@ -285,7 +286,7 @@
 <br>
 <br>
 <div class="container" id="smallProfile" style="position:relative;">
-       <!-- Three columns of text below the carousel -->
+    <!-- Three columns of text below the carousel -->
     <div class="row-fluid">
         <div class="span12">
 
@@ -326,7 +327,7 @@
                                             <td>About Me: {{player.description}}</td>
                                         </tr>
                                         <tr>
-                                            <td><a class="btn btn-inverse pull-right" href="#contact">Edit Profile</a>
+                                            <td><a class="btn-small btn-danger pull-right" href="#contact">Edit Profile</a>
                                                 </p>
                                             </td>
                                         </tr>
@@ -337,7 +338,7 @@
                     </div>
                     <br>
                     <!-- Create button  -->
-                    <p><a class="btn btn-info btn-large" href="#contact" height="60">Create!</a>
+                    <p><a class="btn btn-primary btn-large" href="#contact" height="60">Create!</a>
                     </p>
             </div>
            
@@ -348,19 +349,49 @@
                   
                 <div class="well" id="badgesTable" >
                     <!-- Badges Table -->
-                      <div align="center"style="border-bottom:2px solid #000000"><bold>Badges</bold></div>
+                      <div align="center"><bold>Badges</bold></div>
+                      <hr>
                       <div class="badgeheight" style="overflow:auto;" width="100%" ng-controller="BadgeController">
                         <table id="badgesTable" width="100%" class="table table-condensed"> 
                             <tbody align="left">  
                               <tr >  
-                                
-                                <td ng-repeat="badge in playerBadges.badges">
+                               
+                                <ng-model="python" ng-init="python='10030'"> 
+                                <td>Python</td>
+                                <td ng-repeat="(key,value) in playerBadges.badges|filter:python">
+                                 <img ng-src="http://www.singpath.com{{value.imageURL}}">
+                                </td> 
+                              </tr>  
+                              <tr> 
+                                 
+                                <ng-model="bPython" ng-init="bPython='6920762'">
+                                <td>Beginner Python</td> 
+                                <td ng-repeat="badge in playerBadges.badges|filter:bPython">
                                     <img ng-src="http://www.singpath.com{{badge.imageURL}}">
-                                </td>   
-                              </tr>  
-                              <tr>  
-                                <td>Java</td>   
-                              </tr>  
+                                </td> 
+                              </tr> 
+                              <tr >
+                                <ng-model="ruby" ng-init="ruby='2462233'"> 
+                                <td>Ruby</td>
+                                <td ng-repeat="(key,value) in playerBadges.badges|filter:ruby">
+                                 <img ng-src="http://www.singpath.com{{value.imageURL}}">
+                                </td> 
+                              </tr>
+                              <tr >  
+                                <ng-model="javaScript" ng-init="javaScript='2473247'"> 
+                                <td> JavaScript</td>
+                                <td ng-repeat="(key,value) in playerBadges.badges|filter:javaScript">
+                                 <img ng-src="http://www.singpath.com{{value.imageURL}}">
+                                </td> 
+                              </tr>
+                              <tr > 
+                                <ng-model="java" ng-init="java='2243213'"> 
+                                <td> Java</td>
+                                <td ng-repeat="(key,value) in playerBadges.badges|filter:java">
+                                 <img ng-src="http://www.singpath.com{{value.imageURL}}">
+                                </td> 
+                              </tr>
+                            
                              
                             </tbody>  
                         </table>
@@ -396,78 +427,34 @@
                                     </tr>                                   
                             </table> 
                         </div>
-                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
-                                    <table class="table table-striped">
-                                            <tr>
-                                                <td class="c1">Nature</td>
-                                                <td class="c2">
-                                                    <div class="progress progress-success progress-striped active">
-                                                        <div class="bar" style="width: 85%;"></div>
-                                                    </div>
-                                                </td>
-                                                <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
-                                                </td>                                 
-                                            </tr>
-                                            <tr>
-                                                <td>Sport</td>
-                                                <td>
-                                                    <div class="progress progress-success progress-striped active">
-                                                      <div class="bar" style="width: 75%;"></div>
-                                                    </div>
-                                                </td>
-                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                              <td>Nature</td>
-                                              <td>
-                                                  <div class="progress progress-warning progress-striped active">
-                                                      <div class="bar" style="width: 50%;"></div>
-                                                  </div>
-                                                </td>
-                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Adventure</td>
-                                                <td>
-                                                    <div class="progress progress-info progress-striped active">
-                                                        <div class="bar" style="width: 45%;"></div>
-                                                    </div>
-                                                </td>
-                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Spy Who Code</td>
-                                                <td>
-                                                    <div class="progress progress-danger progress-striped active">
-                                                        <div class="bar" style="width: 20%;"></div>
-                                                    </div>
-                                                </td>
-                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Sport</td>
-                                                <td>
-                                                    <div class="progress progress-danger progress-striped active">
-                                                        <div class="bar" style="width: 5%;"></div>
-                                                    </div>
-                                                </td>
-                                                <td align="center"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
-
-                                                </td>
-                                            </tr>
-                                        
-                                            
-                                            
-                                    </table>
+                        <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden" >
+                                    <div ng-controller="QuestController">
+                                        <div ng-controller="PathController" ng-init="update_path_details();get_player_progress()" ng-model="filter">
+                                                <table class="table table-hover">
+                                                        <tr ng-repeat="quest in quests" ng-init="count(0);">
+                                                           
+                                                            <td>
+                                                              {{quest.name}}
+                                                        
+                                                            </td>
+                                                            <td class="c2">
+                                                              
+                                                                {{quest.numSolved}}/{{quest.numProblems}}  
+                                                                <div class="progress progress-success">
+                                                                    <div class="bar" style="width:{{count = (quest.numSolved/quest.numProblems)*100 |number:0}}%"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
+                                                            </td>                                 
+                                                        </tr>
+                                                             
+                                                </table>
+                                        </div>
+                                    </div>
                         </div>
                     </div>
                     <div class="tab-pane active" id="t2">
-                      <div width="400px"style="width:98.2%; height:30px;overflow-x:hidden">
+                      <div width="400px"style="width:98.2%; height:30px">
                             <table class="table table-condensed">
                                     <tr>
                                         <th class="c1">Path Name</th>
@@ -475,22 +462,23 @@
                                         <th class="c3">Take the leap</th>
                                     </tr>                                   
                             </table> 
-
                         </div>
                         <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
-                                 <hr>
+                                
                                     <div ng-controller="QuestController">
-                                        <div ng-controller="PathController" ng-init="update_path_details()" ng-model="filter">
+                                        <div ng-controller="PathController" ng-init="update_path_details();get_player_progress()" ng-model="filter">
                                                 <table class="table table-hover">
-                                                        <tr ng-repeat="path in current_paths.paths">
+                                                        <tr ng-repeat="path in player_progress.paths" ng-init="count(0);">
                                                            
                                                             <td>
                                                               {{path.name}}
+                                                        
                                                             </td>
                                                             <td class="c2">
-                                                                {{path.solvedProblems}}
+                                                                
+                                                                {{path.solvedProblems}}/{{path.problemsInPath}}
                                                                 <div class="progress progress-success">
-                                                                    <div class="bar" style="width: 75%;"></div>
+                                                                    <div class="bar" style="width:{{count = (path.solvedProblems/path.problemsInPath)*100 |number:0}}%"></div>
                                                                 </div>
                                                             </td>
                                                             <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
@@ -503,7 +491,7 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="t3">
-                      <div width="400px"style="width:98.2%; height:30px;overflow-x:hidden;align:left;">
+                      <div width="400px"style="width:98.2%; height:30px;align:left;">
                             <table class="table table-condensed">
                                     <tr>
                                         <th class="d1">Name</th>
@@ -516,57 +504,21 @@
                             </table> 
                         </div>
                         <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden">
-                                    <table class="table table-bordered">
-                                            <tr>
-                                                <td class="d1">Your challenge to unlock this before lab test!</td>
+                                    <table class="table table-hover" ng-controller="ChallengeController">
+
+                                            <tr ng-repeat="challenges in listChallenges.challenges" ng-init="">
+
+                                                <td class="d1"> {{challenges.name}}</td>
                                                 <td>
                                                     <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
-                                    src="img/sg.jpg" alt="" height="40"></td>
+                                    src="img/sg.jpg" alt="" height="40">
+                                                </td>
 
-                                                <td class="d3">Expert!</td>
-                                                <td class="d4">22/02/2013</td> 
-                                                <td class="d5">24/03/2013</td>                                  
+                                                <td class="d3"> Intermediate</td>
+                                                <td class="d4">{{challenges.startDate}}</td> 
+                                                <td class="d5">{{challenges.endDate}}</td>                                  
                                             </tr>
-                                            <tr>
-                                                <td class="d1">You will create a function to determine if a number is prime.    </td>
-                                                <td>
-                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
-                                    src="img/sg.jpg" alt="" height="40"></td>
-
-                                                <td class="d3">Novice!</td>
-                                                <td class="d4">28/02/2013</td> 
-                                                <td class="d5">28/03/2013</td>                                  
-                                            </tr>
-                                            <tr>
-                                                <td class="d1">You want It?</td>
-                                                <td>
-                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
-                                    src="img/sg.jpg" alt="" height="40"></td>
-
-                                                <td class="d3">Intermediate!</td>
-                                                <td class="d4">02/03/2013</td> 
-                                                <td class="d5">25/04/2013</td>                                  
-                                            </tr>
-                                            <tr>
-                                                <td class="d1">Monty Hall Problem Simulation</td>
-                                                <td>
-                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
-                                    src="img/sg.jpg" alt="" height="40"></td>
-
-                                                <td class="d3">Expert!</td>
-                                                <td class="d4">14/04/2013</td> 
-                                                <td class="d5">27/04/2013</td>                                  
-                                            </tr>
-                                            <tr>
-                                                <td class="d1">Test1</td>
-                                                <td>
-                                                    <input class="img-rounded" id="badage" type="image" href="#myModal" data-toggle="modal"
-                                    src="img/sg.jpg" alt="" height="40"></td>
-
-                                                <td class="d3">Novice!</td>
-                                                <td class="d4">09/03/2013</td> 
-                                                <td class="d5">15/04/2013</td>                                  
-                                            </tr>
+                                            
                                     </table>
                         </div>
                     </div>
@@ -580,6 +532,7 @@
           
         </div><!--End of .span12-->
     </div><!-- /.row -->
+       
 </div><!-- End of container which contains 'largeProfile' -->
 <br>
 <br>

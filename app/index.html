@@ -4,7 +4,7 @@
     <meta charset="utf-8">    
     <title>SingPath - The Most Fun Way to Practice Software
     </title>      
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>	
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> 
     <meta name="description" content="">    
     <meta name="author" content="">    
     <!-- Le styles -->
@@ -15,14 +15,14 @@
     /* GLOBAL STYLES
     -------------------------------------------------- */
     /* Padding below the footer and lighter body text */
-	html {-webkit-text-size-adjust: none;}
+  html {-webkit-text-size-adjust: none;}
     body{
-		background-image:url("../assets/img/");
-		background-repeat:repeat;
-		background-attachment:fixed;
-		padding-bottom: 40px;
-		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-		color: black;
+    background-image:url("../assets/img/");
+    background-repeat:repeat;
+    background-attachment:fixed;
+    padding-bottom: 40px;
+    font-family: Helvetica Neue, Helvetica, Arial, "sans-serif";
+    color: black;
 
     }
     .img-polaroid{
@@ -30,16 +30,19 @@
     }
     .well{
 
-      background-color: transparent;
+      background-color: #171718;
+      border-color: black;
     }
-	
-	.table td {
+    
+    
+  
+  .table td {
    text-align: center;   
-	}
+  }
 
-	.table th {
+  .table th {
    text-align: center;   
-	}
+  }
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
 
@@ -98,14 +101,7 @@
       z-index: 5;
     }
 
-    .carousel-control {
-      height: 55px;
-      margin-top: 0;
-      font-size: 120px;
-      text-shadow: 0 1px 1px rgba(0,0,0,.4);
-      background-color: grey;
-      border: 0;
-    }
+ 
 
     .carousel .item {
       height: 100%;
@@ -136,6 +132,27 @@
       margin-top: 10px;
     }
 
+    .carousel-control {
+  position: absolute;
+  top: 40%;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  font-size: 60px;
+  font-weight: 100;
+  line-height: 30px;
+  color: #ffffff;
+  text-align: center;
+  background: gray0;
+  border: 3px solid black ;
+  -webkit-border-radius: 23px;
+     -moz-border-radius: 23px;
+          border-radius: 23px;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
 
 
     /* MARKETING CONTENT
@@ -144,6 +161,7 @@
     /* Center align the text within the three columns below the carousel */
     .marketing .span4 {
       text-align: center;
+      
     }
     .marketing h2 {
       font-weight: normal;
@@ -190,9 +208,9 @@
       #largeProfile,#largeSelectPlay,#largeComment{
         display:block;
       }
-		  	h6 {
-		font-size: 120%;
-	}
+        h6 {
+    font-size: 120%;
+  }
 
 
     /* RESPONSIVE CSS
@@ -254,10 +272,10 @@
       #largeProfile,#largeSelectPlay,#largeComment{
         display:block;
       }
-	  
-	  	h5 {
-		font-size: 120%;
-	}
+    
+      h5 {
+    font-size: 120%;
+  }
     }
 
 
@@ -384,6 +402,31 @@
 
 
 
+
+ body{
+
+  color: #F2F2F2;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #2E2E2E;
+  *background-color: #2E2E2E;
+  background-image: -moz-linear-gradient(top, #2E2E2E, #2E2E2E);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2E2E2E), to(#2E2E2E));
+  background-image: -webkit-linear-gradient(top, #2E2E2E, #2E2E2E);
+  background-image: -o-linear-gradient(top, #2E2E2E, #2E2E2E);
+  background-image: linear-gradient(to bottom,#2E2E2E, #2E2E2E);
+  background-repeat: repeat-x;
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+
+ }
+
+
+
+
     </style>    
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->    
     <!--[if lt IE 9]>
@@ -395,7 +438,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">                    
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">                                   
     <link rel="shortcut icon" href="../assets/ico/favicon.png">  
-	
+  
 <script type="text/javascript">
 //Jainrain login code
 (function() {
@@ -434,7 +477,7 @@
     s.parentNode.insertBefore(e, s);
 })();
 </script>
-	
+  
   </head>  
 
   <body>    
@@ -442,9 +485,9 @@
         ================================================== --> 
           <div class="container" ng-controller="PlayerController">
             <ul class="nav nav-pills pull-right" align="right">
-						  <li ng-show="player.nickname"><a>Welcome, {{player.nickname}}{{secretAgent}}!</a></li>
-              <li><a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn" ng-click='login()'>Login</button></a></li>    
-              <li><a ng-show="player.nickname" ng-click='logout()' href="#"><button class="btn" ng-click='logout()'>Log Out</button></a></li>     
+              <li ng-show="player.nickname"><a>Welcome, {{player.nickname}}{{secretAgent}}!</a></li>
+              <li><a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn btn-primary" ng-click='login()'>Login</button></a></li>    
+              <li><a ng-show="player.nickname" ng-click='logout()' href="#"><button class="btn btn-danger" ng-click='logout()'>Log Out</button></a></li>     
             </ul>
           </div>  
           <br>
@@ -538,10 +581,11 @@
     <!-- /.container -->    
     <!-- Le javascript
         ================================================== -->    
-    <!-- Placed at the end of the document so the pages load faster -->    
+    <!-- Placed at the end of the document so the pages load faster -->  
 
-	
-<script src="lib/angular/angular.js"></script>    
+
+  
+<script src="lib/angular/angular.min.js"></script>    
 <script src="lib/angular/angular-resource.min.js"></script>    
 <script src="js/controllers.js"></script> 
 <script src="js/analytics.js"></script> 
@@ -580,5 +624,7 @@
       
 
     </script>
-	</body>
+  </body>
+  <footer>
+  </footer>
 </html>

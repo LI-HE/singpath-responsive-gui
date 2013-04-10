@@ -122,11 +122,12 @@ th, td { padding: 2px }
     
     Days of data: {{item.days.length}}<br>
     <table class="span-12">
-      <tr><th ng-repeat="header in ['Date', 'Players', 'Attempts', 'Hours Played', 'Attempts/Player', 'Minutes/Player', 'DAU', 'MAU', 'DAU/MAU', 'New Players', 'Games','Quest Starts', 'Quest Games']">
+      <tr><th ng-repeat="header in ['Date', 'New Players','Game Players', 'Attempts', 'Hours Played', 'Attempts/Player', 'Minutes/Player', 'DAU', 'MAU', 'DAU/MAU', 'Games','Quest Starts', 'Quest Games']">
           {{header}}</th>
       </tr>
-      <tr ng-repeat="day in item.days">
+      <tr ng-repeat="day in item.days | orderBy:'date'">
           <td>{{day.date}}</td>
+          <td>{{day.newPlayers}}</td>
           <td align="center">{{day.numPlayers}}</td>
           <td>{{day.attempts}}</td>
           <td>{{day.seconds/3600 | number:2}}</td>
@@ -135,13 +136,13 @@ th, td { padding: 2px }
           <td>{{day.DAU}}</td>
           <td>{{day.MAU}}</td>
           <td>{{day.DAUMAU*100 | number:2}}%</td>
-          <td>{{day.newPlayers}}</td>
           <td>{{day.games}}</td>
           <td>{{day.quests}}</td>
           <td>{{day.questGames}}</td>
       </tr>
       <tr class="fat">
           <td>Average</td>
+          <td align="center">{{item.newplayersaverage | number:2}}</td>
           <td align="center">{{item.numPlayersaverage | number:2}}</td>
           <td>{{item.attemptsaverage | number:2}}</td>
           <td>{{item.secondsaverage/3600 | number:2}}</td>
@@ -150,8 +151,6 @@ th, td { padding: 2px }
           <td>{{item.dauaverage | number:2}}</td>
           <td>{{item.mauaverage | number:2}}</td>
           <td>{{item.daumauaverage*100 | number:2}}%</td>
-
-          <td>{{item.newplayersaverage | number:2}}</td>
           <td>{{item.gamesaverage | number:2}}</td>
           <td>{{item.questsaverage | number:2}}</td>
       </tr>
