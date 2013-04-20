@@ -111,7 +111,7 @@ border-radius: 3px;
 								<div class="span4"  ng-repeat="story in stories | limitTo:3">
 									<label class="radio">
 									<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.$parent.storyid" id="{{story.id}}" value="{{story.id}}">
-									<input class="well"type="image" ng-src="img/story/{{story.name}}.jpg" alt="" height="230"/>
+									<input class="well"type="image" ng-src="img/story/{{story.name.split(' ').join('_')}}.jpg" alt="" height="230"/>
 									
 									<br>
 									<h4>{{story.name}}</h4>
@@ -129,7 +129,7 @@ border-radius: 3px;
 								<label class="radio">
 						
 								<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.storyid" id="{{story.id}}" value="{{story.id}}">
-								<input class="well" type="image" ng-src="img/story/{{story.name}}.jpg" alt="" height="230">
+								<input class="well" type="image" ng-src="img/story/{{story.name.split(' ').join('_')}}.jpg" alt="" height="230">
 								<br>
 								<h4>{{story.name}}</h4S>
 								</label>
@@ -144,7 +144,7 @@ border-radius: 3px;
 					<div class="span4" ng-repeat="story in stories | startFrom:6 | limitTo:3">
 						<label class="radio">
 						<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.storyid" id="{{story.id}}" value="{{story.id}}">
-						<input class="well" type="image" ng-src="img/story/{{story.name}}.jpg" alt="" height="230">
+						<input class="well" type="image" ng-src="img/story/{{story.name.split(' ').join('_')}}.jpg" alt="" height="230">
 						<br>
 						<h4>{{story.name}}</h4>
 						</label>
@@ -186,7 +186,7 @@ border-radius: 3px;
 					<div  ng-repeat="item in paths.paths"  id="paths">
 						<label>
 							<input type="radio" style="visibility:hidden" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.id}}" id="path">
-							<input  on-click="changeborder()" class="well" type="image" ng-src="img/language/{{item.description}}.png" id="pathImg"/ >
+							<input  on-click="changeborder()" class="well" type="image" ng-src="img/language/{{item.description.split(' ').join('_')}}.png" id="pathImg"/ >
 							
 						</label>		
 						
@@ -202,7 +202,7 @@ border-radius: 3px;
 					<div  ng-repeat="item in mobile_paths"  id="paths">
 						<label>
 							<input type="radio" style="visibility:hidden" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.path_id}}" id="path">
-							<input  on-click="changeborder()" class="well" type="image" ng-src="img/language/{{item.description}}.png" id="pathImg"/ >
+							<input  on-click="changeborder()" class="well" type="image" ng-src="img/language/{{item.description.split(' ').join('_')}}.png" id="pathImg"/ >
 							
 						</label>		
 						
@@ -321,7 +321,7 @@ border-radius: 3px;
 					<div  ng-repeat="item in paths.paths"  id="paths" style="display: inline-block;">
 						<label>
 							<input type="radio" style="visibility:hidden" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.description}}" id="path">
-							<input  on-click="changeborder()" class="well" type="image" ng-src="../assets/img/path-logo/{{item.description}}.png" id="pathImgSmall" height="50px" width="50px"/ >
+							<input  on-click="changeborder()" class="well" type="image" ng-src="../assets/img/path-logo/{{item.description.split(' ').join('_')}}.png" id="pathImgSmall" height="50px" width="50px"/ >
 							
 						</label>		
 						

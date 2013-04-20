@@ -158,6 +158,23 @@ th, td { padding: 2px }
         
   </div>
 
+  <div ng-controller="ChurnDataController">
+      Churn Data<br>
+      Churning Players: {{churn_data.totalchurningplayers}} <br>
+      Total Players: {{churn_data.totalplayers}}<br>
+      One Day Churn Rate: <b>{{churn_data.totalchurningplayers/churn_data.totalplayers*100 | number:2}}%</b><br>
+      <table class="span-12">
+      <tr><th ng-repeat="header in ['Day', 'Churning Players', 'Churn Percentage']">
+          {{header}}</th>
+      </tr>
+      <tr ng-repeat="day in churn_data.days | orderBy:'date'">
+          <td align="center">{{day.date}}</td>
+          <td align="center">{{day.churning_players}} / {{day.numPlayers}}</td>
+          <td align="center">{{day.churning_players/day.numPlayers*100 | number:2}}% </td>
+      </tr>
+      </table>
+
+  </div>
 
   <div ng-controller="GenericRestController" ng-init="model='playerpercentiles';">
     

@@ -165,6 +165,9 @@ function GameResultController($scope,$resource){
         };       
 }
 
+function ChurnDataController($scope,$resource){
+        $scope.churn_data = $resource('/jsonapi/churn_data').get();
+}
 function CohortAnalysisController($scope,$resource){
         //$scope.items = [];
         //$scope.analysis = {};
