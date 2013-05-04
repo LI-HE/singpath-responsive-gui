@@ -44,7 +44,7 @@
                 left: 0;
                 right: 0;
                 z-index: 10;
-                margin-top: 20px;
+                margin-top: 30px;
                 margin-bottom: -90px;
                 /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
             }
@@ -386,16 +386,17 @@
                 top:0;
             }
         </style>
-        <div class="container">
+        <div class="container" ng-controller="PlayerController">
             <ul class="nav nav-pills pull-right" align="right">
-                <li><a>Welcome, Secret Agent!</a>
-
+                <li ng-show="player.nickname"><a>Welcome, {{player.nickname}}{{secretAgent}}!</a>
                 </li>
-                <li><a class="janrainEngage" href="#">Login</a>
-
+                <li><a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn btn-primary" ng-click='login()'>Login</button></a>
+                </li>
+                <li><a ng-show="player.nickname" ng-click='logout()' href="#"><button class="btn btn-danger" ng-click='logout()'>Log Out</button></a>
                 </li>
             </ul>
         </div>
+        <br>
         <div class="navbar-wrapper">
             <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
             <div class="container">
@@ -455,7 +456,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li> <a href="#profile"><i class="icon-home icon-white icon-large"></i></a>
+                                <li> <a href="index.html#/profile"><i class="icon-home icon-white icon-large"></i></a>
 
                                 </li>
                             </ul>
@@ -476,15 +477,6 @@
         <script src="js/angular-ace.js"></script>
         <script src="src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
         <script src="./js/fancybox-fire.js"></script>
-        <script language="javascript" type="text/javascript">
-            angular.module('myApp', ['ngResource', 'ace']);
-
-            function FirstController($scope, $resource) {
-
-                $scope.status = "Ready";
-
-            }
-        </script>
         <script type="text/javascript">
             //Jainrain login code
             (function() {
@@ -527,57 +519,31 @@
     </head>
     
     <body ng-controller="NormalGameController" ng-init="" class="container">
-        <br>
-        <br>
-        <!--<a class="janrainEngage" href="#"><input type="submit" value="Hyperlinked Sign In Button"></a>-->
-		
-		<a id="video_pop" class="fancybox fancybox.iframe" href="http://www.youtube.com/embed/LL-9dh31lO8?enablejsapi=1&wmode=opaque" style="visibility: hidden">1</a>
+        <!--<a class="janrainEngage" href="#"><input type="submit" value="Hyperlinked Sign In Button"></a>-->	<a id="video_pop" class="fancybox fancybox.iframe" href="http://www.youtube.com/embed/LL-9dh31lO8?enablejsapi=1&wmode=opaque" style="visibility: hidden">1</a>
 
         <br>
         <div ng-controller="QuestController">
-            <br>QuestID: {{qid}}
             <table width=100%>
                 <tr>
                     <td width=94% style="text-align: left; border: 2px solid black; border-radius: 3px;">
                          <h4>Current Question</h4>
-				<font face="verdana" size="3">
-				ID: {{quest.id}} 
-				Name: {{quest.name}}
-				Problem Solved: ({{quest.numSolved}}/{{quest.numProblems}}) Solved
-				</font>
-		</div>
-		
-				<br>Game Details
-				<br>
-				<ul name="game_details">
-					<li name="quest_game_id">GameID = {{game.gameID}}</li>
-					<li name="quest_game_player">Game Player = {{game.player}}</li>
-					<li name="number_of_problems">Number of Problems = {{game.numProblems}}</li>
-					<li name="number_of_solved_problems">Number Solved = {{game.solvedProblemIDs.length}}</li>
-					<li>All Solved = {{game.allSolved}}</li>
-					<li>Status = {{game.status}}</li>
-					<li>ProblemIDs = {{game.problemIDs}}</li>
-					<li>Solved ProblemIDs = {{game.solvedProblemIDs}}</li>
-					<li>Remaining problems to solve = {{remaining_problems}}</li>
-					<li name="currentproblem">Current problem = {{current_problem}}</li>
-				</ul>
-				<br>Current Problem: (index {{current_problem_index}})
-				<br>ID: {{game.problems.problems[current_problem_index].id}}
-				<br>Name: {{game.problems.problems[current_problem_index].name}}
+	<font face="verdana" size="3">
+				Name: {{game.problems.problems[current_problem_index].name}}
 				<br>Description: {{game.problems.problems[current_problem_index].description}}
-				
-					<p>
-					<p>
+				</font>
+
+        </div>
+        <p>
+            <p>
                 </td>
                 <td width=3%></td>
                 <td>
                     <p>
                         <button class="btn btn-primary" ng-click="skip_problem()">&nbsp;&nbsp;Skip&nbsp;&nbsp;</button>
                     </p>
-                    <p>	<a role="button" class="btn btn-primary"  ng-click="check_solution_for_game()">Submit</a>
+                    <p>	<a role="button" class="btn btn-primary" ng-click="check_solution_for_game()">Submit</a>
 
                     </p>
-
                 </td>
                 </tr>
                 </table>
@@ -588,7 +554,7 @@
                                 <div class="span10">
                                     <table id="gametable" width=1180px height=350px>
                                         <tr>
-                                            <th style="border: 2px solid black;" height="30">Answer</th>
+                                            <th style="border: 2px solid black;" height="30">Current Run Code</th>
                                             <th align="right">
                                                 <form style="visibility:hidden;" class="form-inline">
                                                     <label class="checkbox">
@@ -596,26 +562,46 @@
                                                     <label class="checkbox">
                                                         <input type="checkbox">Auto Advance</label>&nbsp;</form>
                                             </th>
-                                            <th width="50%" style=" border: 2px solid black;" height="30">Sample Answers</th>
+                                            <th width="50%" style=" border: 2px solid black;" height="30"><a role="button" ng-click="showSampleAnswers()">Sample Answers</a>
+                                            </th>
+                                            <th width="50%" style=" border: 2px solid black;" height="30"><a role="button" ng-click="showOutcome()">Outcome</a>
+                                            </th>
                                         </tr>
                                         <tr>
                                             <td colspan="2" style="border: 2px solid black; border-radius: 3px;">
-                                                <table id="gameTable2" width=580px>Player Solution:
-                                                    <div ace="javascript" ng-model="solution">
-                                                        <textarea name="solution_text" ng-model="solution">{{game.problems.problems[current_problem_index].skeleton}}</textarea>
+                                                <table id="gameTable2" width=580px>
+                                                    <div>
+                                                        <textarea ng-model="$parent.solution" widith=1 00% height=100%></textarea>
                                                     </div>
                                                 </table>
                                             </td>
                                             <td colspan="2" style="border: 2px solid black; border-radius: 3px;">
-                                                <table id="gameTable2" width=580px>Tests:
-												<br>Examples: {{game.problems.problems[current_problem_index].examples}}
-
+                                                <table id="gameTable2" width=580px>
+                                                    <div ng-show="sampleAnswers=='yes'">Examples: {{game.problems.problems[current_problem_index].examples}}</div>
+                                                    <table ng-show="sampleAnswers=='no'" border=1 bgcolor=#FFFFFF>
+                                                        <tr>
+                                                            <th>Called</th>
+                                                            <th>Expected</th>
+                                                            <th>Recieved</th>
+                                                            <th>Correct</th>
+                                                        </tr>
+                                                        <tr ng-repeat="line in solution_check_result.results">
+                                                            <td>{{line.call}}</td>
+                                                            <td>{{line.expected}}</td>
+                                                            <td>{{line.received}}</td>
+                                                            <td ng-show="line.status" bgcolor=#00FF00>{{line.status}}</td>
+                                                            <td ng-show="!line.status" bgcolor=#FF0000>{{line.status}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="4">Errors: {{solution_check_result.errors}}</td>
+                                                        </tr>
+                                                    </table>
                                                 </table>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
-							</div>
+                            </div>
     </body>
     <script src="http://www.youtube.com/player_api"></script>
     <script src="../assets/js/jquery.js"></script>

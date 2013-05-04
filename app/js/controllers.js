@@ -31,8 +31,13 @@ function PlayerController($scope,$resource){
         $scope.player = $resource('/jsonapi/player').get(); 
 
         $scope.login=function(){
-
+			
         };     
+		
+		$scope.dismissModal = function(){
+			$('#loginAlert').modal('hide')
+		};
+		
         $scope.logout=function(){
             
             $resource('/sign_out').get({}, function(response){
@@ -140,7 +145,13 @@ function NormalGameController($scope,$resource,$cookieStore){
         $scope.skip_problem_count = 0;
         $scope.current_problem_index = 0;
         $scope.permutation = "12345"; 
-        $scope.qid = $cookieStore.get("name").id;
+        if($cookieStore.get("name")){
+          $scope.qid = $cookieStore.get("name").id; //retrieve quest id from Storyboard page
+        }
+		$scope.solution = null;
+		$scope.theData = null;
+		$scope.sampleAnswers = "yes";
+		
 		//alert($scope.qid);
         $scope.create_practice_game = function(pathID,LevelID,numProblems){
           $scope.CreateGameModel = $resource('/jsonapi/create_game');
@@ -150,7 +161,14 @@ function NormalGameController($scope,$resource,$cookieStore){
             $scope.update_remaining_problems();
           });
         };
-
+		$scope.showSampleAnswers=function(){
+			$scope.sampleAnswers = "yes";
+		};
+		
+		$scope.showOutcome = function(){
+			$scope.sampleAnswers = "no";
+		};
+		
         $scope.create_path_game = function(pathID,numProblems){
           $scope.CreateGameModel = $resource('/jsonapi/create_game/pathID/:pathID/numProblems/:numProblems');
           //alert(pathID+" "+numProblems);
@@ -253,6 +271,7 @@ function NormalGameController($scope,$resource,$cookieStore){
           //$scope.solution
           //$scope.current_problem
           //$scope.game.gameID
+		  $scope.sampleAnswers = "no";
           $scope.SaveResource = $resource('/jsonapi/verify_for_game');
           //alert($scope.game.gameID);
           $scope.theData = {user_code:$scope.solution,
@@ -327,7 +346,9 @@ function GameController($scope,$resource,$cookieStore,$location){
         $scope.autoCheck="yes"; //make autocheck available when page load
         $scope.notCompile = 'false'; //hide not compile warning before the game loaded
         $scope.advancedCheck = "false";
-        $scope.qid = $cookieStore.get("name").id; //retrieve quest id from Storyboard page
+        if($cookieStore.get("name")){
+          $scope.qid = $cookieStore.get("name").id; //retrieve quest id from Storyboard page
+        }
         $scope.source = []; //initialize the solution drag and drop field
         
         /*
@@ -645,8 +666,9 @@ function JsonRecordController($scope,$resource){
 
 //The quest controller returns a players quests or specific quest
 function QuestController($scope,$resource,$location,$routeParams,$cookieStore){
+
     $scope.quests = new Array();
-    $scope.changeRoute = 'play_game_demo.html';
+    $scope.changeRoute = 'normal_play_page.html';
     $scope.name = $cookieStore.get("name");
     //Create quest
     $scope.create_quest = function(storyID,pathID,difficulty){
@@ -738,7 +760,7 @@ function QuestController($scope,$resource,$location,$routeParams,$cookieStore){
     };
 
     $scope.$watch('name', function() {
-      if($scope.name.difficulty == "Drag-n-Drop"){
+      if($scope.name && $scope.name.difficulty == "Drag-n-Drop"){
         $scope.changeRoute = "playPage.html";
       }
     }, true);

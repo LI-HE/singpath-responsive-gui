@@ -176,8 +176,10 @@ myApp.run(function($httpBackend) {
       var stories = [{"name": "The Spy Who Coded", "videos": ["LL-9dh31lO8", "wforb_EBcNc", "rlcYdRBC4CY", "s_4FHdYa8vg", "23Fv44Qra8Y", "uSL9dck1irQ", "atd-_akntnI", "C3fpgXP5JgU", "17YvG9zGPkc", "k__8ueUkWVw", "ly65Zf2Ak_s"], "created": "2013-04-01T10:36:11.005830", "editor": 57504, "id": 14611860, "description": "A first person coder starring Christian and Shannon Boesch"}, {"name": "Tricorder Meltdown", "videos": ["LL-9dh31lO8", "wforb_EBcNc", "rlcYdRBC4CY", "s_4FHdYa8vg", "23Fv44Qra8Y", "uSL9dck1irQ", "atd-_akntnI", "C3fpgXP5JgU", "17YvG9zGPkc", "k__8ueUkWVw", "ly65Zf2Ak_s"], "created": "2013-04-03T03:58:35.784920", "editor": 57504, "id": 14972890, "description": "A first person coder starring Christian and Shannon Boesch"}, {"name": "Texas Whirlwind", "videos": ["LL-9dh31lO8", "wforb_EBcNc", "rlcYdRBC4CY", "s_4FHdYa8vg", "23Fv44Qra8Y", "uSL9dck1irQ", "atd-_akntnI", "C3fpgXP5JgU", "17YvG9zGPkc", "k__8ueUkWVw", "ly65Zf2Ak_s"], "created": "2013-04-03T03:58:58.489010", "editor": 57504, "id": 15162769, "description": "A first person coder starring Christian and Shannon Boesch"}];
       $httpBackend.whenGET('/jsonapi/story').respond(stories);
 
+      $httpBackend.whenJSONP(/^h/).passThrough();
       //Generic Response to catch anything sent to the SingPath rest API
-      
+      //$httpBackend.whenGET(/^JSONP/).passThrough();
+
       var backend = {};
       var counter = 0;
 

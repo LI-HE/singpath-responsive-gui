@@ -55,7 +55,7 @@
       left: 0;
       right: 0;
       z-index: 10;
-      margin-top: 20px;
+      margin-top: 30px;
       margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
     }
     .navbar-wrapper .navbar {
@@ -471,10 +471,10 @@
   
   </head>  
 
-  <body>    
+  <body ng-controller="PlayerController">    
     <!-- NAVBAR
         ================================================== --> 
-        <div class="container" ng-controller="PlayerController">
+        <div class="container" >
           <ul class="nav nav-pills pull-right" align="right">
             <li ng-show="player.nickname"><a>Welcome, {{player.nickname}}{{secretAgent}}!</a></li>
             <li><a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn btn-primary" ng-click='login()'>Login</button></a></li>    
@@ -502,7 +502,8 @@
             <div class="nav-collapse collapse">              
               <ul class="nav pull-right">   
                 <li>
-                  <a href="#quests">Quests</a>
+				  <a ng-show="player.nickname" href="#quests">Quests</a>
+                  <a ng-show="!player.nickname"  type="button" href="#loginAlert" data-toggle="modal">Quest</a>
                 </li>                
                 <li>
                 <a href="#practice">Practice</a>
@@ -549,7 +550,8 @@
               </ul>                
               </li>
                 <li>
-                  <a href="#profile"><i class="icon-home icon-white icon-large"></i></a>
+                  <a ng-show="!player.nickname" class="janrainEngage" href="#"><i class="icon-home icon-white icon-large"></i></a>
+                  <a ng-show="player.nickname" href="#profile"><i class="icon-home icon-white icon-large"></i></a>
                 </li>                           
               </ul>            
             </div>
@@ -565,7 +567,20 @@
     <!-- Carousel
         ================================================== --> 
   <div ng-view></div>
-
+  <!--Notification to Anoynmous User- "Ques will not be saved!"-->
+  <div class="modal fade" id="loginAlert" >
+    <div class="modal-header">
+      <a class="close"  href="#" data-dismiss="modal">&times;</a>
+        <h3 style="font-color:black">Dear player!</h3>
+    </div>
+    <div class="modal-body">
+      <p style="font-color:black">You are currently not logged in. The quest will not be saved!</p>
+    </div>
+    <div class="modal-footer">
+      <a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn btn-primary" ng-click='dismissModal()'>Login</button></a>
+	  <a ng-show="!player.nickname" href="#" data-dismiss="modal"><button class="btn btn-primary" ng-click='dismissModal()'>Got it!</button></a>
+    </div>
+  </div>
     <!-- /.carousel -->    
     <!-- Marketing messaging and featurettes
         ================================================== -->    

@@ -28,9 +28,10 @@
                     </div>                                    
                     <p style="font-family:Sans-Serif"><h6>SingPath is the most FUN way to practice software languages! yeah                           SingPath provides a platform to those that want to test their                           programming skills in a competitive and fun environment.                           There is a range of programming languages that you can test                           your skills with including Python, JavaScript, Ruby,                           Objective C and Java with many other languages to come.                           Specialize in one language or show your flexibility and skill                           by coding in multiple languages.What are you waiting for?                           Sign in today and follow your chosen Path!                                     
                     </h6></p>                                                     
-                    <div align="right">                          
-            <a type="button" class="btn btn-large btn-primary" href="#try-quest" data-toggle="modal" style="margin-right: 30px">Gotta Try a Quest!</a>
-          </div>                          
+                    <div align="right" ng-controller="PlayerController">                          
+				  <a ng-show="player.nickname" class="btn btn-primary" href="#quests">Gotta try a Quest!</a>
+                  <a ng-show="!player.nickname" class="btn btn-primary" type="button" href="#loginAlert" data-toggle="modal">Gotta try a Quest!</a>
+					</div>                          
                   </div>                         
                 </div>                      
                 <hr>                                                                                             
@@ -100,18 +101,3 @@
       </div>      
  
     </div>
-  
-  <!--Notification to Anoynmous User- "Ques will not be saved!"-->
-  <div class="modal fade" id="try-quest" >
-    <div class="modal-header">
-      <a class="close" data-dismiss="modal">&times;</a>
-        <h3 style="font-color:orange">Hi Secret Agent!</h3>
-    </div>
-    <div class="modal-body">
-      <p class="hot">You are currently not logged in. The quest will not be saved!</p>
-    </div>
-    <div class="modal-footer">
-      <a href="play.html"class="btn btn-primary" type="submit">Got it!</a>
-      <a href="#" class="btn btn-primary" data-dismiss="modal">Back</a>
-    </div>
-  </div>
