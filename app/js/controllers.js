@@ -274,7 +274,7 @@ function NormalGameController($scope,$resource,$cookieStore){
 		  $scope.sampleAnswers = "no";
           $scope.SaveResource = $resource('/jsonapi/verify_for_game');
           //alert($scope.game.gameID);
-          $scope.theData = {user_code:$scope.solution,
+          $scope.theData = {user_code:$scope.solution1,
                             problem_id:$scope.current_problem,
                             game_id:$scope.game.gameID};
           
