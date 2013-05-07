@@ -25,14 +25,35 @@
             .img-polaroid {
                 height:215px;
             }
-            .well {
-                background-color: transparent;
+            .well{
+              background-color: #171718;
+              border-color: black;
+            }
+            a:link {
+                color: #ffffff;
+            }
+            a:active {
+                color: #000000;
+            }
+            a:hover {
+                color: #0000FF;
+            }
+
+            .no-space [class*="span"] {
+                margin-left: 0;
+            }
+
+            .no-space {
+                margin-left:0;
             }
             .table td {
                 text-align: center;
             }
             .table th {
                 text-align: center;
+            }
+            .tabspacing{
+                width:50%;
             }
             /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
@@ -371,6 +392,25 @@
         ul {
             list-style-type: none;
         }
+        /* Code added to change background into back color */
+        body{
+            color: #F2F2F2;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+            background-color: #2E2E2E;
+            *background-color: #2E2E2E;
+            background-image: -moz-linear-gradient(top, #2E2E2E, #2E2E2E);
+            background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2E2E2E), to(#2E2E2E));
+            background-image: -webkit-linear-gradient(top, #2E2E2E, #2E2E2E);
+            background-image: -o-linear-gradient(top, #2E2E2E, #2E2E2E);
+            background-image: linear-gradient(to bottom,#2E2E2E, #2E2E2E);
+            background-repeat: repeat-x;
+            border-color: #0044cc #0044cc #002a80;
+            border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+            filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        }
+
+
         </style>
 		<style type='text/css'>
 		 .ace-container {
@@ -518,85 +558,103 @@
         <a id="video_pop" class="fancybox fancybox.iframe" href="" style="display:none"></a>
 
         <br>
-        <div ng-controller="QuestController">
-            <table width=100%>
-                <tr>
-                    <td width=94% style="text-align: left; border: 2px solid black; border-radius: 3px;">
-                         <h4>Current Question</h4>
-	                     <font face="verdana" size="3">
-            				Name: {{game.problems.problems[current_problem_index].name}}
-            				<br>Description: {{game.problems.problems[current_problem_index].description}}
-        				</font>
-        </div>
-        <p>
-            <p>
-                </td>
-                <td width=3%></td>
-                <td>
-                    <p>
-                        <button class="btn btn-primary" ng-click="skip_problem()">&nbsp;&nbsp;Skip&nbsp;&nbsp;</button>
-                    </p>
-                    <p>	<a role="button" class="btn btn-primary" ng-click="check_solution_for_game()">Submit</a>
+        <div class="row">
+            <div class="span10 well" ng-controller="QuestController">
+                <div  width=94% style="text-align: left;">
+                    <h4>&nbsp;Current Question</h4>
+    	               <font face="verdana" size="3">
+                			&nbsp;&nbsp;Name: {{game.problems.problems[current_problem_index].name}}
+                			<br>&nbsp;&nbsp;Description: {{game.problems.problems[current_problem_index].description}}
+            			</font>
+                </div>
+            </div>
+            <div class="span1" style="vertical-align: middle;">
+                <br>
 
-                    </p>
-                </td>
-                </tr>
-                </table>
                 <p>
-                    <p>
-                        <div class="row-fluid">
-                            <div class="span12">
-                                <div class="span10">
-                                    <table id="gametable" width=1180px height=350px>
-                                        <tr>
-                                            <th style="border: 2px solid black;" height="30">Current Run Code</th>
-                                            <th align="right">
-                                                <form style="visibility:hidden;" class="form-inline">
-                                                    <label class="checkbox">
-                                                        <input type="checkbox">Auto Check</label>&nbsp;
-                                                    <label class="checkbox">
-                                                        <input type="checkbox">Auto Advance</label>&nbsp;</form>
-                                            </th>
-                                            <th width="50%" style=" border: 2px solid black;" height="30"><a role="button" ng-click="showSampleAnswers()">Sample Answers</a>
-                                            </th>
-                                            <th width="50%" style=" border: 2px solid black;" height="30"><a role="button" ng-click="showOutcome()">Outcome</a>
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="border: 2px solid black; border-radius: 3px;">
-                                                <table id="gameTable2" width=580px>
-                                                    <div>
-                                                        <ace-editor ng-model="$parent.solution1"></ace-editor>
-                                                    </div>
-                                                </table>
-                                            </td>
-                                            <td colspan="2" style="border: 2px solid black; border-radius: 3px;">
-                                                <table id="gameTable2" width=580px>
-                                                    <div ng-show="sampleAnswers=='yes'">Examples: {{game.problems.problems[current_problem_index].examples}}</div>
-                                                    <table ng-show="sampleAnswers=='no'" border=1 bgcolor=#FFFFFF>
-                                                        <tr>
-                                                            <th>Called</th>
-                                                            <th>Expected</th>
-                                                            <th>Recieved</th>
-                                                            <th>Correct</th>
-                                                        </tr>
-                                                        <tr ng-repeat="line in solution_check_result.results">
-                                                            <td>{{line.call}}</td>
-                                                            <td>{{line.expected}}</td>
-                                                            <td>{{line.received}}</td>
-                                                            <td ng-show="line.status" bgcolor=#00FF00>{{line.status}}</td>
-                                                            <td ng-show="!line.status" bgcolor=#FF0000>{{line.status}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="4">Errors: {{solution_check_result.errors}}</td>
-                                                        </tr>
-                                                    </table>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
+                    <button class="btn btn-primary" ng-click="skip_problem()">&nbsp;&nbsp;Skip&nbsp;&nbsp;</button>
+                </p>
+                <br>
+                <p>	
+                    <a role="button" class="btn btn-primary" ng-click="check_solution_for_game()">&nbsp;&nbsp;Run&nbsp;&nbsp;</a>
+                </p>
+            </div>  
+        </div>  
+        <div class="row">
+            <div class="span12">
+            </div>
+            <div class="span12">
+            </div>
+            <div class="span12">
+            </div>
+            <div class="span12">
+            </div>
+            <div class="span12">
+            </div>
+            <div class="span12">
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="span6 well">
+                <!-- Tab for Run-->
+                <div id="tab1"class="tabbable">
+                  <ul class="nav nav-tabs">
+                    <li class="tabspacing active">
+                      <a href="#t3" data-toggle="tab">Solution</a>
+                    </li>
+                  </ul>
+                  <div  class="tab-content">
+                    <div class="tab-pane fade in active" id="t3" style="height:320px;">
+                        <div>
+                            <ace-editor ng-model="$parent.solution1">{{game.problems.problems[current_problem_index].skeleton}}</ace-editor>
+                        </div>   
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+            <div class="span5 well">
+				<!-- Tab for Sample Answer and Outcome-->
+                <div id="tab2"class="tabbable">
+                  <ul class="nav nav-tabs">
+                    <li class="tabspacing active">
+                      <a href="#t1" ng-click="showSampleAnswers()" data-toggle="tab">Sample Answer</a>
+                    </li>
+                    <li class="tabspacing">
+                      <a href="#t2" ng-click="showOutcome()" data-toggle="tab">Outcome</a>
+                    </li>  
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane fade in active" id="t1" style="height:320px;">
+                        <div ng-show="sampleAnswers=='yes'">Examples: {{game.problems.problems[current_problem_index].examples}}</div>
+                    </div>
+                    <div class="tab-pane fade in" id="t2" style="height:320px;">
+                        <table ng-show="sampleAnswers=='no'" border=1 bgcolor=#FFFFFF width=100%>
+                            <tr>
+                                <th height="50">Called</th>
+                                <th height="50">Expected</th>
+                                <th height="50">Recieved</th>
+                                <th height="50">Correct</th>
+                            </tr>
+                            <tr ng-repeat="line in solution_check_result.results">
+                                <td height="40">{{line.call}}</td>
+                                <td height="40">{{line.expected}}</td>
+                                <td height="40">{{line.received}}</td>
+                                <td height="40" ng-show="line.status" bgcolor=#00FF00>{{line.status}}</td>
+                                <td height="40"ng-show="!line.status" bgcolor=#FF0000>{{line.status}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">Errors: {{solution_check_result.errors}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+        </div>      
     </body>
     <script src="http://www.youtube.com/player_api"></script>
     <script src="../assets/js/jquery.js"></script>
@@ -614,6 +672,7 @@
     <script src="lib/angular/angular-resource.min.js"></script>
     <script src="../assets/js/bootstrap-modal.js"></script>
     <script src="./js/jquery.fancybox.js"></script>
+    <script src="../assets/js/bootstrap-tab.js"></script> 
     <script type="text/javascript">
         console.log("Current location " + document.location.host);
         if (document.location.host == "localhost:8000" || document.location.host == "localhost" || document.location.host == "smu-sis.github.io") {
@@ -622,5 +681,6 @@
             document.write('<script src="../test/lib/angular/angular-mocks.js"> </' + 'script>  ');
         }
     </script>
+   
 
 </html>

@@ -177,6 +177,7 @@ myApp.run(function($httpBackend) {
       $httpBackend.whenGET('/jsonapi/story').respond(stories);
 
       $httpBackend.whenJSONP(/^h/).passThrough();
+      $httpBackend.whenPOST('/jsonapi/contribute_problem').passThrough();
       //Generic Response to catch anything sent to the SingPath rest API
       //$httpBackend.whenGET(/^JSONP/).passThrough();
 

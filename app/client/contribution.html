@@ -65,69 +65,67 @@
             <font color="green" ng-show="showdescription">{{problem.description}}</font>
             
             <div ng-show="problem.newproblem" ng-controller="NewProblemController" ng-init="load_defaults(problem)">
-              Status: Not submitted  <br>
+              Status: Not submitted  
+              <select ng-model="language" ng-options="item.language as item.urlName for item in supported_langugages"></select><br>
+              
               <input type="text" size="40" ng-model="problem.name">Name<br>
               <textarea ng-model="problem.description" rows="5" cols="80"></textarea>Description<br>
               <input type="text" ng-model="problem.recommended_order">Recommended Order<br>
+              Examples<br>
               <ace-editor ng-model="problem.examples"></ace-editor><br>
               
-              <!--<textarea ng-model="problem.examples" rows="5" cols="80"></textarea> --> Examples<br>
-              <ace-editor ng-model="problem.tests"></ace-editor><br>
-              
+              Tests  <input type="submit" value="verify {{language}} code" ng-click="verify()">
+              <br>
+              <table>
+                <tr>
+                  <td>
+                    <ace-editor ng-model="problem.tests"></ace-editor><br>
+                  </td>
+                  <td>
+                    <div ng-show="result.errors">
+                      Errors: {{result.errors}}
+                    </div>
+                    Is Solved: <b>{{result.solved}}</b><br>
+                    <table border=1 bgcolor=#FFFFFF>
+                      <tr>   
+                          <th>Called</th>
+                          <th>Expected</th>
+                          <th>Recieved</th>
+                          <th>Correct</th>    
+                      </tr>
+                      <tr ng-repeat="line in result.results">
+                          <td>{{line.call}}</td>
+                          <td>{{line.expected}}</td>
+                          <td>{{line.received}}</td>
+                          <td ng-show="line.correct" bgcolor=#00FF00>{{line.correct}}</td>
+                          <td ng-show="!line.correct" bgcolor=#FF0000>{{line.correct}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
               <!--<textarea ng-model="problem.tests" rows="5" cols="80"></textarea>-->
-              Tests<br>
-              <ace-editor ng-model="problem.privatetests"></ace-editor><br>
               
-              <!--<textarea ng-model="problem.privatetests" rows="5" cols="80"></textarea>-->Private Tests <br>
-              <ace-editor ng-model="problem.skeleton"></ace-editor><br>
-              
-              <!--<textarea ng-model="problem.skeleton" rows="5" cols="80"></textarea>-->Skeleton Code<br>
-              <ace-editor ng-model="problem.solution"></ace-editor><br>
-              <!--<textarea ng-model="problem.solution" rows="5" cols="80"></textarea>-->Solution<br>
-
-              <select ng-model="language" ng-options="item.language as item.urlName for item in supported_langugages"></select>
-              <br>
-              <input type="submit" value="verify {{language}} code" ng-click="verify()">
-              
-              <br>
-              <table><tr><td>
-              <div ng-show="result">
-                Status: {{status}}<br>
-                Errors: {{result.errors}}<br>
-                Is Solved: <b>{{result.solved}}</b><br>
-                <table border=1 bgcolor=#FFFFFF>
-                    <tr>   
-                        <th>Called</th>
-                        <th>Expected</th>
-                        <th>Recieved</th>
-                        <th>Correct</th>    
-                    </tr>
-                    <tr ng-repeat="line in result.results">
-                        <td>{{line.call}}</td>
-                        <td>{{line.expected}}</td>
-                        <td>{{line.received}}</td>
-                        <td ng-show="line.correct" bgcolor=#00FF00>{{line.correct}}</td>
-                        <td ng-show="!line.correct" bgcolor=#FF0000>{{line.correct}}</td>      
-                    </tr>
-                </table>
-              <div>
-              </td>
-              <td>
-              <div ng-show="problem.privatetests.length>0">
-                
-                <input type="submit" value="verify {{language}} code with private tests" ng-click="verify_private()">
-                Private Test Result<br>
-                Status: {{status}}<br>
-                Errors: {{privateresult.errors}}<br>
-                Is Solved: <b>{{privateresult.solved}}</b><br>
-                <table border=1 bgcolor=#FFFFFF>
+              Private Tests  <input type="submit" value="verify {{language}} code with private tests" ng-click="verify_private()">
+                <br>
+              <table>
+                <tr>
+                  <td>              
+                      <ace-editor ng-model="problem.privatetests"></ace-editor><br>
+                  </td>
+                  <td>
+                    <div ng-show="privateresult.errors">
+                      Errors: {{privateresult.errors}}
+                    </div>
+                    Is Solved: <b>{{privateresult.solved}}</b><br>
+                    <table border=1 bgcolor=#FFFFFF>
                     <tr>   
                       <th>Called</th>
                       <th>Expected</th>
                       <th>Recieved</th>
                       <th>Correct</th>    
-                  </tr>
-                  <tr ng-repeat="line in privateresult.results">
+                    </tr>
+                    <tr ng-repeat="line in privateresult.results">
                       <td>{{line.call}}</td>
                       <td>{{line.expected}}</td>
                       <td>{{line.received}}</td>
@@ -135,16 +133,29 @@
                       <td ng-show="!line.correct" bgcolor=#FF0000>{{line.correct}}</td>      
                   </tr>
                 </table>
+                  </td>
+                </tr>
+              </table>
+              
+              Skeleton Code<br>
+              <ace-editor ng-model="problem.skeleton"></ace-editor><br>
+              
+              Solution<br>
+              <ace-editor ng-model="problem.solution"></ace-editor><br>
+              
+              <br>
+            
+              <div ng-show="privateresult.solved&&result.solved">
+               <input type="submit" value="Submit problem" ng-click="submit_contribution()">
+               Press submit to submit your problem for review. 
               </div>
-            </td></tr></table>
-
-
-
-              <input type="submit" value="Run tests" ng-click="">
-              <input type="submit" value="Submit problem" ng-click="">
+              <div ng-hide="privateresult.solved&&result.solved">
+               <b>Waiting for public and private tests to both be passing.<br>
+                Click the two verify buttons above and get all green results on each.</b>
+              </div>
+              
               <br>
         
-
             </div>
           
           </li>
@@ -217,13 +228,12 @@
 <script src="../js/jquery.min.js"></script>
 <script src="ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/ace-directive.js" type="text/javascript" charset="utf-8"></script>
-
 <script src="../js/controllers.js"></script> 
 <script src="../js/contribution-controllers.js"></script> 
 <script src="../js/analytics.js"></script>
 <script src="../js/app-config.js"></script>          
-<!--<script src="../js/app.js"></script> -->
-<script src="../js/app-contribution.js"></script>
+<script src="../js/app.js"></script>
+<!--<script src="../js/app-contribution.js"></script>-->
 
 <script src="../js/cookies.js"></script>    
 <script src="../../test/app-test.js"></script>    

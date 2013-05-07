@@ -248,6 +248,7 @@ function NormalGameController($scope,$resource,$cookieStore){
         };
 
         $scope.move_to_next_unsolved_problem = function(){
+          $scope.sampleAnswers = "yes";
           if ($scope.remaining_problems.length>0){
             //Todo:If you are already on the problem, you don't need to reload it. 
             $scope.current_problem = $scope.remaining_problems[$scope.skip_problem_count % $scope.remaining_problems.length];
@@ -263,6 +264,7 @@ function NormalGameController($scope,$resource,$cookieStore){
 
         }
         $scope.skip_problem = function(){
+          $scope.sampleAnswers = "yes";
           if ($scope.remaining_problems.length>1){
             $scope.skip_problem_count += 1;
             $scope.move_to_next_unsolved_problem();

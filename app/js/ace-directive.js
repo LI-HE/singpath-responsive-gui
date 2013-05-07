@@ -22,15 +22,9 @@ module.directive("aceEditor", [
         updateViewValue = function() {
           //Need to handle the error.
           if(!$scope.$$phase) {
-            //$digest or $apply
             return $scope.$apply(function() {
               return model.$setViewValue(session.getValue());
             });
-          }
-          else{
-            //$scope.$phase(function() {
-              //return model.$setViewValue(session.getValue());
-            //});
           }
           
         };
