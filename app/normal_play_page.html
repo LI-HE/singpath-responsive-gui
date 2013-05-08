@@ -575,7 +575,7 @@
 					<p>
 					Game progress 
 					<br>
-					({{game.numSolvedProblems}} / {{game.numProblems}})
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;({{game.numSolvedProblems}} / {{game.numProblems}})
 					</p>
 					<br>
 					<p>	
@@ -606,12 +606,12 @@
                     <li class="tabspacing active">
                       <a href="#t3" data-toggle="tab">Solution</a>
                     </li>
-					<a role="button" class="btn btn-primary pull-right" ng-click="check_solution_for_game()">&nbsp;&nbsp;&nbsp;Run&nbsp;&nbsp;&nbsp;</a>
+                    <button class="btn btn-primary pull-right" ng-click="check_solution_for_game()">&nbsp;&nbsp;Run&nbsp;&nbsp;</button>
                   </ul>
                   <div  class="tab-content">
                     <div class="tab-pane fade in active" id="t3" style="height:320px;">
                         <div>
-                            <ace-editor ng-model="$parent.solution">{{game.problems.problems[current_problem_index].skeleton}}</ace-editor>
+                            <ace-editor ng-model="solution1">{{game.problems.problems[current_problem_index].skeleton}}</ace-editor>
                         </div>   
                     </div>
                   </div>
@@ -621,23 +621,21 @@
 				<!-- Tab for Sample Answer and Outcome-->
                 <div id="tab2"class="tabbable">
                   <ul class="nav nav-tabs">
-                    <li class="tabspacing active">
-                      <a href="#t1" ng-click="showSampleAnswers()" data-toggle="tab">Sample Answer</a>
+                    <li id = "ta1" class="tabspacing active">
+                      <a href="#t1" data-toggle="tab">Sample Answer</a>
                     </li>
-                    <li class="tabspacing">
-                      <a href="#t2" ng-click="showOutcome()" data-toggle="tab">Outcome</a>
+                    <li id = "ta2" class="tabspacing">
+                      <a href="#t2" data-toggle="tab">Outcome</a>
                     </li>  
                   </ul>
                   <div class="tab-content">
                     <div class="tab-pane fade in active" id="t1" style="height:320px;">
-                        <div ng-show="sampleAnswers=='yes'">Examples: 
-						<pre style = "color:blue;">
-						{{game.problems.problems[current_problem_index].examples}}
-						</pre>
-						</div>
+                        <div>Examples: 
+			<pre style = "color:blue;">{{game.problems.problems[current_problem_index].examples}}</pre>
+			</div>
                     </div>
                     <div class="tab-pane fade in" id="t2" style="height:320px;">
-                        <table ng-show="sampleAnswers=='no'" border=1 bgcolor=#FFFFFF width=100%>
+                        <table border=1 bgcolor=#FFFFFF width=100%>
                             <tr>
                                 <th height="50">Called</th>
                                 <th height="50">Expected</th>
@@ -652,7 +650,7 @@
                                 <td height="40"ng-show="!line.status" bgcolor=#FF0000>{{line.status}}</td>
                             </tr>
                             <tr>
-                                <td colspan="4">Errors: {{solution_check_result.errors}}</td>
+                                <td colspan="4">Errors: <pre style = "color:blue;">{{solution_check_result.errors}}</pre></td>
                             </tr>
                         </table>
                     </div>
@@ -673,7 +671,7 @@
     <script src="js/app-config.js"></script>
     <script src="js/app.js"></script>
     <script src="js/cookies.js"></script>
-	<script src="js/ace-directive.js" type="text/javascript"></script>
+    <script src="js/ace-directive.js" type="text/javascript"></script>
     <script src="lib/angular/angular-resource.min.js"></script>
     <script src="../assets/js/bootstrap-modal.js"></script>
     <script src="./js/jquery.fancybox.js"></script>

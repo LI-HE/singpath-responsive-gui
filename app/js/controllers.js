@@ -148,9 +148,6 @@ function NormalGameController($scope,$resource,$cookieStore){
         if($cookieStore.get("name")){
           $scope.qid = $cookieStore.get("name").id; //retrieve quest id from Storyboard page
         }
-    		$scope.solution = null;
-    		$scope.theData = null;
-    		$scope.sampleAnswers = "yes";
         var videos = 0;
 		
     		//alert($scope.qid);
@@ -163,13 +160,6 @@ function NormalGameController($scope,$resource,$cookieStore){
           });
         };
 
-    		$scope.showSampleAnswers=function(){
-    			$scope.sampleAnswers = "yes";
-    		};
-    		
-    		$scope.showOutcome = function(){
-    			$scope.sampleAnswers = "no";
-    		};
 		
         $scope.create_path_game = function(pathID,numProblems){
           $scope.CreateGameModel = $resource('/jsonapi/create_game/pathID/:pathID/numProblems/:numProblems');
@@ -243,6 +233,11 @@ function NormalGameController($scope,$resource,$cookieStore){
               $scope.remaining_problems.push($scope.game.problemIDs[i]);
             }
           }
+
+          if($scope.remaining_problems.length == 0){
+            //alert("TBD - Start another quest game automatically here for quest "+ $scope.qid);
+            $scope.create_quest_game($scope.qid);
+          }
           //Update the current problem index based on remaining problems and items skipped. 
           $scope.move_to_next_unsolved_problem();
         };
@@ -250,21 +245,28 @@ function NormalGameController($scope,$resource,$cookieStore){
         $scope.move_to_next_unsolved_problem = function(){
           $scope.sampleAnswers = "yes";
           if ($scope.remaining_problems.length>0){
+			$('#t1').addClass('active');
+			$('#t2').removeClass('active');
+			$('#ta1').addClass('active');
+			$('#ta2').removeClass('active');
             //Todo:If you are already on the problem, you don't need to reload it. 
             $scope.current_problem = $scope.remaining_problems[$scope.skip_problem_count % $scope.remaining_problems.length];
             $scope.current_problem_index = $scope.game.problemIDs.indexOf($scope.current_problem);
-            $scope.solution = $scope.game.problems.problems[$scope.current_problem_index].skeleton;
+            $scope.solution1 = $scope.game.problems.problems[$scope.current_problem_index].skeleton;
             $scope.solution_check_result = null;
           }else{
             $scope.current_problem=null;
             $scope.current_problem_index = null;
-            $scope.solution = null;
+            $scope.solution1 = null;
             $scope.solution_check_result = null;
           }
 
         }
         $scope.skip_problem = function(){
-          $scope.sampleAnswers = "yes";
+		    $('#t1').addClass('active');
+			$('#t2').removeClass('active');
+			$('#ta1').addClass('active');
+			$('#ta2').removeClass('active');
           if ($scope.remaining_problems.length>1){
             $scope.skip_problem_count += 1;
             $scope.move_to_next_unsolved_problem();
@@ -281,10 +283,13 @@ function NormalGameController($scope,$resource,$cookieStore){
           //$scope.solution
           //$scope.current_problem
           //$scope.game.gameID
-		      $scope.sampleAnswers = "no";
+			$('#t1').removeClass('active');
+			$('#t2').addClass('active');
+			$('#ta1').removeClass('active');
+			$('#ta2').addClass('active');
           $scope.SaveResource = $resource('/jsonapi/verify_for_game');
           //alert($scope.game.gameID);
-          $scope.theData = {user_code:$scope.solution,
+          $scope.theData = {user_code:$scope.solution1,
                             problem_id:$scope.current_problem,
                             game_id:$scope.game.gameID};
           

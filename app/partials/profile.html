@@ -167,8 +167,8 @@
                     </li>    
                   </ul>
                   <div class="tab-content well">
-                    <div class="tab-pane active" id="t1">
-                      <div width="400px"style=" width:98.2%; height:30px;overflow-x:hidden">
+                    <div class="tab-pane" id="t1" ng-controller="QuestController">
+                      <div width="400px"style=" width:98.2%; height:30px;" ng-controller="PathController" ng-init="update_path_details();get_player_progress()" ng-model="filter">
                             <table class="table table-condensed">
                                     <tr>
                                         <th class="c1">Name</th>
@@ -178,10 +178,10 @@
                             </table> 
                         </div>
                         <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden" >
-                                    <div ng-controller="QuestController">
-                                        <div ng-controller="PathController" ng-init="update_path_details();get_player_progress()" ng-model="filter">
+                                    <div>
+                                        <div>
                                                 <table class="table table-hover">
-                                                        <tr ng-repeat="quest in quests" ng-init="count(0);">
+                                                        <tr ng-repeat="quest in quests | orderBy:'numSolved':true" ng-init="count(0);">
                                                            
                                                             <td>
                                                               {{quest.name}}
@@ -194,7 +194,7 @@
                                                                     <div class="bar" style="width:{{count = (quest.numSolved/quest.numProblems)*100 |number:0}}%"></div>
                                                                 </div>
                                                             </td>
-                                                             <td class="c3"><button align="center" class="btn btn-info" ng-click="loadUnfinshed(quest)">Resume!</button>
+                                                            <td class="c3"><a align="center" class="btn btn-info" href="#contact">Resume!</a>
                                                             </td>                                 
                                                         </tr>
                                                              
@@ -417,21 +417,24 @@
                     </li>    
                   </ul>
                   <div class="tab-content well">
-                    <div class="tab-pane" id="t1">
-                      <div width="400px"style=" width:98.2%; height:30px;overflow-x:hidden">
+                    <div class="tab-pane" id="t1" ng-controller="QuestController">
+                      <div width="400px"style=" width:98.2%; height:30px;overflow-x:hidden" ng-controller="PathController" ng-init="update_path_details();get_player_progress()" ng-model="filter">
                             <table class="table table-condensed">
                                     <tr>
-                                        <th class="c1">Name</th>
-                                        <th class="c2">myProgress</th>
+                                        <th class="c1">
+                                            <a href="" ng-click="predicate = 'name'; reverse=false">Name</a>
+                                        (<a href ng-click="predicate = '-name'; reverse=false">^</a>)
+                                        </th>
+                                        <th class="c2">myProgressss</th>
                                         <th class="c3">Take the leap</th>
                                     </tr>                                   
                             </table> 
                         </div>
                         <div align="center" style="width:99.8%; height:270px;overflow-y:auto;overflow-x:hidden" >
-                                    <div ng-controller="QuestController">
-                                        <div ng-controller="PathController" ng-init="update_path_details();get_player_progress()" ng-model="filter">
+                                    <div>
+                                        <div>
                                                 <table class="table table-hover">
-                                                        <tr ng-repeat="quest in quests" ng-init="count(0);">
+                                                        <tr ng-repeat="quest in quests | orderBy:predicate:reverse" ng-init="count(0);">
                                                            
                                                             <td>
                                                               {{quest.name}}
