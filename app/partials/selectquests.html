@@ -147,7 +147,7 @@ input:hover{
 	<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div>
-<tt>Story Selected :    {{storyid}}</tt>
+<tt>Story Selected : {{storyid}}</tt>
 </div>
 <!-- /.carousel -->
 
@@ -173,14 +173,11 @@ input:hover{
 				<div><h4>#3. Select a Path</h4></div>	
 				<hr>
 				<div style="height:220px;overflow:auto" ng-controller="PathController" ng-init="list();$parent.pathID=10030;get_player_progress();">
-					
 					<div  ng-repeat="item in paths.paths"  id="paths">
 						<label>
 							<input type="radio" style="visibility:hidden" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.id}}" id="path">
 							<input  on-click="changeborder()" class="well" type="image" ng-src="img/language/{{item.description.split(' ').join('_')}}.png" id="pathImg"/ >
-							
 						</label>		
-						
 					</div>
 				</div>				
 			</div>
@@ -211,7 +208,7 @@ input:hover{
 				</td></tr>
 				<tr><td>
 				</br>
-					<div align="center"><button class="btn btn-primary"><h5>Revert to Classic</h5></button></div>
+					<div align="center"><a href="http://www.singpath.com/ender/index.html"><button class="btn btn-primary"><h5>Revert to Classic</h5></button></a></div>
 				</td></tr>
 				</table>
 			</div>

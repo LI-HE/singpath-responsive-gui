@@ -284,7 +284,7 @@ function NormalGameController($scope,$resource,$cookieStore){
 		      $scope.sampleAnswers = "no";
           $scope.SaveResource = $resource('/jsonapi/verify_for_game');
           //alert($scope.game.gameID);
-          $scope.theData = {user_code:$scope.solution1,
+          $scope.theData = {user_code:$scope.solution,
                             problem_id:$scope.current_problem,
                             game_id:$scope.game.gameID};
           
@@ -693,6 +693,9 @@ function QuestController($scope,$resource,$location,$routeParams,$cookieStore){
     $scope.quests = new Array();
     $scope.changeRoute = 'normal_play_page.html';
     $scope.name = $cookieStore.get("name");
+	$scope.storyid = 14611860;
+	$scope.pathDes = 2473247;
+	$scope.difficulty = "easy";
     //Create quest
     $scope.create_quest = function(storyID,pathID,difficulty){
 /*       //alert("storyID "+storyID+" pathID "+ pathID+" difficult "+difficulty);
