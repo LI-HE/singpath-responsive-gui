@@ -125,7 +125,7 @@ input:hover{
 							
 								<div class="span4"  ng-repeat="story in stories | limitTo:3">
 									<label class="radio">
-									<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.$parent.storyid" id="{{story.id}}" value="{{story.id}}">
+									<input type="radio" name="optionsRadios" ng-model="$parent.$parent.storyid" id="{{story.id}}" value="{{story.id}}">
 									<input class="well"type="image" ng-src="img/story/{{story.name.split(' ').join('_')}}.jpg" alt="" height="230"/>
 									
 									<br>
@@ -143,7 +143,7 @@ input:hover{
 							<div class="span4" ng-repeat="story in stories | startFrom:3 | limitTo:3">
 								<label class="radio">
 						
-								<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.storyid" id="{{story.id}}" value="{{story.id}}">
+								<input  type="radio" name="optionsRadios" ng-model="$parent.storyid" id="{{story.id}}" value="{{story.id}}">
 								<input class="well" type="image" ng-src="img/story/{{story.name.split(' ').join('_')}}.jpg" alt="" height="230">
 								<br>
 								<h4>{{story.name}}</h4S>
@@ -158,7 +158,7 @@ input:hover{
 				<div class="row">
 					<div class="span4" ng-repeat="story in stories | startFrom:6 | limitTo:3">
 						<label class="radio">
-						<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.storyid" id="{{story.id}}" value="{{story.id}}">
+						<input  type="radio" name="optionsRadios" ng-model="$parent.storyid" id="{{story.id}}" value="{{story.id}}">
 						<input class="well" type="image" ng-src="img/story/{{story.name.split(' ').join('_')}}.jpg" alt="" height="230">
 						<br>
 						<h4>{{story.name}}</h4>
@@ -171,7 +171,7 @@ input:hover{
 	<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div>
-<tt>Story Selected : {{storyid}}</tt>
+
 </div>
 <!-- /.carousel -->
 
@@ -199,7 +199,7 @@ input:hover{
 				<div style="height:220px;overflow:auto" ng-controller="PathController" ng-init="list();$parent.pathID=10030;get_player_progress();">
 					<div  ng-repeat="item in paths.paths"  id="paths">
 						<label>
-							<input type="radio" style="visibility:hidden" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.id}}" id="path">
+							<input type="radio" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.id}}" id="path">
 							<input  on-click="changeborder()" class="well" type="image" ng-src="img/language/{{item.description.split(' ').join('_')}}.png" id="pathImg"/ >
 						</label>		
 					</div>
@@ -212,7 +212,7 @@ input:hover{
 				<div style="height:220px;overflow:auto" ng-controller="PathController" ng-init="list();$parent.pathID=10030;get_player_progress();">
 					<div  ng-repeat="item in mobile_paths"  id="paths">
 						<label>
-							<input type="radio" style="visibility:hidden" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.path_id}}" id="path">
+							<input type="radio" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.path_id}}" id="path">
 							<input  on-click="changeborder()" class="well" type="image" ng-src="img/language/{{item.description.split(' ').join('_')}}.png" id="pathImg"/ >
 						</label>
 					</div>
@@ -221,21 +221,20 @@ input:hover{
 			
         	<!-- /.span4 -->
 			<div class="span2 container" style="position:relative;left:60px" align = "center">
-											<tt>result: {{difficulty}}</tt>
-											<tt>result: {{pathDes}}</tt>
+											
 				<table align="center">
 				<tr><td align="center">
 				</br></br>
 				
 				<div  ng-show="!difficulty || !pathDes || !storyid">
 				<!-- <form action="#storyboard"> -->
-					<button class="btn disabled" ng-click="item.name='New Quest';create_quest(storyid,pathDes,difficulty)" style="width: 145px"><h1>Go!</h1></button>
+					<button class="btn disabled" style="width: 145px"><h1>Go!</h1></button>
 				<!-- </form> -->
 				</div>
 				
 				<div  ng-show="difficulty && pathDes && storyid">
 				<!-- <form action="#storyboard"> -->
-					<button class="btn btn-primary" ng-click="item.name='New Quest';create_quest(storyid,pathDes,difficulty)" style="width: 145px"><h1>Go!</h1></button>
+					<button class="btn btn-primary" ng-click="item.name='New Quest';create_quest(storyName,pathDes,diff)" style="width: 145px"><h1>Go!</h1></button>
 				<!-- </form> -->
 				
 				</div>
@@ -274,7 +273,7 @@ input:hover{
 							
 								<div class="span4"  ng-repeat="story in stories | limitTo:3">
 									<label class="radio">
-									<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.$parent.storyName" id="{{story.id}}" value="{{story.id}}">
+									<input  type="radio" name="optionsRadios" ng-model="$parent.$parent.storyName" id="{{story.id}}" value="{{story.id}}">
 									<input class="well"type="image" ng-src="{{story.imageURL}}" alt="" height="100"/>
 									
 									<br>
@@ -292,7 +291,7 @@ input:hover{
 							<div class="span4" ng-repeat="story in stories | startFrom:3 | limitTo:3">
 								<label class="radio">
 						
-								<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.id}}">
+								<input type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.id}}">
 								<input class="well" type="image" ng-src="{{story.imageURL}}" alt="" height="100">
 								<br>
 								<h4>{{story.name}}</h4S>
@@ -308,7 +307,7 @@ input:hover{
 							<div class="span4" ng-repeat="story in stories | startFrom:6 | limitTo:3">
 								<label class="radio">
 						
-								<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.id}}">
+								<input type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.id}}">
 								<input class="well" type="image" ng-src="{{story.imageURL}}" alt="" height="100">
 								<br>
 								<h4>{{story.name}}</h4>
@@ -322,7 +321,7 @@ input:hover{
 	<a class="left carousel-control" href="#smallCarousel" data-slide="prev">&lsaquo;</a>
     <a class="right carousel-control" href="#smallCarousel" data-slide="next">&rsaquo;</a>
 </div>
-<tt>Story Selected :    {{storyName}}</tt>
+
 </div>
 <!-- /.carousel -->
 
@@ -338,7 +337,7 @@ input:hover{
 					
 					<div  ng-repeat="item in paths.paths"  id="paths" style="display: inline-block;">
 						<label>
-							<input type="radio" style="visibility:hidden" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.description}}" id="path">
+							<input type="radio"  ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.description}}" id="path">
 							<input  on-click="changeborder()" class="well" type="image" ng-src="../assets/img/path-logo/{{item.description.split(' ').join('_')}}.png" id="pathImgSmall" height="50px" width="50px"/ >
 							
 						</label>		
@@ -354,7 +353,7 @@ input:hover{
 				<div style="height:220px;" class="btn-group" data-toggle="buttons-radio" align="center" ng-init="levels = [{'name':'Beginner', 'id':'Beginner'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]">					
 					<span ng-repeat="item in levels">
 						<label class="radio">
-						<input style="visibility:hidden" type="radio" ng-model="$parent.diff" name="difficultyLevel" value="{{item.name}}"/ >
+						<input type="radio" ng-model="$parent.diff" name="difficultyLevel" value="{{item.name}}"/ >
 						<button type="button" class="btn btn-primary active" style="height: 33px; width: 200px"  btn-radio="{{item.name}}">{{item.name}}
 						</button></br></br>
 						</label>
@@ -363,21 +362,20 @@ input:hover{
             </div>
         <!-- /.span4 -->
 			<div class="span2 container" style="position:relative;left:60px" align = "center">
-											<tt>result: {{difficulty}}</tt>
-											<tt>result: {{pathDes}}</tt>
+										
 				<table align="center">
 				<tr><td align="center">
 				</br></br>
 				
 				<div  ng-show="!difficulty || !pathDes || !storyid">
 				<!-- <form action="#storyboard"> -->
-					<button class="btn disabled" ng-click="item.name='New Quest';create_quest(storyid,pathDes,difficulty)" style="width: 145px"><h1>Go!</h1></button>
+					<button class="btn disabled" style="width: 145px"><h1>Go!</h1></button>
 				<!-- </form> -->
 				</div>
 				
 				<div  ng-show="difficulty && pathDes && storyid">
 				<!-- <form action="#storyboard"> -->
-					<button class="btn btn-primary" ng-click="item.name='New Quest';create_quest(storyid,pathDes,difficulty)" style="width: 145px"><h1>Go!</h1></button>
+					<button class="btn btn-primary" ng-click="item.name='New Quest';create_quest(storyName,pathDes,diff)" style="width: 145px"><h1>Go!</h1></button>
 				<!-- </form> -->
 				
 				</div>
