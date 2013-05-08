@@ -1,4 +1,27 @@
 <p><p>
+
+<!DOCTYPE>
+<html>
+<head>
+  
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.4.2.js'></script>
+  
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css"/>
+  
+  <style type='text/css'>
+    .input_hidden {
+    position: absolute;
+    left: -9999px;
+	}
+
+	.selected {
+
+	}
+
+  </style>
+  
 <style>
 
 .radio{
@@ -80,6 +103,7 @@ input:hover{
 
 
 </style>
+
 
 <div id="largeSelectPlay" ng-controller="QuestController" ng-init="model='Quest';list();difficulty='Easy';">
 
@@ -169,7 +193,7 @@ input:hover{
 				</div>
             </div>
 			    <!-- select path for non-drag n drop-game -->
-			<div class="span4 lead well well-small" align="center" ng-hide="difficulty=='Drag-n-Drop'">
+			<div id="path" class="span4 lead well well-small" align="center" ng-hide="difficulty=='Drag-n-Drop'">
 				<div><h4>#3. Select a Path</h4></div>	
 				<hr>
 				<div style="height:220px;overflow:auto" ng-controller="PathController" ng-init="list();$parent.pathID=10030;get_player_progress();">
@@ -182,8 +206,8 @@ input:hover{
 				</div>				
 			</div>
 			    <!-- select path for drag n drop-game -->					
-			<div class="span4 lead well well-small" align="center" ng-show="difficulty=='Drag-n-Drop'">
-				<div><h4>#2. Select a Path</h4></div>	
+			<div id="path1"class="span4 lead well well-small" align="center" ng-show="difficulty=='Drag-n-Drop'">
+				<div><h4>#3. Select a Path</h4></div>	
 				<hr>
 				<div style="height:220px;overflow:auto" ng-controller="PathController" ng-init="list();$parent.pathID=10030;get_player_progress();">
 					<div  ng-repeat="item in mobile_paths"  id="paths">
@@ -197,18 +221,28 @@ input:hover{
 			
         	<!-- /.span4 -->
 			<div class="span2 container" style="position:relative;left:60px" align = "center">
-				<tt>result: {{difficulty}}</tt>
-				<tt>result: {{pathDes}}</tt>
+											<tt>result: {{difficulty}}</tt>
+											<tt>result: {{pathDes}}</tt>
 				<table align="center">
 				<tr><td align="center">
 				</br></br>
+				
+				<div  ng-show="!difficulty || !pathDes || !storyid">
+				<!-- <form action="#storyboard"> -->
+					<button class="btn disabled" ng-click="item.name='New Quest';create_quest(storyid,pathDes,difficulty)" style="width: 145px"><h1>Go!</h1></button>
+				<!-- </form> -->
+				</div>
+				
+				<div  ng-show="difficulty && pathDes && storyid">
 				<!-- <form action="#storyboard"> -->
 					<button class="btn btn-primary" ng-click="item.name='New Quest';create_quest(storyid,pathDes,difficulty)" style="width: 145px"><h1>Go!</h1></button>
 				<!-- </form> -->
+				
+				</div>
 				</td></tr>
 				<tr><td>
 				</br>
-					<div align="center"><a href="http://www.singpath.com/ender/index.html"><button class="btn btn-primary"><h5>Revert to Classic</h5></button></a></div>
+					<div align="center"><button class="btn btn-primary" onClick="window.location.href='http://www.singpath.com/'"><h5>Revert to Classic</h5></button></div>
 				</td></tr>
 				</table>
 			</div>
@@ -328,19 +362,29 @@ input:hover{
 				</div>
             </div>
         <!-- /.span4 -->
-			<div class="span2"  align = "center">
-											<tt>result: {{diff}}</tt>
+			<div class="span2 container" style="position:relative;left:60px" align = "center">
+											<tt>result: {{difficulty}}</tt>
 											<tt>result: {{pathDes}}</tt>
 				<table align="center">
 				<tr><td align="center">
 				</br></br>
+				
+				<div  ng-show="!difficulty || !pathDes || !storyid">
 				<!-- <form action="#storyboard"> -->
-					<button class="btn btn-primary" ng-click="item.name='New Quest';create_quest(storyName,pathDes,diff)" style="width: 100px"><h1>Go!</h1></button>
+					<button class="btn disabled" ng-click="item.name='New Quest';create_quest(storyid,pathDes,difficulty)" style="width: 145px"><h1>Go!</h1></button>
 				<!-- </form> -->
+				</div>
+				
+				<div  ng-show="difficulty && pathDes && storyid">
+				<!-- <form action="#storyboard"> -->
+					<button class="btn btn-primary" ng-click="item.name='New Quest';create_quest(storyid,pathDes,difficulty)" style="width: 145px"><h1>Go!</h1></button>
+				<!-- </form> -->
+				
+				</div>
 				</td></tr>
 				<tr><td>
 				</br>
-				<div align="center"><button class="btn btn-primary"><h5>Revert to Classic</h5></button></div>
+					<div align="center"><button class="btn btn-primary"><h5>Revert to Classic</h5></button></div>
 				</td></tr>
 				</table>
 			</div>

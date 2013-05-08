@@ -627,6 +627,32 @@
       })
     }
 </script>
+
+<script type='text/javascript'>
+	$(window).load(function(){
+	//$('#myCarousel input:radio').addClass('input_hidden');
+	$('#myCarousel input:image').click(function() {
+		$('#myCarousel input:image').removeClass('selected');   
+		$(this).addClass('selected');
+		
+	});
+	
+	$('#path input:image').click(function() {
+		$('#path input:image').removeClass('selected');   
+		$(this).addClass('selected');
+		
+	});
+	
+	$('#path1 input:image').click(function() {
+		$('#path1 input:image').removeClass('selected');   
+		$(this).addClass('selected');
+		
+	});
+	
+	
+});
+
+</script>
 </body>
 <footer>
 </footer>
