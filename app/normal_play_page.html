@@ -420,7 +420,7 @@
 		</style>
         <div class="container" ng-controller="PlayerController">
             <ul class="nav nav-pills pull-right" align="right">
-                <li ng-show="player.nickname"><a>Welcome, {{player.nickname}}{{secretAgent}}!</a>
+            <li ng-show="player.nickname"><a>Welcome, <span ng-bind="player.nickname"></span><span ng-bind="secretAgent">!</span></a></li>
                 </li>
                 <li><a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn btn-primary" ng-click='login()'>Login</button></a>
                 </li>
@@ -561,8 +561,8 @@
 					<div  width=94% style="text-align: left;">
 						<h4>&nbsp;Current Question</h4>
 						   <font face="verdana" size="3">
-								&nbsp;&nbsp;Name: {{game.problems.problems[current_problem_index].name}}
-								<br>&nbsp;&nbsp;Description: {{game.problems.problems[current_problem_index].description}}
+								&nbsp;&nbsp;Name: <span ng-bind="game.problems.problems[current_problem_index].name"></span>
+								<br>&nbsp;&nbsp;Description: <span ng-bind="game.problems.problems[current_problem_index].description"></span>
 							</font>
 					</div>
 				</div>
@@ -571,9 +571,8 @@
 					<p>
 					Game progress 
 					<br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;({{game.numSolvedProblems}} / {{game.numProblems}})
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span ng-bind="game.numSolvedProblems"></span> of <span ng-bind="game.numProblems"></span>
 					</p>
-					<br>
 					<p>	
 					<button class="btn btn-primary" ng-click="skip_problem()">&nbsp;&nbsp;Skip&nbsp;&nbsp;</button>
 					</p>
@@ -607,7 +606,7 @@
                   <div  class="tab-content">
                     <div class="tab-pane fade in active" id="t3" style="height:320px;">
                         <div>
-                            <ace-editor ng-model="solution1">{{game.problems.problems[current_problem_index].skeleton}}</ace-editor>
+                            <ace-editor ng-model="solution1"><span ng-bind="game.problems.problems[current_problem_index].skeleton"></span></ace-editor>
                         </div>   
                     </div>
                   </div>
@@ -627,7 +626,7 @@
                   <div class="tab-content">
                     <div class="tab-pane fade in active" id="t1" style="height:320px;">
                         <div>Examples: 
-			<pre style = "color:blue;">{{game.problems.problems[current_problem_index].examples}}</pre>
+			<pre style = "color:blue;"><span ng-bind="game.problems.problems[current_problem_index].examples"></span></pre>
 			</div>
                     </div>
                     <div class="tab-pane fade in" id="t2" style="height:320px;">
@@ -646,7 +645,7 @@
                                 <td height="40"ng-show="!line.status" bgcolor=#FF0000>{{line.status}}</td>
                             </tr>
                             <tr>
-                                <td colspan="4">Errors: <pre style = "color:blue;">{{solution_check_result.errors}}</pre></td>
+                                <td colspan="4">Errors: <pre style = "color:blue;"><span ng-bind="solution_check_result.errors"></span></pre></td>
                             </tr>
                         </table>
                     </div>

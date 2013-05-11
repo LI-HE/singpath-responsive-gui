@@ -26,13 +26,37 @@ function Ctrl($scope) {
   $scope.color = 'blue';
 }
 
-function PlayerController($scope,$resource){
+function PlayerController($scope,$resource,$location){
 
         $scope.player = $resource('/jsonapi/player').get(); 
 
         $scope.login=function(){
 			
-        };     
+        }; 
+        
+        
+    $scope.log_event = function($event){
+        //$scope.location = $location;
+        //$scope.clicked = $event.target.name;
+        //Log event to Google Analytics
+        //This will log from 127.0.0.1 but not local host. 
+        //$window._gaq.push(['_trackPageview', $scope.clicked]);
+        //This is how you log to the SingPath backend.
+        /*
+        console.log("Click event from:", $event.target);
+        console.log("Click event name:", $event.target.name);
+        console.log("path:", $location.path());
+        console.log("url:", $location.url());
+        console.log("hash:", $location.hash());
+        console.log("absUrl:", $location.absUrl());
+        */
+        
+        
+        $scope.Log = $resource('/jsonapi/log_event');
+        var item = new $scope.Log({"page": $location.absUrl(),
+                                   "event":$event.target.name});
+        $scope.item = item.$save(); 
+    };        
 		
 		$scope.dismissModal = function(){
 			$('#loginAlert').modal('hide')
@@ -365,7 +389,7 @@ function NormalGameController($scope,$resource,$cookieStore){
             videos = numOfUnlocked;
           },true);
         };
-		
+		    
 		$scope.create_quest_game($scope.qid);
 }
 

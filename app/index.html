@@ -471,12 +471,12 @@
   
   </head>  
 
-  <body ng-controller="PlayerController">    
+  <body ng-controller="PlayerController" ng-click="log_event($event)">    
     <!-- NAVBAR
         ================================================== --> 
         <div class="container" >
           <ul class="nav nav-pills pull-right" align="right">
-            <li ng-show="player.nickname"><a>Welcome, {{player.nickname}}{{secretAgent}}!</a></li>
+            <li ng-show="player.nickname"><a>Welcome, <span ng-bind="player.nickname"></span><span ng-bind="secretAgent">!</span></a></li>
             <li><a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn btn-primary" ng-click='login()'>Login</button></a></li>    
             <li><a ng-show="player.nickname" ng-click='logout()' href="#"><button class="btn btn-danger" ng-click='logout()'>Log Out</button></a></li>     
           </ul>
@@ -578,7 +578,7 @@
     </div>
     <div class="modal-footer">
       <a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn btn-primary" ng-click='dismissModal()'>Login</button></a>
-	  <a ng-show="!player.nickname" href="#" data-dismiss="modal"><button class="btn btn-primary" ng-click='dismissModal()'>Got it!</button></a>
+	  <a ng-show="!player.nickname" href="#" data-dismiss="modal"><button name="gotit" class="btn btn-primary" ng-click='dismissModal()'>Got it!</button></a>
     </div>
   </div>
     <!-- /.carousel -->    
