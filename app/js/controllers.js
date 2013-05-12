@@ -6,19 +6,28 @@
 function IndexController($scope,$resource,$location,$window){
     
     $scope.location = $location;
-    $scope.log_event = function($event){
-        
-        $scope.clicked = $event.target.name;
+    /*
+    $scope.log_to_google_analytics = function($event){
         //Log event to Google Analytics
         //This will log from 127.0.0.1 but not local host. 
-        $window._gaq.push(['_trackPageview', $scope.clicked]);
+        //$window._gaq.push(['_trackPageview', $event.target.name]);
         //This is how you log to the SingPath backend.
-        $scope.Log = $resource('/jsonapi/log_access');
-        var item = new $scope.Log({"page":"index1.html",
-                                   "event":$scope.clicked,
-                                   "date":1357529747177});
+     
+    }; 
+    */
+    $scope.log_event = function($event){  
+
+        var result = $location.absUrl().split("/");
+        var page = result[result.length-1];
+        if($event.target.name){
+          page = page + "_" + $event.target.name;
+        }    
+        $scope.Log = $resource('/jsonapi/log_event');
+        var item = new $scope.Log({"page": page,
+                                   "event":$event.target.name});
         $scope.item = item.$save(); 
-    };
+    }; 
+
 
 }
 
@@ -33,28 +42,17 @@ function PlayerController($scope,$resource,$location){
         $scope.login=function(){
       
         }; 
+
         
-        
-    $scope.log_event = function($event){
-        //$scope.location = $location;
-        //$scope.clicked = $event.target.name;
-        //Log event to Google Analytics
-        //This will log from 127.0.0.1 but not local host. 
-        //$window._gaq.push(['_trackPageview', $scope.clicked]);
-        //This is how you log to the SingPath backend.
-        /*
-        console.log("Click event from:", $event.target);
-        console.log("Click event name:", $event.target.name);
-        console.log("path:", $location.path());
-        console.log("url:", $location.url());
-        console.log("hash:", $location.hash());
-        console.log("absUrl:", $location.absUrl());
-        */
-        
-        
+    $scope.log_event = function($event){  
+
+        var result = $location.absUrl().split("/");
+        var page = result[result.length-1];
+        if($event.target.innerText){
+          page = page + "_" + $event.target.innerText;        
+        }    
         $scope.Log = $resource('/jsonapi/log_event');
-        var item = new $scope.Log({"page": $location.absUrl(),
-                                   "event":$event.target.name});
+        var item = new $scope.Log({"page": page});
         $scope.item = item.$save(); 
     };        
     
@@ -730,6 +728,8 @@ function QuestController($scope,$resource,$location,$routeParams,$cookieStore){
       $scope.questID = $cookieStore.get("name").id;//retrieve quest id from Storyboard page
     }
     $scope.storyid = 14611860;
+    $scope.pathDes = 2473247;
+    $scope.difficulty = "easy";
     //Create quest
     $scope.create_quest = function(storyID,pathID,difficulty){
 /*       //alert("storyID "+storyID+" pathID "+ pathID+" difficult "+difficulty);

@@ -419,14 +419,11 @@
 		}
 		</style>
         <div class="container" ng-controller="PlayerController">
-            <ul class="nav nav-pills pull-right" align="right">
-            <li ng-show="player.nickname"><a>Welcome, <span ng-bind="player.nickname"></span><span ng-bind="secretAgent">!</span></a></li>
-                </li>
-                <li><a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn btn-primary" ng-click='login()'>Login</button></a>
-                </li>
-                <li><a ng-show="player.nickname" ng-click='logout()' href="#"><button class="btn btn-danger" ng-click='logout()'>Log Out</button></a>
-                </li>
-            </ul>
+          <ul class="nav nav-pills pull-right" align="right">
+            <li ng-show="player.nickname"><a href="#profile"><input type="image" ng-src="{{player.gravatar}}"; width = 30px; height= 30px;/>&nbsp;&nbsp;</span><span ng-bind="player.nickname"></span><span ng-bind="secretAgent">!</span></a></li>
+            <li><a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn btn-primary" ng-click='login()'>Login</button></a></li>    
+            <li><a ng-show="player.nickname" ng-click='logout()' href="#"><button class="btn btn-danger" ng-click='logout()'>Log Out</button></a></li>     
+          </ul>
         </div>
         <br>
         <div class="navbar-wrapper">
@@ -491,7 +488,9 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li> <a href="index.html#/profile"><i class="icon-home icon-white icon-large"></i></a>
+								<li>
+								<a ng-show="!player.nickname" class="janrainEngage" href="#">Profile</a>
+								<a ng-show="player.nickname" href="index.html#/profile">Profile</a>
                                 </li>
                             </ul>
                         </div>
@@ -567,15 +566,16 @@
 					</div>
 				</div>
 				<div class="span2" style="vertical-align: middle;">
-					<br>
 					<p>
 					Game progress 
 					<br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span ng-bind="game.numSolvedProblems"></span> of <span ng-bind="game.numProblems"></span>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span ng-bind="game.numSolvedProblems"></span> of <span ng-bind="game.numProblems"></span>
 					</p>
 					<p>	
-					<button class="btn btn-primary" ng-click="skip_problem()">&nbsp;&nbsp;Skip&nbsp;&nbsp;</button>
-                    <button class="btn btn-primary" ng-click="goStoryBoard()">&nbsp;&nbsp;StoryBoard&nbsp;&nbsp;</button>
+					<button class="btn btn-primary" ng-click="skip_problem()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Skip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					</p>
+					<p>
+                    <button class="btn btn-primary" ng-click="goStoryBoard()">StoryBoard</button>
 					</p>
 				</div>  
 			</div>  

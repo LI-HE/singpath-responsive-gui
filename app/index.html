@@ -488,8 +488,9 @@
     <!-- NAVBAR
         ================================================== --> 
         <div class="container" >
+		  
           <ul class="nav nav-pills pull-right" align="right">
-            <li ng-show="player.nickname"><a>Welcome, <span ng-bind="player.nickname"></span><span ng-bind="secretAgent">!</span></a></li>
+            <li ng-show="player.nickname"><a href="#profile"><input type="image" ng-src="{{player.gravatar}}"; width = 30px; height= 30px;/>&nbsp;&nbsp;</span><span ng-bind="player.nickname"></span><span ng-bind="secretAgent">!</span></a></li>
             <li><a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn btn-primary" ng-click='login()'>Login</button></a></li>    
             <li><a ng-show="player.nickname" ng-click='logout()' href="#"><button class="btn btn-danger" ng-click='logout()'>Log Out</button></a></li>     
           </ul>
@@ -563,8 +564,8 @@
               </ul>                
               </li>
                 <li>
-                  <a ng-show="!player.nickname" class="janrainEngage" href="#"><i class="icon-home icon-white icon-large"></i></a>
-                  <a ng-show="player.nickname" href="#profile"><i class="icon-home icon-white icon-large"></i></a>
+                  <a ng-show="!player.nickname" class="janrainEngage" href="#">Profile</a>
+                  <a ng-show="player.nickname" href="#profile">Profile</a>
                 </li>                           
               </ul>            
             </div>

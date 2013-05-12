@@ -68,7 +68,7 @@
       left: 0;
       right: 0;
       z-index: 10;
-      margin-top: 20px;
+      margin-top: 30px;
       margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
     }
     .navbar-wrapper .navbar {
@@ -159,10 +159,13 @@
   <body>
 
     <div class="container">
-      <ul class="nav nav-pills pull-right" align="right">
-      <li><a>Welcome, Secret Agent!</a></li>
-      <li><a href="#">Login</a></li>     
-      </ul>
+		<div class="container" ng-controller="PlayerController">
+          <ul class="nav nav-pills pull-right" align="right">
+            <li ng-show="player.nickname"><a href="#profile"><input type="image" ng-src="{{player.gravatar}}"; width = 30px; height= 30px;/>&nbsp;&nbsp;</span><span ng-bind="player.nickname"></span><span ng-bind="secretAgent">!</span></a></li>
+            <li><a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn btn-primary" ng-click='login()'>Login</button></a></li>    
+            <li><a ng-show="player.nickname" ng-click='logout()' href="#"><button class="btn btn-danger" ng-click='logout()'>Log Out</button></a></li>     
+          </ul>
+		  </div>
     <br>
    </div>
     <br>
@@ -234,7 +237,8 @@
                 </ul>                
                 </li>
                   <li>
-                    <a href="index.html#/profile"><i class="icon-home icon-white icon-large"></i></a>
+                  <a ng-show="!player.nickname" class="janrainEngage" href="#">Profile</a>
+                  <a ng-show="player.nickname" href="index.html#/profile">Profile</a>
                   </li>                           
                 </ul>            
               </div>
