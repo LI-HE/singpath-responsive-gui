@@ -43,6 +43,17 @@ function PlayerController($scope,$resource,$location){
       
         }; 
 
+    $scope.update_player_profile = function($event){  
+  
+        var data = {"nickname":$scope.player.nickname,
+                    "professional":$scope.player.professional,
+                    "about":$scope.player.about,
+                    "gender":$scope.player.gender};
+
+        $scope.UpdateProfile = $resource('/jsonapi/update_player_profile');
+        var item = new $scope.UpdateProfile(data);
+        $scope.item = item.$save(); 
+    };
         
     $scope.log_event = function($event){  
 

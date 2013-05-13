@@ -88,67 +88,58 @@ li{ list-style:none; }
 <div id="largeSelectPlay" ng-controller="PathController" ng-init="list();$parent.pathID=10030;">
 
 
-         <div class="container" >
-			<h4 class="well well-small" align="center">#1. Pick a Path!</h4>
-		 </div>
-		 <div>&nbsp;</div>
+    <div class="container" >
+	<h4 class="well well-small" align="center">#1. Pick a Path!</h4>
+	</div>
+	<div>&nbsp;</div>
 
-	<div>
 	<div id="myCarousel" class="carousel slide" >
 		<div class="carousel-inner" style="position:relative;left:0px" class="ng-scope">
-
 			<div class="item active">
-					<!-- Three columns of text below the carousel -->
-						<div class="container">
-							<div class="row" >
-								
-									<div class="span4"  ng-repeat="path in paths.paths | limitTo:3">
-										<label class="radio">
-										
-										<input style="visibility:hidden" type="Submit" ng-click="update_path_progress(path.id)" name="optionsRadios" ng-model="$parent.pathid" id="{{path.id}}" value="{{path.id}}" >
-										<input class="well"type="image" ng-src="../assets/img/path-logo/{{path.description.split(' ').join('_')}}.png" alt="" id="pathImg"/>
-										
-										<h6>{{path.name}}</h6>
-										</label>
-									</div>
-							</div>
-						</div>	
+				<!-- Three columns of text below the carousel -->
+				<div class="container">
+					<div class="row" >
+						<div class="span4"  ng-repeat="path in paths.paths | limitTo:3">
+							<label class="radio">
+							<input style="visibility:hidden" type="Submit" ng-click="update_path_progress(path.id)" name="optionsRadios" ng-model="$parent.pathid" id="{{path.id}}" value="{{path.id}}" >
+							<input class="well"type="image" ng-src="../assets/img/path-logo/{{path.description.split(' ').join('_')}}.png" alt="" id="pathImg"/>
+							<h6>{{path.name}}</h6>
+							</label>
+						</div>
+					</div>
+				</div>	
 			</div>
 			<div class="item">
-					<!-- Three columns of text below the carousel -->
-						<div class="container">
-							<div class="row" >
-								<div class="span4" ng-repeat="path in paths.paths| startFrom:3 | limitTo:3">
-									<label class="radio">
-										<input style="visibility:hidden" type="Submit" ng-click="update_path_progress(path.id)" name="optionsRadios" ng-model="$parent.pathid" id="{{path.id}}" value="{{path.id}}" >
-										<input class="well"type="image" ng-src="../assets/img/path-logo/{{path.description.split(' ').join('_')}}.png" alt="" id="pathImg"/>
-										<h6>{{path.name}}</h6>
-									</label>
-								</div>
-							</div>
-						</div>	
+				<!-- Three columns of text below the carousel -->
+				<div class="container">
+					<div class="row" >
+						<div class="span4" ng-repeat="path in paths.paths| startFrom:3 | limitTo:3">
+							<label class="radio">
+								<input style="visibility:hidden" type="Submit" ng-click="update_path_progress(path.id)" name="optionsRadios" ng-model="$parent.pathid" id="{{path.id}}" value="{{path.id}}" >
+								<input class="well"type="image" ng-src="../assets/img/path-logo/{{path.description.split(' ').join('_')}}.png" alt="" id="pathImg"/>
+								<h6>{{path.name}}</h6>
+							</label>
+						</div>
+					</div>
+				</div>	
 			</div>
 			<div class="item">
-					<!-- Three columns of text below the carousel -->
-						<div class="container">
-							<div class="row" >
-								<div class="span4" ng-repeat="path in paths.paths | startFrom:6 | limitTo:3">
-									<label class="radio">
-										<input style="visibility:hidden" type="Submit" ng-click="update_path_progress(path.id)" name="optionsRadios" ng-model="$parent.pathid" id="{{path.id}}" value="{{path.id}}" >
-
-										<input class="well"type="image" ng-src="../assets/img/path-logo/{{path.description.split(' ').join('_')}}.png" alt="" id="pathImg"/>
-
-										<h6>{{path.name}}</h6>
-									</label>
-								</div>
-							</div>
-						</div>	
+				<!-- Three columns of text below the carousel -->
+				<div class="container">
+					<div class="row" >
+						<div class="span4" ng-repeat="path in paths.paths | startFrom:6 | limitTo:3">
+							<label class="radio">
+								<input style="visibility:hidden" type="Submit" ng-click="update_path_progress(path.id)" name="optionsRadios" ng-model="$parent.pathid" id="{{path.id}}" value="{{path.id}}" >
+								<input class="well"type="image" ng-src="../assets/img/path-logo/{{path.description.split(' ').join('_')}}.png" alt="" id="pathImg"/>
+								<h6>{{path.name}}</h6>
+							</label>
+						</div>
+					</div>
+				</div>	
 			</div>
-		   
 		</div> 
 		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-	</div>
 	</div>
 	<!-- /.carousel -->
 
@@ -156,244 +147,74 @@ li{ list-style:none; }
 		<!-- Three columns of text below the carousel -->
 		<div class="row-fluid">
 			<div class="span12">
-				
 				<!--display the level, topic name & progress of the player when the path is selected by the player-->
-
 				<div class="span6 well well-small" ng-model="$parent.pathName" >
-				
-					<div align="center" ><h4>#2. Select a Path Level!</h4></div>
-					<hr>
-						<div style="height:220px;overflow:auto">
-								<div class="span12" align="center" style="font-size:12px;" ng-show="path_progress!=null">
-									<div class="span3 pull-left">
-										Level#
-									</div>
-									<div class="span6 pull-left" >
-										Description
-									</div>
-									<div class="span1 pull-left">
-										Progress
-									</div>
-									<div class="span2 pull-left">
-										Solved
-									</div>
-								</div>
-
+					<div align="center" ><h4>#1. Select a Path Level!</h4></div>
+						<hr>
+					<div style="height:220px;overflow:auto">
+						<div class="span12" align="center" style="font-size:12px;" ng-show="path_progress!=null">
+							<div class="span3 pull-left">Level#</div>
+							<div class="span6 pull-left" >Description</div>
+							<div class="span1 pull-left">Progress</div>
+							<div class="span2 pull-left">Solved</div>
+						</div>
 						<div ng-show="path_progress==null">No path has been select yet!</div>
-					  <li ng-repeat="v in path_progress.details" >
-							<div class="row-fluid">
-								<div class="span12" style="font-size:12px;">
-									<div class="span9">
-										<label class="radio pull-left">
-										<input style="visibility:hidden" type="radio" ng-model="$parent.$parent.$parent.lvl" name="pathLevel" value="{{v.id}}"/ >
-										<button type="button" class="btn btn-primary" style="height: 30px; width: 145px"  btn-radio="{{level.name}}">{{v.name}}
-										</button> 											
-										</label>
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{v.description}} 	
-									</div>
-									<div class="span1">
-									{{v.currentPlayerProgress}}/{{v.problemsInProblemset}}
-									</div>
-									<div class="span1 container" ng-hide="v.badges.length==0">
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clear!
-									</div>
+						<li ng-repeat="v in path_progress.details" >
+						<div class="row-fluid">
+							<div class="span12" style="font-size:12px;">
+								<div class="span9">
+									<label class="radio pull-left">
+									<input style="visibility:hidden" type="radio" ng-model="$parent.$parent.$parent.lvl" name="pathLevel" value="{{v.id}}"/ >
+									<button type="button" class="btn btn-primary" style="height: 30px; width: 145px"  btn-radio="{{level.name}}">{{v.name}}
+									</button> 											
+									</label>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{v.description}} 	
+								</div>
+								<div class="span1">
+								{{v.currentPlayerProgress}}/{{v.problemsInProblemset}}
+								</div>
+								<div class="span1 container" ng-hide="v.badges.length==0">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clear!
 								</div>
 							</div>
-					  </li>		
+						</div>
+						</li>		
 					</div>
 				</div>
 						
 				<div class="span4 lead well well-small" align="center">
-					<div id="gradient1"><h4>#3. Select a Difficulty Level!</h4></div> 
+					<div id="gradient1"><h4>#3. Select a Level</h4></div> 
 					<hr>
-					<div style="height:220px;" class="btn-group" data-toggle="buttons-radio" align="center">
-						
-													
-							<span ng-repeat="item in [{'name':'Drag-n-Drop', 'id':'Drag-n-Drop'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]">
-								<label class="radio">
-								<input style="visibility:hidden" type="radio" ng-model="$parent.diff" name="difficultyLevel" value="{{item.name}}"/ >
-								<button type="button" class="btn btn-primary" style="height: 33px; width: 200px"  btn-radio="{{item.name}}">{{item.name}}
-								</button></br></br>
-								</label>
-							</span>
-					</div>
-				</div>
-			<!-- /.span4 -->
-				<div class="span2"  align = "center">
-												<tt>result: {{diff}}</tt>
-												<tt>result: {{lvl}}</tt>
-					<table align="center">
-					<tr><td align="center">
-					</br></br>
-					<!-- <form action="#storyboard"> -->
-						<button class="btn btn-primary" ng-click="item.name='New Quest';create_quest(storyName,pathDes,diff)" style="width: 145px"><h1>Go!</h1></button>
-					<!-- </form> -->
-					</td></tr>
-					<tr><td>
-					</br>
-						<div align="center"><button class="btn btn-primary"><h5>Revert to Classic</h5></button></div>
-					</td></tr>
-					</table>
-						<!-- Saved Quests: {{quests}}<br><br>
-						ID Name StoryID, PathID, Difficulty
-						<ul>
-						  
-						  <li ng-repeat="quest in quests">
-							{{quest.id}}, {{quest.name}}, {{quest.storyID}}, {{quest.pathID}}, {{quest.difficulty}}
-						  </li>
-						</ul> -->
-				</div>
-			<!-- /.span4 -->
-			<!-- /.row -->
-		</div>
-	</div>
-	</div>
-
-	</div>
-
-<div id="smallSelectPlay" ng-controller="QuestController" ng-init="model='Quest';list();difficulty='Easy';">
-
-
-         <div class="container" >
-			<h4 class="well well-small" align="center">#1. Pick a Story!</h4>
-		 </div>
-		 <div>&nbsp;</div>
-		 
-  
-<div ng-controller="StoryController" ng-init="list();$parent.storyID=1;">
-<div id="smallCarousel" class="carousel slide" >
-    <div class="carousel-inner" style="position:relative;left:0px" class="ng-scope">
-
-        <div class="item active">
-                <!-- Three columns of text below the carousel -->
-					<div class="container">
-						<div class="row" >
-							
-								<div class="span4"  ng-repeat="story in stories | limitTo:3">
-									<label class="radio">
-									<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.$parent.storyName" id="{{story.id}}" value="{{story.id}}">
-									<input class="well"type="image" ng-src="{{story.imageURL}}" alt="" height="100"/>
-									
-									<br>
-									<h4>{{story.name}}</h4>
-									</label>
-								</div>
-							
-						</div>
-					</div>	
-		</div>
-        <div class="item">
-                <!-- Three columns of text below the carousel -->
-					<div class="container">
-						<div class="row" >
-							<div class="span4" ng-repeat="story in stories | startFrom:3 | limitTo:3">
-								<label class="radio">
-						
-								<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.id}}">
-								<input class="well" type="image" ng-src="{{story.imageURL}}" alt="" height="100">
-								<br>
-								<h4>{{story.name}}</h4S>
-								</label>
-							</div>
-						</div>
-					</div>	
-		</div>
-        <div class="item">
-                <!-- Three columns of text below the carousel -->
-					<div class="container">
-						<div class="row" >
-							<div class="span4" ng-repeat="story in stories | startFrom:6 | limitTo:3">
-								<label class="radio">
-						
-								<input style="visibility:hidden" type="radio" name="optionsRadios" ng-model="$parent.storyName" id="{{story.id}}" value="{{story.id}}">
-								<input class="well" type="image" ng-src="{{story.imageURL}}" alt="" height="100">
-								<br>
-								<h4>{{story.name}}</h4>
-								</label>
-							</div>
-						</div>
-					</div>	
-		</div>
-       
-    </div> 
-	<a class="left carousel-control" href="#smallCarousel" data-slide="prev">&lsaquo;</a>
-    <a class="right carousel-control" href="#smallCarousel" data-slide="next">&rsaquo;</a>
-</div>
-<tt>Story Selected :    {{storyName}}</tt>
-</div>
-<!-- /.carousel -->
-
-<div class="container marketing" style="position:relative;left:13px">
-    <!-- Three columns of text below the carousel -->
-    <div class="row-fluid">
-		<div class="span12">
-            
-			<div class="span6 lead well well-small" align="center" >
-				<div><h4>#2. Select a Path</h4></div>	
-				<hr>
-				<div style="height:220px;overflow:auto" ng-controller="PathController" ng-init="list();$parent.pathID=10030;">
-					
-					<div  ng-repeat="item in paths.paths"  id="paths" style="display: inline-block;">
-						<label>
-							<input type="radio" style="visibility:hidden" ng-model="$parent.$parent.pathDes" name="is_private" value="{{item.description}}" id="path">
-							<input  on-click="changeborder()" class="well" type="image" ng-src="../assets/img/path-logo/{{item.description.split(' ').join('_')}}.png" id="pathImgSmall" height="50px" width="50px"/ >
-							
-						</label>		
-						
-					</div>
-				</div>				
-			</div>
-					
-			
-            <div class="span4 lead well well-small" align="center">
-				<div id="gradient1"><h4>#3. Select a Level</h4></div> 
-				<hr>
-				<div style="height:220px;" class="btn-group" data-toggle="buttons-radio" align="center">
-					
-												
-						<span ng-repeat="item in [{'name':'Beginner', 'id':'Beginner'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]">
+					<div style="height:220px;" class="btn-group" data-toggle="buttons-radio" align="center" ng-init="levels = [{'name':'Drag-n-Drop', 'id':'Drag-n-Drop'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]">					
+						<span ng-repeat="item in levels">
 							<label class="radio">
-							<input style="visibility:hidden" type="radio" ng-model="$parent.diff" name="difficultyLevel" value="{{item.name}}"/ >
-							<button type="button" class="btn btn-primary active" style="height: 33px; width: 100px"  btn-radio="{{item.name}}">{{item.name}}
+							<input style="visibility:hidden" type="radio" ng-model="$parent.difficulty" name="difficultyLevel" value="{{item.name}}"/ >
+							<button type="button" class="btn btn-primary" style="height: 33px; width: 200px"  btn-radio="{{item.name}}">{{item.name}}
 							</button></br></br>
 							</label>
-						</span>
-					
-						
-					
+						</span>	
+					</div>
 				</div>
-            </div>
-        <!-- /.span4 -->
-			<div class="span2"  align = "center">
-											<tt>result: {{diff}}</tt>
-											<tt>result: {{pathDes}}</tt>
-				<table align="center">
-				<tr><td align="center">
-				</br></br>
-				<!-- <form action="#storyboard"> -->
-					<button class="btn btn-primary" ng-click="item.name='New Quest';create_quest(storyName,pathDes,diff)" style="width: 100px"><h1>Go!</h1></button>
-				<!-- </form> -->
-				</td></tr>
-				<tr><td>
-				</br>
-					<div align="center"><button class="btn btn-primary"><h5>Revert to Classic</h5></button></div>
-				</td></tr>
-				</table>
-				    Saved Quests: {{quests}}<br><br>
-					ID Name StoryID, PathID, Difficulty
-					<ul>
-					  
-					  <li ng-repeat="quest in quests">
-						{{quest.id}}, {{quest.name}}, {{quest.storyID}}, {{quest.pathID}}, {{quest.difficulty}}
-					  </li>
-					</ul>
+				<!-- /.span4 -->
+				<div class="span2"  align = "center">
+					<tt>difficulty: {{difficulty}}</tt>
+					<tt>result: {{lvl}}</tt>
+					<table align="center">
+						<tr><td align="center">
+							</br></br>
+							<!-- <form action="#storyboard"> -->
+							<button class="btn btn-primary" ng-click="item.name='New Quest';create_quest(storyName,pathDes,diff)" style="width: 145px"><h1>Go!</h1></button>
+							<!-- </form> -->
+						</td></tr>
+						<tr><td>
+							</br>
+							<div align="center"><button class="btn btn-primary"><h5>Revert to Classic</h5></button></div>
+						</td></tr>
+					</table>
+				</div>
 			</div>
-        <!-- /.span4 -->
-        <!-- /.row -->
-    </div>
-</div>
-</div>
-
+		</div>
+	</div>
 </div>
 <script>
 $("#myCarousel")
