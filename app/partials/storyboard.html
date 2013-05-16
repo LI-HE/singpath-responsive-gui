@@ -110,24 +110,12 @@
 </style>
 
 <!-- START THE FEATURETTES -->
-<br/><br/><br>
+<br/><br>
 <!-- /END THE FEATURETTES -->
 <div class="container">
   <div class="row-fluid" ng-controller="QuestController">
-  <div class="span3">
-    <br>
-    <div id="leftIcon" class="span2" align="left" style= "vertical-align:middle" ><img class="img-rounded" src="../assets/img/newStory.jpg"></img>
-      <br/><br/>
-        {{route()}}
-        <form action={{changeRoute}}>
-        <button class="btn btn-large btn-block btn-primary" type="submit">Start</button>
-        </form>
-        <form>
-        <button class="btn btn-large btn-block" type="submit" ng-click="playback()">Play Back</button>
-        </form>
-      </div>
-  </div>
-  <div class="span9 well" align="center" style="height:470px; overflow:auto">
+  
+	<div class="span9 well" align="center" style="height:470px; overflow:auto">
     <h4> Quest Name: {{name.name}}<br></h4>
       <ul class="thumbnails row-fluid" >
         <span ng-repeat="story in name.videos" class="pull-left well">
@@ -141,6 +129,21 @@
         </span>
       </ul>             
   </div>
+  
+  <div class="span3">
+    <br>
+    <div id="leftIcon" class="span2" align="left" style= "vertical-align:middle" ><img class="img-rounded" src="../assets/img/newStory.jpg"></img>
+      <br/><br/>
+        {{route()}}
+        <form action={{changeRoute}}>
+        <button class="btn btn-large btn-block btn-primary" type="submit">Continue</button>
+        </form>
+        <form>
+        <button class="btn btn-large btn-block" type="submit" ng-click="playback()">Playback Videos</button>
+        </form>
+      </div>
+  </div>
+  
 
   <div class="modal fade" id="warningBoard">
     <div class="modal-body">

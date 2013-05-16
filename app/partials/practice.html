@@ -142,7 +142,7 @@ li{ list-style:none; }
 		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
 	</div>
 	<!-- /.carousel -->
-
+	{{path_progress.details[0].id}}
 	<div class="container marketing" >
 		<!-- Three columns of text below the carousel -->
 		<div class="row-fluid">
@@ -159,7 +159,7 @@ li{ list-style:none; }
 							<div class="span2 pull-left">Solved</div>
 						</div>
 						<div ng-show="path_progress==null">No path has been select yet!</div>
-						<li ng-repeat="v in path_progress.details" >
+						<li ng-repeat="v in path_progress.details" ng-init="$parent.$parent.$parent.lvl=path_progress.details[0].id">
 						<div class="row-fluid">
 							<div class="span12" style="font-size:12px;">
 								<div class="span9">
@@ -183,7 +183,7 @@ li{ list-style:none; }
 				</div>
 						
 				<div class="span4 lead well well-small" align="center">
-					<div id="gradient1"><h4>#3. Select a Level</h4></div> 
+					<div id="gradient1"><h4>#3. Select a difficulty Level</h4></div> 
 					<hr>
 					<div style="height:220px;" class="btn-group" data-toggle="buttons-radio" align="center" ng-init="levels = [{'name':'Drag-n-Drop', 'id':'Drag-n-Drop'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]">					
 						<span ng-repeat="item in levels">

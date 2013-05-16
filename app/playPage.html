@@ -49,6 +49,11 @@
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       color: black;
     }
+
+    .well{
+      background-color: #171718;
+      border-color: black;
+    }
     .img-polaroid{
       height:215px;
     }
@@ -144,6 +149,24 @@
         margin: -20px;
       }
 
+    }
+
+    /* Below code will set the page background colour to black*/
+    body{
+      color: #F2F2F2;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+      background-color: #2E2E2E;
+      *background-color: #2E2E2E;
+      background-image: -moz-linear-gradient(top, #2E2E2E, #2E2E2E);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2E2E2E), to(#2E2E2E));
+      background-image: -webkit-linear-gradient(top, #2E2E2E, #2E2E2E);
+      background-image: -o-linear-gradient(top, #2E2E2E, #2E2E2E);
+      background-image: linear-gradient(to bottom,#2E2E2E, #2E2E2E);
+      background-repeat: repeat-x;
+      border-color: #0044cc #0044cc #002a80;
+      border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+      filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
     }
     
     </style>
@@ -293,62 +316,73 @@
         </table>
         <br>
 
-        <table id="gametable" width=1180px height=350px>
-            <tr>
-                <th height="10" class="well">Choice</th>
-                <th align="right">
-                    <form class="form-inline" style="visibility:hidden;">
-                    <span class="label label-warning">Not Compilable, Try Again!</span>&nbsp;&nbsp;
-                      <label class="checkbox">
-                      <input type="checkbox" ng-model="autoCheck">Auto Check</label>&nbsp;
-                      <label class="checkbox">
-                      <input type="checkbox">Auto Advance</label>&nbsp;</form>  
-                </th>
-                <th height="10" class="well">Answer</th>
-                <th align="right">
-                    <form class="form-inline">
-                    <span class="label label-warning" ng-show="notCompile"><h6>Not Compilable, Please Try Again!</h6></span>&nbsp;&nbsp;
-                        <label class="checkbox">
-                            <input type="checkbox" ng-model="autoCheck" ng-true-value="yes" ng-false-value="no">Auto Check</label>&nbsp;
-                        <label class="checkbox">
-                            <input type="checkbox" ng-model="advancedCheck" ng-true-value="yes" ng-false-value="no">Auto Advance</label>&nbsp;</form>
-                </th>
-            </tr>
-            <tr>autocheck: {{autoCheck}}
-                <td colspan="2" class="well well-small">
-                    <table id="gameTable1" width=540px>
-                        <tr>
-                            <td>
-                                <div class="ng-scope" id="list1">
-                                    <ol style="list-style: none;" id="single"
+        <div class="row-fluid">
+          <div class="span12" id="gametable">
+            <div class="span6 well">
+                <!-- Tab for Choice-->
+                <div id="tab1"class="tabbable">
+                  <ul class="nav nav-tabs">
+                    <li class="tabspacing active">
+                      <a href="#t1" data-toggle="tab">Solution</a>
+                    </li>
+                    &nbsp;&nbsp;&nbsp;&nbsp;autocheck: {{autoCheck}}
+                    <button class="btn btn-primary pull-right" ng-click="check_solution_for_game()">&nbsp;&nbsp;Run&nbsp;&nbsp;</button>
+                  </ul>
+                  <div  class="tab-content">
+                    <div class="tab-pane fade in active" id="t1" style="height:320px;">
+                        <div id="gameTable1">
+                            <table id="gameTable1" width=540px >
+                              <div class="ng-scope" id="list1">
+                                <ol style="list-style: none;" id="single"
                                     dnd-between-list="line_outcome.origional,target"
                                     ng-class="{&#39;minimalList&#39;:modelEmpty()}" class="ui-sortable">
-                                        <li style="text-align: center;" class="alert alert-info nomargin ng-scope ng-binding"
+                                      <li style="text-align: center;" class="alert alert-info nomargin ng-scope ng-binding"
                                         ng-repeat="line in line_outcome.origional">{{line.content}}</li>
-                                    </ol>
-                                </div>
-                            </td>
-                          <td>&nbsp;</td>
-                        </tr>
-                    </table>
-                </td>
-                <td colspan="2"  class="well well-small">
-                    <table id="gameTable2" width=540px>
-                        <tr>
-                            <td>
-                                <div class="ng-scope" id="list2">
-                                    <ol style="list-style: none;" id="target" dnd-between-list="source,single"
-                                    ng-class="{&#39;minimalList&#39;:sourceEmpty()}" class="ui-sortable">
-                                        <li style="text-align: center;" class="alert alert-info nomargin ng-scope ng-binding"
-                                        ng-repeat="line in source">{{line.content}}</li>
-                                    </ol>
-                                </div>
-                            </td>
-                            <td>&nbsp;</td>
-                    </table>
-                </td>
-                </tr>
-        </table>      
+                                </ol>
+                              </div>
+                                  </td>
+                            </table>
+                        </div>   
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="span6 well">
+                <!-- Tab for Answer-->
+                <div id="tab2"class="tabbable">
+                  <ul class="nav nav-tabs">
+                    <li class="tabspacing active">
+                      <a href="#t3" data-toggle="tab">Answer</a>
+                    </li>
+                    <div align="right">
+                    <form class="form-inline" style="align:right">
+                        <span class="label label-warning" ng-show="notCompile"><h6>Not Compilable, Please Try Again!</h6></span>&nbsp;&nbsp;
+                        <label class="checkbox">
+                        <input type="checkbox" ng-model="autoCheck" ng-true-value="yes" ng-false-value="no">Auto Check</label>&nbsp;
+                        <label class="checkbox">
+                        <input type="checkbox" ng-model="advancedCheck" ng-true-value="yes" ng-false-value="no">Auto Advance</label>&nbsp;</form>
+                    </div>
+                  </ul>
+                  <div  class="tab-content">
+                    <div class="tab-pane fade in active" id="t3" style="height:320px;">
+                        <div id="gameTable2">
+                          <div class="ng-scope" id="list2">
+                            <ol style="list-style: none;" id="target" dnd-between-list="source,single"
+                                ng-class="{&#39;minimalList&#39;:sourceEmpty()}" class="ui-sortable">
+                                 <li style="text-align: center;" class="alert alert-info nomargin ng-scope ng-binding"
+                                        ng-repeat="line in source">{{line.content}}
+                                 </li>
+                            </ol>
+                          </div>
+                            
+                        </div>   
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+           </div>
+        </div>   
       
         <div class="modal fade" id="pop_info_Pane" style="display:none">
           <div class="modal-header">

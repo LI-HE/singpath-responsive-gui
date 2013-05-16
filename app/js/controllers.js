@@ -89,12 +89,24 @@ function InterfaceController($scope,$resource){
         $scope.interfaces = $resource('/jsonapi/interfaces').get();
 }
 
-function PathController($scope,$resource){
+function PathController($scope,$resource,$cookieStore,$location){
     $scope.paths = $resource('/jsonapi/get_game_paths').get();
     $scope.mobile_paths = null;
     $scope.path_progress = null;
-    $scope.player_progress = null;
+	$scope.test = $cookieStore.get("pid");
+    $scope.difficulty = "easy";
+	
+	$scope.firstLoad=function(paid){
+		$cookieStore.put("pid", paid);
+		$location.path("practice");
+	};
+	    
+	$scope.PathModel = $resource('/jsonapi/get_path_progress/:pathID');
 
+    //Including details=1 returns the nested problemset progress.
+    $scope.PathModel.get({"pathID":$scope.test,"details":1}, function(response){
+        $scope.path_progress = response;
+    });
     $scope.get_player_progress = function(){
         $scope.player_progress = $resource('/jsonapi/get_player_progress').get();
     };

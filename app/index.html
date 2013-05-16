@@ -519,8 +519,8 @@
 				  <a ng-show="player.nickname" href="#quests">Quests</a>
                   <a ng-show="!player.nickname"  type="button" href="#loginAlert" data-toggle="modal">Quest</a>
                 </li>                
-                <li>
-                <a href="#practice">Practice</a>
+                <li ng-controller = "PathController">
+			      <a type="button" ng-click="firstLoad(paths.paths[0].id)">Practice</a>
                 </li>                
                 <li>
                 <a href="#teach">Teaching</a>
