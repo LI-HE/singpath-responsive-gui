@@ -7,6 +7,7 @@ var myAppConfig = angular.module('myAppConfig', ['ngCookies','ngResource', 'anal
     $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: IndexController});
     $routeProvider.when('/teach', {templateUrl: 'partials/teach.html', controller: IndexController});
     $routeProvider.when('/storyboard', {templateUrl: 'partials/storyboard.html', controller: IndexController});
+    $routeProvider.when('/story', {templateUrl: 'partials/story.html', controller: IndexController});
     $routeProvider.otherwise({redirectTo: 'partials/home.html'});
 }]);
 

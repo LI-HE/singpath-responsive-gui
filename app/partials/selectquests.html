@@ -102,7 +102,7 @@ input:hover{
 								<div class="span4"  ng-repeat="story in stories | limitTo:3">
 									<label class="radio">
 									<input type="radio" name="optionsRadios" ng-model="$parent.$parent.storyid" id="{{story.id}}" value="{{story.id}}">
-									<input class="well"type="image" ng-src="img/story/{{story.name.split(' ').join('_')}}.jpg" alt="" height="230"/>
+									<input class="well"type="image" ng-src="img/story/{{story.name.split(' ').join('_')}}.jpg" alt="" id="pathImg"/>
 									
 									<br>
 									<h4>{{story.name}}</h4>
@@ -120,7 +120,7 @@ input:hover{
 								<label class="radio">
 						
 								<input type="radio" name="optionsRadios" ng-model="$parent.storyid" id="{{story.id}}" value="{{story.id}}">
-								<input class="well" type="image" ng-src="img/story/{{story.name.split(' ').join('_')}}.jpg" alt="" height="230">
+								<input class="well" type="image" ng-src="img/story/{{story.name.split(' ').join('_')}}.jpg" alt="" id="pathImg">
 								<br>
 								<h4>{{story.name}}</h4S>
 								</label>
@@ -135,7 +135,7 @@ input:hover{
 					<div class="span4" ng-repeat="story in stories | startFrom:6 | limitTo:3">
 						<label class="radio">
 						<input type="radio" name="optionsRadios" ng-model="$parent.storyid" id="{{story.id}}" value="{{story.id}}">
-						<input class="well" type="image" ng-src="img/story/{{story.name.split(' ').join('_')}}.jpg" alt="" height="230">
+						<input class="well" type="image" ng-src="img/story/{{story.name.split(' ').join('_')}}.jpg" alt="" id="pathImg">
 						<br>
 						<h4>{{story.name}}</h4>
 						</label>

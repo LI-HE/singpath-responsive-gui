@@ -50,206 +50,209 @@
 
 </style>
 
-<!-- START THE FEATURETTES -->
-<br/>
-    <!-- Tab for Quest,Path and Challenges-->
-<div class="span12">
-	<div class="tabbable well">
-		<!--2 tabs-->
-	  <ul class="nav nav-tabs">
-		<li class="tabspacing active">
-		  <a href="#t1" data-toggle="tab">Current Stories</a>
-		</li>
-		<li class="tabspacing">
-		  <a href="#t2" data-toggle="tab">Create Stories</a>
-		</li>	   
-	  </ul>
-	  <div class="tab-content well">
-		<div class="tab-pane active" id="t1">
-		  <div style="overflow-x:hidden">
-				<table class="table table-condensed">
-						<tr style="border-top: solid white; border-bottom: solid white;">
-							<th class="c1">Name</th>
-							<th class="c2">Number of Videos</th>
-							<th class="c3">Total Time</th>
-							<th class="c4">Status</th>
-							<th class="c5">Statistics</th>
-							<th class="c6">Review</th>
-						</tr>  
-				</table> 
-				<div>
-					<table class="table table-hover">
-							<tr>
-								<td class="c1">The Spy Who Coded</td>
-								<td class="c2">12</td>
-								<td class="c3">50:00</td>
-								<td class="c4">Saved</td>
-								<td class="c5">Statistics</td>
-								<td class="c6"><input type = "radio"
-									 name = "review"
-									 value = "selected"
-									 checked = "checked" /> 
-								</td>      
-							</tr>
-							<tr>
-								<td class="c1">Tricorder Meltdown</td>
-								<td class="c2">7</td>
-								<td class="c3">21:00</td>
-								<td class="c4">Published</td>
-								<td class="c5">Statistics</td>
-								<td class="c6"><input type = "radio"
-									 name = "review"
-									 value = "selected"
-									 checked = "checked" /> 
-								</td>      
-							</tr>
-							<tr>
-								<td class="c1">Texas Whirlwind</td>
-								<td class="c2">6</td>
-								<td class="c3">19:00</td>
-								<td class="c4">Published</td>
-								<td class="c5">Statistics</td>
-								<td class="c6"><input type = "radio"
-									 name = "review"
-									 value = "selected"
-									 checked = "checked" /> 
-								</td>      
-							</tr>
-							<tr>
-								<td class="c1">Avengers</td>
-								<td class="c2">10</td>
-								<td class="c3">20:32</td>
-								<td class="c4">Published</td>
-								<td class="c5">Statistics</td>
-								<td class="c6"><input type = "radio"
-									 name = "review"
-									 value = "selected"
-									 checked = "checked" /> 
-								</td>      
-							</tr>
+<div class="container" id="largeProfile" style="position:relative;">
+	<br>
+	<br>
+	<div class="row">
+		<div class="span12">
+			<div class="tabbable well">
+				<!--2 tabs-->
+			  <ul class="nav nav-tabs">
+				<li class="tabspacing active">
+				  <a href="#t1" data-toggle="tab">Current Stories</a>
+				</li>
+				<li class="tabspacing">
+				  <a href="#t2" data-toggle="tab">Create Stories</a>
+				</li>	   
+			  </ul>
+			  <div class="tab-content well">
+				<div class="tab-pane active" id="t1">
+				  <div style="overflow-x:hidden">
+						<table class="table table-condensed">
+								<tr style="border-top: solid white; border-bottom: solid white;">
+									<th class="c1">Name</th>
+									<th class="c2">Number of Videos</th>
+									<th class="c3">Total Time</th>
+									<th class="c4">Status</th>
+									<th class="c5">Statistics</th>
+									<th class="c6">Review</th>
+								</tr>  
+						</table> 
+						<div>
+							<table class="table table-hover">
+									<tr>
+										<td class="c1">The Spy Who Coded</td>
+										<td class="c2">12</td>
+										<td class="c3">50:00</td>
+										<td class="c4">Saved</td>
+										<td class="c5">Statistics</td>
+										<td class="c6"><input type = "radio"
+											 name = "review"
+											 value = "selected"
+											 checked = "checked" /> 
+										</td>      
+									</tr>
+									<tr>
+										<td class="c1">Tricorder Meltdown</td>
+										<td class="c2">7</td>
+										<td class="c3">21:00</td>
+										<td class="c4">Published</td>
+										<td class="c5">Statistics</td>
+										<td class="c6"><input type = "radio"
+											 name = "review"
+											 value = "selected"
+											 checked = "checked" /> 
+										</td>      
+									</tr>
+									<tr>
+										<td class="c1">Texas Whirlwind</td>
+										<td class="c2">6</td>
+										<td class="c3">19:00</td>
+										<td class="c4">Published</td>
+										<td class="c5">Statistics</td>
+										<td class="c6"><input type = "radio"
+											 name = "review"
+											 value = "selected"
+											 checked = "checked" /> 
+										</td>      
+									</tr>
+									<tr>
+										<td class="c1">Avengers</td>
+										<td class="c2">10</td>
+										<td class="c3">20:32</td>
+										<td class="c4">Published</td>
+										<td class="c5">Statistics</td>
+										<td class="c6"><input type = "radio"
+											 name = "review"
+											 value = "selected"
+											 checked = "checked" /> 
+										</td>      
+									</tr>
+									
+							</table> 
+							<div align="right">
+							<button class="btn btn-primary" type="button" style="height: 30px;width: 100px;" >Playback</button> </br></br>
+							<button class="btn btn-primary" type="button" style="height: 30px;width: 100px;">Edit</button> 
+							</div>
+						</div>
+				  </div>
+					
+				</div>
+				<div class="tab-pane" id="t2">
+				<!--add story title & videos-->
+				<div class="row-fluid">
+					<div class="span12">
+					<!--Story Title-->
+					
+						<div class="span2">
 							
-					</table> 
-					<div align="right">
-					<button class="btn btn-primary" type="button" style="height: 30px;width: 100px;" >Playback</button> </br></br>
-					<button class="btn btn-primary" type="button" style="height: 30px;width: 100px;">Edit</button> 
-					</div>
-				</div>
-		  </div>
-			
-		</div>
-		<div class="tab-pane" id="t2">
-		<!--add story title & videos-->
-		<div class="row-fluid">
-			<div class="span12">
-			<!--Story Title-->
-			
-				<div class="span2">
-					
-						<p>Story Title :</p>						
-					
-				</div>
-				<div class="span10">
-					<input class="span8" type="text" placeholder="Title"></p> 	
-				</div>
-				
-			</div>
-		</div>
-			<!--Videos-->
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="span2">
-						<p>Videos :</p>							
-					</div>
-				
-					<div class="span10">
-					
+								<p>Story Title :</p>						
+							
+						</div>
+						<div class="span10">
+							<input class="span8" type="text" placeholder="Title"></p> 	
+						</div>
 						
-						<input class="span8" type="text" placeholder="input youtube link">											
-						</br>
-						<input class="span8" type="text" placeholder="https://www.youtube.com/watch?v=QASVU1kFJJY">						  
-						</br>
-						<input class="span8" type="text" placeholder="https://www.youtube.com/watch?v=Qi_TXCEIMy0">
-						</br>
-						<div class="input-append">
-							<input class="span8" id="appendedInputButtons" type="text" placeholder="https://www.youtube.com/watch?v=ERf7qcilFE4">
+					</div>
+				</div>
+					<!--Videos-->
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="span2">
+								<p>Videos :</p>							
+							</div>
+						
+							<div class="span10">
+							
+								
+								<input class="span8" type="text" placeholder="input youtube link">											
+								</br>
+								<input class="span8" type="text" placeholder="https://www.youtube.com/watch?v=QASVU1kFJJY">						  
+								</br>
+								<input class="span8" type="text" placeholder="https://www.youtube.com/watch?v=Qi_TXCEIMy0">
+								</br>
+								<div class="input-append">
+									<input class="span8" id="appendedInputButtons" type="text" placeholder="https://www.youtube.com/watch?v=ERf7qcilFE4">
 
-							<button class="btn" type="button-primary">+</button>
+									<button class="btn" type="button-primary">+</button>
+									
+								</div>						
+								
+							</div> 
 							
-						</div>						
-						
-					</div> 
-					
-					
+							
+						</div>
+					</div>
+					</br>
+					<!--uploaded videos-->
+					<div class="row-fluid">
+						<div class="span12">
+							<table class="table table-condensed">
+								<tr style="border-top: solid white; border-bottom: solid white;">
+									<th class="v1">Sequence</th>
+									<th class="v2">Video Name</th>
+									<th class="v3">Location</th>
+									<th class="v4">Length</th>
+									<th class="v5">Thumbnail</th>
+									<th class="v6">Delete</th>
+								</tr>  
+							</table>
+							<table class="table table-hover">
+									<tr>
+										<td class="v1" style="text-align:center;">1</td>
+										<td class="v2">#1</td>
+										<td class="v3">https://www.youtube.com/watch?v=fxsk1e0QDgE</td>
+										<td class="v4">2:03</td>
+										<td class="v5"><iframe class="thumbnail" width="100" height="50" src="http://www.youtube.com/watch?v=qgiuBXT9LK4" frameborder="0" allowfullscreen>
+											</iframe></td>
+										<td class="v6"> <i class="icon-remove icon-white"></i></td>      
+									</tr>
+									<tr>
+										<td class="v1">2</td>
+										<td class="v2">#2</td>
+										<td class="v3">https://www.youtube.com/watch?v=QASVU1kFJJY</td>
+										<td class="v4">1:23</td>
+										<td class="v5"><iframe class="thumbnail" width="100" height="50" src="http://www.youtube.com/embed/ADjIt6ZbqKU" frameborder="0" allowfullscreen>
+											</iframe></td>
+										<td class="v6"> <i class="icon-remove icon-white"></i></td>      
+									</tr>
+									<tr>
+										<td class="v1">3</td>
+										<td class="v2">#3</td>
+										<td class="v3">https://www.youtube.com/watch?v=Qi_TXCEIMy0"</td>
+										<td class="v4">1:45</td>
+										<td class="v5"><iframe class="thumbnail" width="100" height="50" src="http://www.youtube.com/watch?v=Qi_TXCEIMy0" frameborder="0" allowfullscreen>
+											</iframe></td>
+										<td class="v6"> <i class="icon-remove icon-white"></i></td>      
+									</tr>
+									<tr>
+										<td class="v1">4</td>
+										<td class="v2">#4</td>
+										<td class="v3">https://www.youtube.com/watch?v=ERf7qcilFE4</td>
+										<td class="v4">1:45</td>
+										<td class="v5"><iframe class="thumbnail" width="100" height="50" src="http://www.youtube.com/watch?v=ERf7qcilFE4" frameborder="0" allowfullscreen>
+											</iframe></td>
+										<td class="v6"> <i class="icon-remove icon-white"></i></td>      
+									</tr>
+																							
+							</table> 
+							<div align="right">
+							<button class="btn btn-primary" type="button" style="height: 30px;width: 100px;">Save</button>
+							<button class="btn btn-primary" type="button" style="height: 30px;width: 100px;">Publish</button> 
+							
+							</div>
+						</div>
+					<div>
+				
+				</div>
+				
+				
+				<div>
+				
+				</div>
+				
 				</div>
 			</div>
-			</br>
-			<!--uploaded videos-->
-			<div class="row-fluid">
-				<div class="span12">
-					<table class="table table-condensed">
-						<tr style="border-top: solid white; border-bottom: solid white;">
-							<th class="v1">Sequence</th>
-							<th class="v2">Video Name</th>
-							<th class="v3">Location</th>
-							<th class="v4">Length</th>
-							<th class="v5">Thumbnail</th>
-							<th class="v6">Delete</th>
-						</tr>  
-					</table>
-					<table class="table table-hover">
-							<tr>
-								<td class="v1" style="text-align:center;">1</td>
-								<td class="v2">#1</td>
-								<td class="v3">https://www.youtube.com/watch?v=fxsk1e0QDgE</td>
-								<td class="v4">2:03</td>
-								<td class="v5"><iframe class="thumbnail" width="100" height="50" src="http://www.youtube.com/watch?v=qgiuBXT9LK4" frameborder="0" allowfullscreen>
-									</iframe></td>
-								<td class="v6"> <i class="icon-remove icon-white"></i></td>      
-							</tr>
-							<tr>
-								<td class="v1">2</td>
-								<td class="v2">#2</td>
-								<td class="v3">https://www.youtube.com/watch?v=QASVU1kFJJY</td>
-								<td class="v4">1:23</td>
-								<td class="v5"><iframe class="thumbnail" width="100" height="50" src="http://www.youtube.com/embed/ADjIt6ZbqKU" frameborder="0" allowfullscreen>
-									</iframe></td>
-								<td class="v6"> <i class="icon-remove icon-white"></i></td>      
-							</tr>
-							<tr>
-								<td class="v1">3</td>
-								<td class="v2">#3</td>
-								<td class="v3">https://www.youtube.com/watch?v=Qi_TXCEIMy0"</td>
-								<td class="v4">1:45</td>
-								<td class="v5"><iframe class="thumbnail" width="100" height="50" src="http://www.youtube.com/watch?v=Qi_TXCEIMy0" frameborder="0" allowfullscreen>
-									</iframe></td>
-								<td class="v6"> <i class="icon-remove icon-white"></i></td>      
-							</tr>
-							<tr>
-								<td class="v1">4</td>
-								<td class="v2">#4</td>
-								<td class="v3">https://www.youtube.com/watch?v=ERf7qcilFE4</td>
-								<td class="v4">1:45</td>
-								<td class="v5"><iframe class="thumbnail" width="100" height="50" src="http://www.youtube.com/watch?v=ERf7qcilFE4" frameborder="0" allowfullscreen>
-									</iframe></td>
-								<td class="v6"> <i class="icon-remove icon-white"></i></td>      
-							</tr>
-																					
-					</table> 
-					<div align="right">
-					<button class="btn btn-primary" type="button" style="height: 30px;width: 100px;">Save</button>
-					<button class="btn btn-primary" type="button" style="height: 30px;width: 100px;">Publish</button> 
-					
-					</div>
-				</div>
-			<div>
-		
-		</div>
-		
-		
-		<div>
-		
-		</div>
-		
 		</div>
 	</div>
 </div>
