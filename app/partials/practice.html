@@ -142,7 +142,7 @@ li{ list-style:none; }
 		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
 	</div>
 	<!-- /.carousel -->
-	{{path_progress.details[0].id}}
+	test{{path_progress.details[0].id}}
 	<div class="container marketing" >
 		<!-- Three columns of text below the carousel -->
 		<div class="row-fluid">
@@ -150,42 +150,75 @@ li{ list-style:none; }
 				<!--display the level, topic name & progress of the player when the path is selected by the player-->
 				<div class="span6 well well-small" ng-model="$parent.pathName" >
 					<div align="center" ><h4>#1. Select a Path Level!</h4></div>
-						<hr>
-					<div style="height:220px;overflow:auto">
-						<div class="span12" align="center" style="font-size:12px;" ng-show="path_progress!=null">
-							<div class="span3 pull-left">Level#</div>
-							<div class="span6 pull-left" >Description</div>
-							<div class="span1 pull-left">Progress</div>
-							<div class="span2 pull-left">Solved</div>
-						</div>
-						<div ng-show="path_progress==null">No path has been select yet!</div>
-						<li ng-repeat="v in path_progress.details" ng-init="$parent.$parent.$parent.lvl=path_progress.details[0].id">
-						<div class="row-fluid">
-							<div class="span12" style="font-size:12px;">
-								<div class="span9">
-									<label class="radio pull-left">
-									<input style="visibility:hidden" type="radio" ng-model="$parent.$parent.$parent.lvl" name="pathLevel" value="{{v.id}}"/ >
-									<button type="button" class="btn btn-primary" ng-click="setButton(v.pathorder)" style="height: 30px; width: 145px"  btn-radio="{{v.name}}">{{v.name}}
-									</button> 											
-									</label>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{v.description}} 	
+					<div class = "tabbable">                      
+					  <ul id="myTab" class="nav nav-tabs">                        
+						<li id="path1" class="active">
+						<a  href="#path" data-toggle="tab">Path</a>
+						</li>                        
+						<li id="level1">
+						<a  href="#level" data-toggle="tab">Level</a>
+						</li>                                          
+					  </ul>                      
+					  <div class="tab-content" style="font-family:verdana">                        
+						<div class="tab-pane fade in active" id="path">
+							<div style="height:220px;overflow:auto">
+								<div class="span12" align="center" style="font-size:12px;" ng-show="path_progress!=null">
+									<div class="span3 pull-left">Level#</div>
+									<div class="span6 pull-left">Description</div>
+									<div class="span1 pull-left">Progress</div>
+									<div class="span2 pull-left">Solved</div>
 								</div>
-								<div class="span1">
-								{{v.currentPlayerProgress}}/{{v.problemsInProblemset}}
+								<div ng-show="path_progress==null">Please Select a language path!</div>
+								<li ng-repeat="v in path_progress.details" ng-init="$parent.$parent.$parent.lvl=path_progress.details[0].id">
+								<div class="row-fluid">
+									<div class="span12" style="font-size:12px;">
+										<div class="span9">
+											<label class="radio pull-left">
+											<input style="visibility:hidden" type="radio" ng-model="$parent.$parent.$parent.lvl" name="pathLevel" value="{{v.id}}"/ >
+											<button type="button" class="btn btn-primary" ng-click="setButton(v.pathorder,v.id)" style="height: 30px; width: 145px"  btn-radio="{{v.name}}">{{v.name}}
+											</button> 											
+											</label>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{v.description}} 	
+										</div>
+										<div class="span1">
+										{{v.currentPlayerProgress}}/{{v.problemsInProblemset}}
+										</div>
+										<div class="span1 container" ng-show="v.currentPlayerProgress==v.problemsInProblemset">
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10004;
+										</div>
+									</div>
 								</div>
-								<div class="span1 container" ng-show="v.currentPlayerProgress==v.problemsInProblemset">
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10004;
-								</div>
+								</li>		
 							</div>
-						</div>
-						</li>		
-					</div>
+						</div>                        
+						<div class="tab-pane fade in " id="level">
+							<div class="span12" style="font-size:12px;" ng-show="path_progress!=null">
+								<div class="span10 pull-left" >Problem Name</div>
+								<div class="span2 pull-left">Solved</div>
+							</div>                     
+						
+								<li ng-repeat="prob in problems.problems" ng-init="">
+								<div class="row-fluid">
+									<div class="span12" style="font-size:12px;">
+										<div class="span10">
+										{{prob.name}}
+										</div>
+										<div class="span2 container" ng-show="prob.solved=='true'">
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10004;
+										</div>
+									</div>
+								</div>
+								</li>
+						</div> 								
+					 </div>   
+					</div>					
+
 				</div>
 						
 				<div class="span4 lead well well-small" align="center">
 					<div id="gradient1"><h4>#3. Select a difficulty Level</h4></div> 
 					<hr>
-					<div style="height:220px;" class="btn-group" data-toggle="buttons-radio" align="center" ng-init="levels = [{'name':'Drag-n-Drop', 'id':'Drag-n-Drop'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]">					
+					<div style="height:245px;" class="btn-group" data-toggle="buttons-radio" align="center" ng-init="levels = [{'name':'Drag-n-Drop', 'id':'Drag-n-Drop'},{'name':'Easy','id':'Easy'},{'name':'Medium', 'id':'Medium'},{'name':'Hard','id':'Hard'}]">					
 						<span ng-repeat="item in levels">
 							<label class="radio">
 							<input style="visibility:hidden" type="radio" ng-model="$parent.difficulty" name="difficultyLevel" value="{{item.name}}"/ >
@@ -220,6 +253,11 @@ li{ list-style:none; }
 		</div>
 	</div>
 </div>
+<script>
+  $(function () {
+    $('#myTab a:first').tab('show');
+  })
+</script>
 <script>
 $("#myCarousel")
     .appendTo("#des");
