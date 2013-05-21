@@ -162,13 +162,12 @@ li{ list-style:none; }
 					  <div class="tab-content" style="font-family:verdana">                        
 						<div class="tab-pane fade in active" id="path">
 							<div style="height:220px;overflow:auto">
-								<div class="span12" align="center" style="font-size:12px;" ng-show="path_progress!=null">
+								<div class="span12" align="center" style="font-size:12px;">
 									<div class="span3 pull-left">Level#</div>
 									<div class="span6 pull-left">Description</div>
 									<div class="span1 pull-left">Progress</div>
 									<div class="span2 pull-left">Solved</div>
 								</div>
-								<div ng-show="path_progress==null">Please Select a language path!</div>
 								<li ng-repeat="v in path_progress.details" ng-init="$parent.$parent.$parent.lvl=path_progress.details[0].id">
 								<div class="row-fluid">
 									<div class="span12" style="font-size:12px;">
@@ -191,12 +190,11 @@ li{ list-style:none; }
 								</li>		
 							</div>
 						</div>                        
-						<div class="tab-pane fade in " id="level">
-							<div class="span12" style="font-size:12px;" ng-show="path_progress!=null">
+						<div class="tab-pane fade in " id="level" style="height:220px;overflow:auto">
+							<div class="span12" style="font-size:12px;">
 								<div class="span10 pull-left" >Problem Name</div>
 								<div class="span2 pull-left">Solved</div>
 							</div>                     
-						
 								<li ng-repeat="prob in problems.problems" ng-init="">
 								<div class="row-fluid">
 									<div class="span12" style="font-size:12px;">

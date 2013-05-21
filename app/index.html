@@ -490,7 +490,7 @@
         <div class="container" >
 		  
           <ul class="nav nav-pills pull-right" align="right">
-            <li ng-show="player.nickname"><a href="#profile"><input type="image" ng-src="{{player.gravatar}}"; width = 30px; height= 30px;/>&nbsp;&nbsp;</span><span ng-bind="player.nickname"></span><span ng-bind="secretAgent">!</span></a></li>
+            <li ng-show="player.nickname"><a href="#profile"><image ng-src="{{player.gravatar}}"; width = 30px; height= 30px;/>&nbsp;&nbsp;<span ng-bind="player.nickname"></span><span ng-bind="secretAgent"></span></a></li>
             <li><a ng-show="!player.nickname" class="janrainEngage" href="#"><button class="btn btn-primary" ng-click='login()'>Login</button></a></li>    
             <li><a ng-show="player.nickname" ng-click='logout()' href="#"><button class="btn btn-danger" ng-click='logout()'>Log Out</button></a></li>     
           </ul>
@@ -516,8 +516,7 @@
             <div class="nav-collapse collapse">              
               <ul class="nav pull-right">   
                 <li>
-				  <a ng-show="player.nickname" href="#quests">Quests</a>
-                  <a ng-show="!player.nickname"  type="button" href="#loginAlert" data-toggle="modal">Quest</a>
+                  <a type="button" ng-click="checkQuestLogin()">Quest</a>
                 </li>                
                 <li ng-controller = "PathController">
 			      <a type="button" ng-click="firstLoad(paths.paths[2].id)">Practice</a>
@@ -567,8 +566,7 @@
               </ul>                
               </li>
                 <li>
-                  <a ng-show="!player.nickname" class="janrainEngage" href="#">Profile</a>
-                  <a ng-show="player.nickname" href="#profile">Profile</a>
+                  <a type="button" ng-click="checkProfileLogin()">Profile</a>
                 </li>                           
               </ul>            
             </div>
